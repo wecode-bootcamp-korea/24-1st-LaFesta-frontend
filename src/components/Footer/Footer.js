@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './SignUp.scss';
+import './Footer.scss';
 
-class SignUp extends Component {
+class Footer extends Component {
   render() {
     return <div></div>;
   }
 }
-export default SignUp;
+
+export default Footer;
