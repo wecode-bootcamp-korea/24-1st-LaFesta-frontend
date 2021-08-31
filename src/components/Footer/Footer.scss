@@ -1,0 +1,213 @@
+.footerContainer {
+
+  .iconList {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 100px;
+    background: #fff;
+
+    button {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      i {
+        font-size: 17px;
+      }
+
+      span {
+        margin-top: 10px;
+        font-size: 11px;
+      }
+    }
+  }
+
+  .footerLinkWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 60px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f4f4f4;
+
+    .kakaoTitle {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 33px;
+        height: 31px;
+        overflow: hidden;
+      }
+    }
+
+    h3 {
+      display: flex;
+      margin-left: 2px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+  }
+
+  .kakaoContent {
+    width: 370px;
+    margin: 5px 0;
+    white-space: normal;
+    font-size: 11px;
+  }
+
+  .kakaoBtn {
+    height: 30px;
+    margin: 5px 0;
+    padding: 5px 17px;
+    border: 1px solid #545454;
+    border-radius: 27px;
+    font-size: 11px;
+  }
+
+  &:hover {
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    color: #000;
+  }
+
+  .totalStore {
+    display: flex;
+    margin: 15px 0;
+    font-size: 9px;
+    font-weight: 700;
+    color: #545454;
+  }
+
+  .storeSearchBtn {
+    padding: 7px 160px;
+    border: 1px solid #f4f4f4;
+    border-radius: 27px;
+    background: #fff;
+  }
+
+  h4 {
+    margin-bottom: 14px;
+    font-size: 9px;
+    font-weight: 600;
+    color: #545454;
+  }
+
+  .list {
+    color: #545454;
+  }
+
+  li {
+    margin: 6px 0;
+    font-size: 11px;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .helps {
+    li {
+      margin: 20px 0;
+
+      strong {
+        display: block;
+        margin: 20px 0;
+        font-size: 9px;
+        font-weight: 600;
+      }
+
+      em {
+        display: block;
+        margin: 20px 0;
+      }
+
+      address {
+        width: 283px;
+        font-size: 10px;
+        white-space: normal;
+      }
+    }
+
+    .bordItem {
+      font-size: 8px;
+      font-weight: 600;
+    }
+  }
+
+  .addressWrapper {
+    display: flex;
+    padding: 15px 50px;
+    font-size: 9px;
+    background: #f4f4f4;
+    color: #545454;
+
+    .addressContent {
+      padding-right: 250px;
+    }
+
+    .insuranceContent {
+      padding-right: 110px;
+    }
+  }
+
+  .footerBottom {
+    padding: 20px 40px;
+
+    .bottoms {
+      display: flex;
+      font-size: 9px;
+
+      li {
+        margin: 0 5px;
+
+        &::after {
+          margin-left: 5px;
+          content: "|";
+        }
+
+        &:last-of-type::after {
+          content: "";
+        }
+      }
+
+      .langeContent {
+        margin-left: auto;
+        border-left: 0;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+
+        .langeContent {
+          position: relative;
+          left: 4px;
+          bottom: 6px;
+          padding-right: 10px;
+          font-size: 10px;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    @media screen and (max-width: 937px) {
+      .kakaoContent {
+        width: 287px;
+      }
+
+      .totalStore,
+      .storeSearchBtn,
+      .helpWrapper,
+      .helps {
+        display: none;
+      }
+
+      .addressWrapper {
+        display: flex;
+        justify-content: space-around;
+        padding: 15px 60px;
+      }
+    }
+  }
+}
