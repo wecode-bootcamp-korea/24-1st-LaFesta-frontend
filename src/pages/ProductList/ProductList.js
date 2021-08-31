@@ -175,7 +175,7 @@ class ProductList extends Component {
                 <div>1</div>
                 <div>2</div>
                 <div>3</div>
-                <div className="pageMoveBtn">></div>
+                <div className="pageMoveBtn">{`>`}</div>
               </div>
             </div>
           </body>
