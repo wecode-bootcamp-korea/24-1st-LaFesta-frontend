@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Nav from './components/Footer/Footer';
-import Footer from './components/Nav/Nav';
+import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
 
 import Cart from './pages/Cart/Cart';
 import MainPage from './pages/MainPage/MainPage';
