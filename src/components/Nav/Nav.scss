@@ -1,0 +1,61 @@
+.navContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  padding: 30px;
+  height: 85px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: orange;
+
+  .logoWrapper {
+    .logo {
+      width: 130px;
+      display: flex;
+
+      h1 {
+        font-size: 20px;
+        padding-right: 10px;
+        font-weight: 700;
+      }
+
+      img {
+        width: 25px;
+        transform: rotateY(180deg);
+      }
+    }
+  }
+
+  .categorys {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+
+    li {
+      margin: 0 10px;
+    }
+  }
+
+  .searchForm {
+    .searchInput {
+      display: none;
+      border: 0;
+      outline: 0;
+    }
+  }
+
+  .userCategorys {
+    display: flex;
+
+    li {
+      padding-left: 15px;
+
+      .icon {
+        font-size: 18px;
+      }
+    }
+  }
+}
