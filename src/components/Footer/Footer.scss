@@ -55,7 +55,6 @@
     font-size: 11px;
   }
 
-
   .kakaoBtn {
     height: 30px;
     margin: 5px 0;
@@ -63,14 +62,12 @@
     border: 1px solid #545454;
     border-radius: 27px;
     font-size: 11px;
-    background: #292929;
-    color: #fff;
+  }
 
-    &:hover {
-      border: 1px solid #e5e5e5;
-      background: #fff;
-      color: #000;
-    }
+  &:hover {
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    color: #000;
   }
 
   .totalStore {
@@ -97,15 +94,15 @@
 
   .list {
     color: #545454;
+  }
 
-    li {
-      margin: 6px 0;
-      font-size: 11px;
-      cursor: pointer;
+  li {
+    margin: 6px 0;
+    font-size: 11px;
+    cursor: pointer;
 
-      &:hover {
-        text-decoration: underline;
-      }
+    &:hover {
+      text-decoration: underline;
     }
   }
 
@@ -193,37 +190,24 @@
         }
       }
     }
-  }
-}
 
+    @media screen and (max-width: 937px) {
+      .kakaoContent {
+        width: 287px;
+      }
 
+      .totalStore,
+      .storeSearchBtn,
+      .helpWrapper,
+      .helps {
+        display: none;
+      }
 
-@media (max-width: 937px) {
-  .footerContainer {
-    .kakaoContent {
-      width: 287px;
-    }
-
-    .totalStore {
-      display: none;
-    }
-
-    .storeSearchBtn {
-      display: none;
-    }
-
-    .helpWrapper {
-      display: none;
-    }
-
-    .helps {
-      display: none;
-    }
-
-    .addressWrapper {
-      display: flex;
-      justify-content: space-around;
-      padding: 15px 60px;
+      .addressWrapper {
+        display: flex;
+        justify-content: space-around;
+        padding: 15px 60px;
+      }
     }
   }
 }
