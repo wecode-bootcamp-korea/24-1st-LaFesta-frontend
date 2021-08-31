@@ -138,7 +138,7 @@ class Footer extends Component {
         <section className="footerBottom">
           <ul className="bottoms">
             <li>
-              <a>사이트맵</a>
+              <a>사이트맵 </a>
             </li>
             <li>
               <a>법적 고지</a>
@@ -158,7 +158,7 @@ class Footer extends Component {
                   src="https://static1.lacoste.com/static/on/demandware.static/Sites-KR-Site/-/default/dw544c75a9/img/flags/kr.png"
                   alt="korea language"
                 />
-                <span className-="langeContent">Korea</span>
+                <span className="langeContent">Korea</span>
               </button>
             </li>
           </ul>
