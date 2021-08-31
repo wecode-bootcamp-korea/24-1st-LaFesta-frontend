@@ -1,0 +1,144 @@
+.menuPath {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 50px;
+  height: 60px;
+  width: 230px;
+  font-size: 13px;
+  font-weight: 350;
+  color: #878787;
+
+  .menuPathSlash {
+    padding: 0 10px;
+  }
+}
+
+.categoryHeader {
+  display: flex;
+  margin-bottom: 100px;
+
+  .categoryIntroPic {
+    width: 47.5%;
+    height: auto;
+  }
+
+  .categoryIntro {
+    margin: 0.5% 0 0 3%;
+    width: 40%;
+
+    .categoryTitle {
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+
+    .categoryDescription {
+      margin-bottom: 20px;
+      line-height: 22px;
+      font-size: 15px;
+      font-weight: 350;
+    }
+
+    .subCategoryBox {
+      display: flex;
+      height: 20%;
+      line-height: 25px;
+      font-size: 15px;
+
+      .subCategoryBoxFirst {
+        margin-right: 40px;
+      }
+    }
+
+    .filterFunction {
+      display: flex;
+      justify-content: space-between;
+
+      .filteringResult {
+        padding-top: 20px;
+        font-size: 15px;
+      }
+
+      .filterAndAlign {
+        padding: 10px 30px;
+        background-color: rgb(41, 40, 40);
+        border: 0.1px solid rgb(78, 76, 76);
+        border-radius: 27px;
+        font-size: 15px;
+        font-weight: 330;
+        color: white;
+
+        .fa-sliders-h {
+          padding-right: 20px;
+        }
+      }
+
+      .filterAndAlign:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}
+
+.productList {
+  font-size: 13px;
+  position: relative;
+
+  .productListLine {
+    display: flex;
+    justify-content: space-around;
+
+    .eachProduct {
+      width: 20%;
+      height: auto;
+
+      .eachProductPic {
+        width: 100%;
+        height: auto;
+      }
+
+      .eachProductInfo {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 80%;
+        bottom: 40px;
+
+        .eachProductColor {
+          position: relative;
+          left: 5px;
+          margin-bottom: 15px;
+          padding: 10px 0;
+          width: 90px;
+          background-color: white;
+          text-align: center;
+          font-weight: 300;
+        }
+
+        .eachProductName {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}
+
+.pageBtn {
+  display: flex;
+  justify-content: center;
+
+  .numberBtn {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+
+    div {
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      border: 1px solid #e5e5e5;
+      border-radius: 50%;
+    }
+  }
+}
