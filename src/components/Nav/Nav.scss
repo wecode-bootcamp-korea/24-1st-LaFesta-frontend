@@ -5,7 +5,7 @@
   left: 0;
   display: flex;
   padding: 30px 50px;
-  background-color: orange;
+  background: #f4f4f4;
 
 
   .logo {
@@ -16,7 +16,7 @@
       font-size: 16px;
       padding-right: 10px;
       font-weight: 700;
-      color: #fff;
+      // color: #fff;
     }
 
     img {
@@ -28,13 +28,13 @@
   }
 
   .navMeun {
-    margin: 0 auto;
+    margin-left: auto;
 
     .categorys {
       display: flex;
       align-items: center;
       font-size: 12px;
-      color: #fff;
+      // color: #fff;
 
       li {
         margin: 0 20px;
@@ -42,19 +42,13 @@
     }
   }
 
-
-  .searchForm {
-    .searchInput {
-      display: none;
-      border: 0;
-      outline: 0;
-    }
-
-    .icon {
-      color: #fff;
-    }
-
+  .searchInput {
+    display: none;
+    border: 0;
+    outline: 0;
   }
+
+
 
   .userCategorys {
     display: flex;
@@ -65,11 +59,9 @@
 
       .icon {
         font-size: 15px;
-        color: #fff;
       }
     }
   }
-
 }
 
 .toggle {
@@ -77,23 +69,22 @@
 }
 
 .toggleMeun {
-  height: 100%;
-  background-color: olivedrab;
-
   .toggleWrapper {
     display: flex;
-    justify-content: space-between;
     position: relative;
     top: 51px;
+    left: 360px;
     padding: 30px 50px;
     bottom: 0;
   }
 
   .robeWrappers,
   .shoesWrapper,
-  .accWrapper {
+  .accWrapper,
+  .leatherWrapper {
     display: flex;
     flex-direction: column;
+    padding-left: 87px;
   }
 
   h3 {

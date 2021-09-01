@@ -16,6 +16,13 @@ class Nav extends Component {
     });
   };
 
+  handleBlur = () => {
+    const { focus } = this.state;
+    this.setState({
+      focus: !focus,
+    });
+  };
+
   render() {
     return (
       <>
@@ -29,8 +36,12 @@ class Nav extends Component {
               />
             </a>
           </div>
-          <div className="navMeun">
-            <ul className="categorys" onMouseOver={this.handleFocus}>
+          <div
+            className="navMeun"
+            onMouseOver={this.handleFocus}
+            onBlur={this.handleBlur}
+          >
+            <ul className="categorys">
               <li>
                 <a>New</a>
               </li>
@@ -129,7 +140,7 @@ class Nav extends Component {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="leatherWrapper">
               <h3>레더굿</h3>
               <ul>
                 <li>
