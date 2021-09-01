@@ -1,4 +1,4 @@
-.SignUp2 {
+.signUp2 {
   .container {
     margin: 200px;
     display: flex;
@@ -13,6 +13,7 @@
       padding-bottom: 35px;
       text-align: center;
     }
+
     .usercertification {
       margin-bottom: 10px;
     }
@@ -46,13 +47,14 @@
       cursor: pointer;
       position: relative;
       left: 84%;
+      &:hover {
+        background-color: #454545;
+        transition: all 0.5s ease-in-out 0.1s;
+      }
     }
+
     .phone {
       margin-right: 15px;
-    }
-    .certificationBnt:hover {
-      background-color: #454545;
-      transition: all 0.5s ease-in-out 0.1s;
     }
   }
 }

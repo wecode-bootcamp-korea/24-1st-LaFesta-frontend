@@ -2,7 +2,7 @@ body {
   background-color: #206648;
 }
 
-.SignUp {
+.signUp {
   .container {
     margin: 200px;
     display: flex;
@@ -42,7 +42,18 @@ body {
   .userRulePlusOn {
     display: block;
     padding: 20px 60px;
-    text-align: center;
+    text-align: left;
+    color: #797979;
+    font-size: 14px;
+
+    .title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
   }
 
   .userInfoPlusOff {
@@ -52,7 +63,18 @@ body {
   .userInfoPlusOn {
     display: block;
     padding: 20px 60px;
-    text-align: center;
+    text-align: left;
+    color: #797979;
+    font-size: 14px;
+
+    .title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
   }
   input {
     margin: 10px;
@@ -61,6 +83,7 @@ body {
   .check {
     font-size: 8px;
   }
+
   .useragreement {
     margin-bottom: 35px;
   }

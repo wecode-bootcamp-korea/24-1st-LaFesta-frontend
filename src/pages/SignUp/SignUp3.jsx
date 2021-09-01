@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from '../../components/Footer/Footer';
 import './SignUp3.scss';
 
 class SignUp3 extends Component {
@@ -30,8 +31,9 @@ class SignUp3 extends Component {
       body: JSON.stringify({
         name: this.state.name,
         email: this.state.email,
-        mobile: this.state.mobile,
-        birthDay: this.state.birthDay,
+        mobile: this.state.mobile.replace(/\-/g, ''),
+        birthDay:
+          this.state.year + '-' + this.state.month + '-' + this.state.date,
         Password: this.state.pw,
         passwordCheck: this.state.pwCheck,
       }),
@@ -75,11 +77,11 @@ class SignUp3 extends Component {
       pw.length >= 8 &&
       pwCheack === pw
         ? this.SignUp()
-        : alert('틀렸습니다');
+        : alert('회원가입 정보를 다시 확인해주세요');
     };
 
     return (
-      <div className="SignUp3">
+      <div className="signUp3">
         <div className="container">
           <div className="nav">계정 생성을 위한 마지막 단계 입니다</div>
           <article>
@@ -87,7 +89,7 @@ class SignUp3 extends Component {
               <div className="title">Gender</div>
               <div>
                 <span>
-                  남성{' '}
+                  남성
                   <input
                     type="radio"
                     name="gender"
@@ -155,7 +157,7 @@ class SignUp3 extends Component {
               <div>
                 <input type="password" name="pw" onChange={this.handleInput} />
                 <div className="pwText">
-                  (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)
+                  (영문, 숫자, 특수문자 모두 포함 8자 이상)
                 </div>
               </div>
             </div>
@@ -176,6 +178,7 @@ class SignUp3 extends Component {
             </div>
           </article>
         </div>
+        <Footer />
       </div>
     );
   }

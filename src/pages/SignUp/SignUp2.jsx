@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
+import Footer from '../../components/Footer/Footer';
 import './SignUp2.scss';
 
 class SignUp2 extends Component {
-  goToMain = () => {
-    this.props.history.push('/SignUp3');
+  constructor(props) {
+    super(props);
+    this.state = { checked: false };
+  }
+
+  headleChange = e => {
+    this.setState({ checked: e.target.checked });
   };
+
+  goToNext = () => {
+    if (this.state.checked) {
+      this.props.history.push('/SignUp3');
+    } else {
+      alert('체크박스는 필수사항입니다');
+    }
+  };
+
   render() {
     return (
-      <div className="SignUp2">
+      <div className="signUp2">
         <div className="container">
           <div className="nav">회원가입</div>
           <div className="usercertification">본인인증</div>
           <div className="age">
-            <input type="checkbox" /> 14세 이상
+            <input
+              type="checkbox"
+              checked={this.state.checked}
+              onChange={this.headleChange}
+            />
+            <p></p>
+            14세 이상
           </div>
           <div className="detail one">
             LACOSTE DIGITAL FLAGSHIP 은 깨끗하고 안전한 인터넷 환경 조성과
@@ -22,7 +43,7 @@ class SignUp2 extends Component {
             본인확인 절차를 거치고 있습니다.
           </div>
           <div>
-            <button className="certificationBnt" onClick={this.goToMain}>
+            <button className="certificationBnt" onClick={this.goToNext}>
               계속
             </button>
           </div>
@@ -35,6 +56,7 @@ class SignUp2 extends Component {
             미만 고객께서는 보호자(법정대리인)와 같이 가입해주시기 바랍니다.
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
