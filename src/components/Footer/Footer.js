@@ -9,25 +9,25 @@ class Footer extends Component {
           <ul className="iconList">
             <li>
               <button>
-                <i class="fas fa-sync-alt"></i>
+                <i className="fas fa-sync-alt"></i>
                 <span>무료반품</span>
               </button>
             </li>
             <li>
               <button>
-                <i class="fas fa-truck"></i>
+                <i className="fas fa-truck"></i>
                 <span>무료배송</span>
               </button>
             </li>
             <li>
               <button>
-                <i class="far fa-credit-card"></i>
+                <i className="far fa-credit-card"></i>
                 <span>안전결제</span>
               </button>
             </li>
             <li>
               <button>
-                <i class="fas fa-headset"></i>
+                <i className="fas fa-headset"></i>
                 <span>도움이 필요하세요?</span>
               </button>
             </li>
@@ -60,13 +60,13 @@ class Footer extends Component {
             <h4>ABOUT LAFESTA</h4>
             <ul className="aboutLinks list">
               <li>
-                <a>라페스타 멤버쉽</a>
+                <a href="https://www.lacoste.com/kr/">라페스타 멤버쉽</a>
               </li>
               <li>
-                <a>라페스타 그룹</a>
+                <a href="https://www.lacoste.com/kr/">라페스타 그룹</a>
               </li>
               <li>
-                <a>라페스타 채용</a>
+                <a href="https://www.lacoste.com/kr/">라페스타 채용</a>
               </li>
             </ul>
           </div>
@@ -75,19 +75,19 @@ class Footer extends Component {
             <h4>라페스타 컬렉션</h4>
             <ul className="collcections list">
               <li>
-                <a>남성 POLO</a>
+                <a href="https://www.lacoste.com/kr/">남성 POLO</a>
               </li>
               <li>
-                <a>여성 POLO</a>
+                <a href="https://www.lacoste.com/kr/">여성 POLO</a>
               </li>
               <li>
-                <a>라페스타 키즈</a>
+                <a href="https://www.lacoste.com/kr/">라페스타 키즈</a>
               </li>
               <li>
-                <a>라페스타 라이브</a>
+                <a href="https://www.lacoste.com/kr/">라페스타 라이브</a>
               </li>
               <li>
-                <a>라페스타 스포츠</a>
+                <a href="https://www.lacoste.com/kr/">라페스타 스포츠</a>
               </li>
             </ul>
           </div>
@@ -104,10 +104,10 @@ class Footer extends Component {
                 </address>
               </li>
               <li className="bordItem">
-                <a>1:1 문의하기</a>
+                <a href="https://www.lacoste.com/kr/">1:1 문의하기</a>
               </li>
               <li className="bordItem">
-                <a>FAQ</a>
+                <a href="https://www.lacoste.com/kr/">FAQ</a>
               </li>
             </ul>
           </div>
@@ -138,19 +138,19 @@ class Footer extends Component {
         <section className="footerBottom">
           <ul className="bottoms">
             <li>
-              <a>사이트맵 </a>
+              <a href="https://www.lacoste.com/kr/">사이트맵 </a>
             </li>
             <li>
-              <a>법적 고지</a>
+              <a href="https://www.lacoste.com/kr/">법적 고지</a>
             </li>
             <li>
-              <a>이용약관</a>
+              <a href="https://www.lacoste.com/kr/">이용약관</a>
             </li>
             <li>
-              <a>개인정보처리방침</a>
+              <a href="https://www.lacoste.com/kr/">개인정보처리방침</a>
             </li>
             <li>
-              <a>사이즈 가이드</a>
+              <a href="https://www.lacoste.com/kr/">사이즈 가이드</a>
             </li>
             <li className="langeContent">
               <button className="langeBtn">
