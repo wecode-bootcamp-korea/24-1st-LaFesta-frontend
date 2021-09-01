@@ -13,7 +13,7 @@ class SignUpUserInfo extends Component {
       month: '',
       date: '',
       pw: '',
-      pwCheack: '',
+      pwCheck: '',
       gender: '',
     };
   }
@@ -26,15 +26,16 @@ class SignUpUserInfo extends Component {
   };
 
   SignUp = () => {
+    const { gender, name, email, mobile, year, month, date } = this.state;
+    const deleteDash = /\-/g;
     fetch('http://10.58.7.79:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
-        gender: this.state.gender,
-        name: this.state.name,
-        email: this.state.email,
-        phone_number: this.state.mobile.replace(/\-/g, ''),
-        birthday:
-          this.state.year + '-' + this.state.month + '-' + this.state.date,
+        gender: gender,
+        name: name,
+        email: email,
+        phone_number: mobile.replace(deleteDash, ''),
+        birthday: year + '-' + month + '-' + date,
         password: this.state.pw,
       }),
     })
@@ -49,17 +50,17 @@ class SignUpUserInfo extends Component {
   };
 
   render() {
-    const { name, email, mobile, year, month, date, pwCheack, gender } =
+    const { name, email, mobile, year, month, date, pwCheck, gender } =
       this.state;
 
-    const cheackLoginCall = () => {
-      cheackLogin(this.state.pw);
+    const checkLoginCall = () => {
+      checkLogin(this.state.pw);
     };
 
-    const cheackLogin = pw => {
-      const pattern1 = /[0-9]/;
-      const pattern2 = /[a-zA-Z]/;
-      const pattern3 = /[~!@#$%^&*()_+|<>?:{}]/;
+    const checkLogin = pw => {
+      const num = /[0-9]/;
+      const str = /[a-zA-Z]/;
+      const special = /[~!@#$%^&*()_+|<>?:{}]/;
       gender &&
       name &&
       email.includes('@') &&
@@ -70,11 +71,11 @@ class SignUpUserInfo extends Component {
       month < 13 &&
       date > 0 &&
       date < 32 &&
-      pattern1.test(pw) &&
-      pattern2.test(pw) &&
-      pattern3.test(pw) &&
+      num.test(pw) &&
+      str.test(pw) &&
+      special.test(pw) &&
       pw.length >= 8 &&
-      pwCheack === pw
+      pwCheck === pw
         ? this.SignUp()
         : alert('회원가입 정보를 다시 확인해주세요');
     };
@@ -133,27 +134,30 @@ class SignUpUserInfo extends Component {
               <div className="userBirth">
                 <div className="title">Birthdays</div>
                 <div className="userBirthBox">
-                  <input
-                    className="year"
-                    name="year"
-                    type="text"
-                    placeholder="YYYY"
-                    onChange={this.handleInput}
-                  ></input>
-                  <input
-                    className="month"
-                    name="month"
-                    type="text"
-                    placeholder="MM"
-                    onChange={this.handleInput}
-                  ></input>
-                  <input
-                    className="date"
-                    name="date"
-                    type="text"
-                    placeholder="DD"
-                    onChange={this.handleInput}
-                  ></input>
+                  <div className="year">
+                    <input
+                      name="year"
+                      type="text"
+                      placeholder="YYYY"
+                      onChange={this.handleInput}
+                    ></input>
+                  </div>
+                  <div className="month">
+                    <input
+                      name="month"
+                      type="text"
+                      placeholder="MM"
+                      onChange={this.handleInput}
+                    ></input>
+                  </div>
+                  <div className="date">
+                    <input
+                      name="date"
+                      type="text"
+                      placeholder="DD"
+                      onChange={this.handleInput}
+                    ></input>
+                  </div>
                 </div>
               </div>
               <div className="userPw">
@@ -174,13 +178,13 @@ class SignUpUserInfo extends Component {
                 <div>
                   <input
                     type="password"
-                    name="pwCheack"
+                    name="pwCheck"
                     onChange={this.handleInput}
                   />
                 </div>
               </div>
               <div>
-                <button className="signUpBnt" onClick={cheackLoginCall}>
+                <button className="signUpBnt" onClick={checkLoginCall}>
                   가입하기
                 </button>
               </div>

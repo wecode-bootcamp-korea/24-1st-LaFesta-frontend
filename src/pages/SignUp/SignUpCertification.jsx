@@ -43,7 +43,7 @@ class SignUpCertification extends Component {
               등에 관한 법률 제44조의 5항(2007년7월27일 시행)에 의거, 회원가입
               시 본인확인 절차를 거치고 있습니다.
             </div>
-            <div>
+            <div className="btn">
               <button className="certificationBnt" onClick={this.goToNext}>
                 계속
               </button>

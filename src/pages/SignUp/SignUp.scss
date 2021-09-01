@@ -7,8 +7,6 @@
 
   .container {
     margin: 0 170px;
-    display: flex;
-    flex-direction: column;
     background-color: white;
     padding: 20px 50px;
   }
@@ -37,6 +35,7 @@
       cursor: pointer;
     }
   }
+
   .userRulePlusOff {
     display: none;
   }
@@ -86,7 +85,7 @@
     font-size: 8px;
   }
 
-  .useragreement {
+  .userAgreement {
     margin-bottom: 35px;
   }
   table {
@@ -103,8 +102,10 @@
       border: 1px solid #444444;
     }
   }
-
-  .nextBnt {
+  .btn {
+    text-align: right;
+  }
+  .nextBtn {
     background-color: rgb(32, 102, 72);
     width: 150px;
     height: 50px;
@@ -112,13 +113,10 @@
     color: white;
     border-style: none;
     cursor: pointer;
-    position: relative;
-    left: 84%;
     margin-top: 20px;
-  }
-
-  .nextBnt:hover {
-    background-color: #454545;
-    transition: all 0.5s ease-in-out 0.1s;
+    &:hover {
+      background-color: #454545;
+      transition: all 0.5s ease-in-out 0.1s;
+    }
   }
 }
