@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 class Nav extends Component {
@@ -9,15 +10,7 @@ class Nav extends Component {
     };
   }
 
-  handleOnMouse = () => {
-    const { isToggleOn } = this.state;
-
-    this.setState({
-      isToggleOn: !isToggleOn,
-    });
-  };
-
-  handleOffMouse = () => {
+  toggleMouse = () => {
     const { isToggleOn } = this.state;
 
     this.setState({
@@ -27,60 +20,56 @@ class Nav extends Component {
 
   render() {
     const { isToggleOn } = this.state;
-    const { handleOnMouse, handleOffMouse } = this;
     return (
       <nav className="navContainer">
         <div className="logoWrapper">
-          <a className="logo">
+          <Link className="logo" to="/">
             <h1>LAFESTA</h1>
             <img
               src="https://i.postimg.cc/pXWJX7kj/490crocodile-100218.png"
               alt="logo"
             />
-          </a>
+          </Link>
         </div>
-        <div className="navMeun" onMouseEnter={handleOnMouse}>
+        <div className="navMeun" onMouseEnter={this.toggleMouse}>
           <ul className="categorys">
             <li>
-              <a>New</a>
+              <Link to="/">New</Link>
             </li>
             <li>
-              <a>Men</a>
+              <Link to="/">Men</Link>
             </li>
             <li>
-              <a>Women</a>
+              <Link to="/">Women</Link>
             </li>
             <li>
-              <a>Kids</a>
+              <Link to="/">Kids</Link>
             </li>
             <li>
-              <a>Sale</a>
+              <Link to="/">Sale</Link>
             </li>
             <li>
-              <a>나의 라페스타 폴로</a>
+              <Link to="/">나의 라페스타 폴로</Link>
             </li>
             <li>
-              <a>Lafesta inside</a>
+              <Link to="/">Lafesta inside</Link>
             </li>
           </ul>
-          <div
-            className={isToggleOn ? 'toggleMeun' : 'toggleWrapper'}
-            onMouseLeave={handleOffMouse}
-          >
+          <div className={isToggleOn ? 'toggleMeun' : 'toggleWrapper'}>
             <div className="robeWrappers">
               <h3>의류</h3>
               <ul>
                 <li>
-                  <a>폴로</a>
+                  <Link to="/">폴로</Link>
                 </li>
                 <li>
-                  <a>셔츠</a>
+                  <Link to="/">셔츠</Link>
                 </li>
                 <li>
-                  <a>티셔츠</a>
+                  <Link to="/">티셔츠</Link>
                 </li>
                 <li>
-                  <a>니트&스웨터</a>
+                  <Link to="/">니트&스웨터</Link>
                 </li>
               </ul>
             </div>
@@ -88,10 +77,10 @@ class Nav extends Component {
               <h3>신발</h3>
               <ul>
                 <li>
-                  <a>스포츠</a>
+                  <Link to="/">스포츠</Link>
                 </li>
                 <li>
-                  <a>캐쥬얼</a>
+                  <Link to="/">캐쥬얼</Link>
                 </li>
               </ul>
             </div>
@@ -99,16 +88,16 @@ class Nav extends Component {
               <h3>액세사리</h3>
               <ul>
                 <li>
-                  <a>모자</a>
+                  <Link to="/">모자</Link>
                 </li>
                 <li>
-                  <a>스카프&장갑</a>
+                  <Link to="/">스카프&장갑</Link>
                 </li>
                 <li>
-                  <a>언더웨어</a>
+                  <Link to="/">언더웨어</Link>
                 </li>
                 <li>
-                  <a>양말</a>
+                  <Link to="/">양말</Link>
                 </li>
               </ul>
             </div>
@@ -116,13 +105,13 @@ class Nav extends Component {
               <h3>레더굿</h3>
               <ul>
                 <li>
-                  <a>가방</a>
+                  <Link to="/">가방</Link>
                 </li>
                 <li>
-                  <a>지갑</a>
+                  <Link to="/">지갑</Link>
                 </li>
                 <li>
-                  <a>벨트</a>
+                  <Link to="/">벨트</Link>
                 </li>
               </ul>
             </div>
@@ -136,10 +125,10 @@ class Nav extends Component {
         </form>
         <ul className="userCategorys">
           <li>
-            <a>
+            <Link to="/">
               <i className="fas fa-map-marker-alt icon"></i>
               <span className="a11y-hidden">map</span>
-            </a>
+            </Link>
           </li>
           <li>
             <i className="fas fa-user icon"></i>

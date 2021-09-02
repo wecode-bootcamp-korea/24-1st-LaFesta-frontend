@@ -11,6 +11,7 @@
   .logo {
     display: flex;
     width: 130px;
+    cursor: pointer;
 
     h1 {
       padding-right: 10px;
@@ -27,6 +28,7 @@
 
   .navMeun {
     margin-left: auto;
+    cursor: pointer;
 
     .categorys {
       display: flex;
@@ -47,23 +49,19 @@
       justify-content: space-between;
       margin: 30px 0 0 20px;
 
-      .robeWrappers,
-      .shoesWrapper,
-      .accWrapper,
-      .leatherWrapper {
-        display: flex;
-        flex-direction: column;
 
-        h3 {
-          font-size: 10px;
-          font-weight: 600;
-        }
 
-        a {
-          font-size: 9px;
-        }
+      h3 {
+        font-size: 10px;
+        font-weight: 600;
+      }
+
+      a {
+        font-size: 9px;
+        color: #000;
       }
     }
+
   }
 
   .searchInput {
@@ -77,6 +75,7 @@
   .userCategorys {
     display: flex;
     margin-left: auto;
+    cursor: pointer;
 
     li {
       padding-left: 22px;
