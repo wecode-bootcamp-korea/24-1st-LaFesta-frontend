@@ -17,14 +17,14 @@ class Routes extends Component {
       <Router>
         <Switch>
           <Route exact path="/nav" component={Nav} />
-          <Route exact path="/footer" component={Footer} />
           <Route exact path="/cart" component={Cart} />
-          <Route exact path="/mainPage" component={MainPage} />
           <Route exact path="/productDetail" component={ProductDetail} />
           <Route exact path="/productList" component={ProductList} />
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/logIn" component={Login} />
+          <Route exact path="/" component={MainPage} />
         </Switch>
+        <Footer />
       </Router>
     );
   }
