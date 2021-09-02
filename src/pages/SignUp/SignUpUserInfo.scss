@@ -1,0 +1,94 @@
+.signUpUserInfo {
+  .backgroudBanner {
+    width: 100%;
+    background-color: #206648;
+    padding: 100px 0;
+  }
+  .container {
+    margin: 0 170px;
+    background-color: white;
+    padding: 20px 50px;
+    text-align: center;
+
+    .nav {
+      font-size: 20px;
+      border-bottom: #e9e9e9 2px solid;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+
+    article {
+      padding: 0 36%;
+    }
+
+    .title {
+      margin-bottom: 10px;
+    }
+
+    .userGender {
+      text-align: center;
+
+      input {
+        width: 12px;
+        height: 12px;
+        margin: 0 12px;
+      }
+    }
+
+    .userGender,
+    .userName,
+    .userEmail,
+    .userPhoenNumber,
+    .userBirth,
+    .userPw,
+    .userBirth,
+    .userPwCheck {
+      margin-bottom: 15px;
+      font-size: 12px;
+    }
+
+    input {
+      height: 30px;
+      border: black 1px solid;
+      width: 100%;
+      text-indent: 8px;
+    }
+
+    input:focus {
+      outline: 1px solid green;
+    }
+
+    .pwText {
+      font-size: 12px;
+    }
+
+    .userBirth {
+      display: flex;
+      flex-direction: column;
+
+      .userBirthBox {
+        display: flex;
+
+        input {
+          text-align: center;
+        }
+        .month {
+          height: 30px;
+          text-align: center;
+          margin: 0 15px;
+        }
+      }
+    }
+  }
+
+  .signUpBnt {
+    background-color: rgb(32, 102, 72);
+    height: 50px;
+    font-size: 15px;
+    color: white;
+    border-style: none;
+    cursor: pointer;
+    width: 100%;
+  }
+}
