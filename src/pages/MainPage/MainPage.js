@@ -15,7 +15,6 @@ class MainPage extends Component {
               <h2>Back to School</h2>
               <strong>신상품 아이템 구매시,</strong>
               <p>혜택1. 구매금액별 사은품 증정</p>
-
               <p>혜택2. 신규가입시 1만원 할인</p>
               <button type="button" className="plusBtn">
                 자세히 보기
@@ -24,11 +23,32 @@ class MainPage extends Component {
           </figure>
         </section>
         <section className="newProductSaleWrapper">
-          <h3>당신만의 라코스테</h3>
+          <div>
+            <h3>당신만의 라코스테</h3>
+            <ol className="indications">
+              <li>
+                <button className="prevBtn" />
+                <i className="fas fa-chevron-left" />
+              </li>
+              <li className="startCount">
+                <span>1</span>
+              </li>
+              <li className="center">
+                <span>/</span>
+              </li>
+              <li className="endCount">
+                <span>7</span>
+              </li>
+              <li>
+                <button type="button" class="nextBtn" />
+                <i className="fas fa-chevron-right" />
+              </li>
+            </ol>
+          </div>
           <ul className="newProducts">
             <li>
               <a>
-                <figure>
+                <figure className="newProductConent">
                   <img
                     src="https://i.postimg.cc/SRY0GDr6/erwans-socks-p-Flj-CK5-HHt-U-unsplash.jpg"
                     alt="폴로 셔츠"
@@ -41,10 +61,10 @@ class MainPage extends Component {
             </li>
             <li>
               <a>
-                <figure>
+                <figure className="newProductConent">
                   <img
-                    src="https://i.postimg.cc/x8NVZp5T/photo-1597278318687-1d7e1e4e320e.jpg"
-                    alt="드레스&스커트"
+                    src="https://i.postimg.cc/t4x3HPrB/ospan-ali-H8uf5ua5u-W4-unsplash.jpg"
+                    alt="드레스 & 스커트"
                   />
                   <figcaption>
                     <strong>그녀를 위한 새로운 드레스 & 스커트</strong>
@@ -54,8 +74,8 @@ class MainPage extends Component {
             </li>
             <li>
               <a>
-                <figure>
-                  <img src="https://i.postimg.cc/x8NVZp5T/photo-1597278318687-1d7e1e4e320e.jpg" />
+                <figure className="newProductConent">
+                  <img src="https://i.postimg.cc/SRY0GDr6/erwans-socks-p-Flj-CK5-HHt-U-unsplash.jpg" />
                   <figcaption>
                     <strong>남성 신상품 7% 혜택</strong>
                   </figcaption>
@@ -64,7 +84,7 @@ class MainPage extends Component {
             </li>
             <li>
               <a>
-                <figure>
+                <figure className="newProductConent">
                   <img
                     src="https://i.postimg.cc/t4x3HPrB/ospan-ali-H8uf5ua5u-W4-unsplash.jpg"
                     alt="여성 신상품"
@@ -78,17 +98,6 @@ class MainPage extends Component {
           </ul>
         </section>
         <section>
-          <a>
-            <figure>
-              <img
-                src="https://i.postimg.cc/x8NVZp5T/photo-1597278318687-1d7e1e4e320e.jpg"
-                alt="남성 신상품"
-              />
-              <figcaption>
-                <strong>남성 신상품 7% 혜택</strong>
-              </figcaption>
-            </figure>
-          </a>
           <div className="newCollectionWrapper">
             <img
               src="https://i.postimg.cc/x8NVZp5T/photo-1597278318687-1d7e1e4e320e.jpg"
@@ -109,9 +118,138 @@ class MainPage extends Component {
         </section>
         <section className="lafestWorldWrapper">
           <h3>The Lacoste World</h3>
+          <ul className="lafeWorlds">
+            <li>
+              <a>
+                <figure>
+                  <img
+                    src="https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
+                    alt="라이브 컬렉션"
+                  />
+                  <figcaption className="lafestWorlContent">
+                    <h3>라코스테 라이브 컬렉션</h3>
+                    <strong>신상품 7% 혜택</strong>
+                    <button type="button">구매하기</button>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+            <li>
+              <a>
+                <figure>
+                  <img
+                    src="https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
+                    alt="신상품 컬렉션"
+                  />
+                  <figcaption className="lafestWorlContent">
+                    <h3>유니섹스 컬렉션: 더블매치</h3>
+                    <strong>신상품 7% 혜택</strong>
+                    <button type="button">구매하기</button>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+          </ul>
+          <ul className="lafeWorlds">
+            <li>
+              <a>
+                <figure>
+                  <img
+                    src="https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
+                    alt="신발 컬렉션"
+                  />
+                  <figcaption className="lafestWorlContent">
+                    <h3>라코스테 신발 : 새로운 스타일</h3>
+                    <strong>신상품 7% 혜택</strong>
+                    <button type="button">구매하기</button>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+            <li>
+              <a>
+                <figure>
+                  <img
+                    src="https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
+                    alt="여성 신상품"
+                  />
+                  <figcaption className="lafestWorlContent">
+                    <h3>라코스테 액세사리 : 새로운 스타일</h3>
+                    <strong>신상품 7% 혜택</strong>
+                    <button type="button">구매하기</button>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+          </ul>
         </section>
         <section className="lafestInsideWrapper">
-          <h3>Lacoste Inside</h3>
+          <div>
+            <h3>Lacoste Inside</h3>
+            <ol className="indications">
+              <li>
+                <button className="prevBtn" />
+                <i className="fas fa-chevron-left" />
+              </li>
+              <li className="startCount">
+                <span>1</span>
+              </li>
+              <li className="center">
+                <span>/</span>
+              </li>
+              <li className="endCount">
+                <span>7</span>
+              </li>
+              <li>
+                <button type="button" class="nextBtn" />
+                <i className="fas fa-chevron-right" />
+              </li>
+            </ol>
+          </div>
+          <ul className="insides">
+            <li className="active">
+              <a>
+                <figure>
+                  <img
+                    src="https://i.postimg.cc/63dd8XXZ/nimble-made-h-MMXh-KSZk7k-unsplash.jpg"
+                    alt="셔츠"
+                  />
+                  <figcaption className="insideContent">
+                    <span>3가지의 완벽한 룩</span>
+                    <h3>당신을 위한 셔츠는?</h3>
+                    <strong>
+                      당신을 위해 라코스테가 준비한 셔츠를 확인해보세요. 이번
+                      새로운 시즌 그리고 앞으로도 당신과 함께 합니다.
+                    </strong>
+                    <button type="button" className="summaryBtn">
+                      자세히 보기
+                    </button>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+            <li>
+              <a>
+                <figure>
+                  <img
+                    src="https://i.postimg.cc/t4x3HPrB/ospan-ali-H8uf5ua5u-W4-unsplash.jpg"
+                    alt="여성 신상품"
+                  />
+                  <figcaption className="insideContent">
+                    <span>움직이는 삶</span>
+                    <h3>라코스테 무브먼트 폴로</h3>
+                    <strong>
+                      구김 방지 소재와 편안한 착용이 가능한 다기능 폴로셔츠
+                      당신의 페이스와 스타일에 맞춰진 새로운 에센셜 디자인. 항상
+                      움직이는 당신을 위해 준비한 라코스테 무브먼트 폴로를
+                      경험해보세요.
+                    </strong>
+                    <button type="button">자세히 보기</button>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+          </ul>
         </section>
       </main>
     );
