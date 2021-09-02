@@ -28,32 +28,29 @@
 
       .categoryIntro {
         margin: 0.5% 0 0 3%;
-        width: 50%;
+        width: 40%;
 
         .categoryTitle {
           margin-bottom: 20px;
-          font-size: 25px;
+          font-size: 35px;
         }
 
         .categoryDescription {
           margin-bottom: 20px;
           line-height: 22px;
-          font-size: 15px;
-          font-weight: 350;
+          font-size: 16px;
+          padding: 5% 0;
         }
 
-        .subCategories {
+        .styleCategory {
           display: flex;
-          height: 20%;
-          line-height: 25px;
+          justify-content: space-between;
+          width: 60%;
           font-size: 15px;
 
           .subCategory {
-            display: flex;
-            flex-direction: column;
-            margin-right: 40px;
-
             div {
+              margin-bottom: 10px;
               cursor: pointer;
             }
           }
@@ -65,7 +62,7 @@
 
           .styleFilterResult {
             padding-top: 20px;
-            font-size: 15px;
+            font-size: 16px;
           }
 
           .filterAndAlign {
@@ -74,7 +71,7 @@
             border: 0.1px solid rgb(78, 76, 76);
             border-radius: 27px;
             font-size: 15px;
-            font-weight: 330;
+            font-weight: 340;
             color: white;
 
             .fa-sliders-h {
