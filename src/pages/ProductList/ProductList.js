@@ -14,17 +14,13 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch('./data/productListData-doyoung.json', {
-      method: 'GET',
-    })
-      .then(res => {
-        return res.json();
-      })
-      .then(res => {
+    fetch('./data/productListData-doyoung.json')
+      .then(res => res.json())
+      .then(res =>
         this.setState({
           productData: res,
-        });
-      });
+        })
+      );
   }
 
   handleChange = event => {
@@ -65,7 +61,7 @@ class ProductList extends Component {
                   </div>
                   <div>라페스타 폴로는 후회하지 않을 선택일거예요.</div>
                 </div>
-                <div className="subCategories">
+                <div className="styleCategory">
                   <div className="subCategory">
                     <div className="폴로" onClick={this.handleChange}>
                       폴로

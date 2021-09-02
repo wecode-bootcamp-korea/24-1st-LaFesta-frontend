@@ -1,5 +1,5 @@
 .products {
-  font-size: 13px;
+  font-size: 15px;
 
   .productsLine {
     display: flex;
@@ -18,17 +18,16 @@
 
       .productInfo {
         position: relative;
-        width: 80%;
-        // bottom: 40px;
 
         .colors {
           position: absolute;
           bottom: 140%;
           left: 2%;
           padding: 10px 0;
-          width: 40%;
+          width: 90px;
           background-color: white;
           text-align: center;
+          font-size: 0.9rem;
           font-weight: 300;
         }
 
