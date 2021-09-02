@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from '../../components/Footer/Footer';
 import './Login.scss';
 
 class Login extends Component {
@@ -34,53 +35,62 @@ class Login extends Component {
         }
       });
   };
+
   render() {
-    console.log(this.state);
     return (
-      <div className="Login">
-        <div className="container">
-          <div className="nav">로그인</div>
-          <div className="loginBox">
-            <div className="oldUserBox">
-              <div className="oldUserTitle">기존 고객</div>
-              <div>
-                <input
-                  className="inputId"
-                  name="id"
-                  type="text"
-                  placeholder="이메일/로그인:"
-                  onChange={this.handleInput}
-                />
-              </div>
-              <div>
-                <input
-                  className="inputPw"
-                  name="pw"
-                  type="password"
-                  placeholder="비밀번호:"
-                  onChange={this.handleInput}
-                />
-              </div>
-              <div>
-                <span className="idSaveBox">
-                  <span className="idSaveBoxText">아이디 저장</span>
-                  <input calssName="idSaveInput" type="checkbox" />
-                </span>
-                <button onClick={this.goToMain}>로그인</button>
-              </div>
-            </div>
-            <div className="newUserBox">
-              <div className="newUserTitle">신규 고객</div>
-              <div>
-                <input className="inputEm" type="text" placeholder="이메일:" />
-              </div>
-              <div>
-                <button>계정 만들기</button>
+      <>
+        <div className="Login">
+          <div className="backgroudBanner">
+            <div className="container">
+              <div className="nav">로그인</div>
+              <div className="loginBox">
+                <div className="oldUserBox">
+                  <div className="oldUserTitle">기존 고객</div>
+                  <div>
+                    <input
+                      className="inputId"
+                      name="id"
+                      type="text"
+                      placeholder="이메일/로그인:"
+                      onChange={this.handleInput}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      className="inputPw"
+                      name="pw"
+                      type="password"
+                      placeholder="비밀번호:"
+                      onChange={this.handleInput}
+                    />
+                  </div>
+                  <div>
+                    <span className="idSaveBox">
+                      <span className="idSaveBoxText">아이디 저장</span>
+                      <input calssName="idSaveInput" type="checkbox" />
+                    </span>
+                    <button onClick={this.goToMain}>로그인</button>
+                  </div>
+                </div>
+                <div className="newUserBox">
+                  <div className="newUserTitle">신규 고객</div>
+                  <div>
+                    <input
+                      className="inputEm"
+                      type="text"
+                      placeholder="이메일:"
+                    />
+                  </div>
+                  <div>
+                    <button>계정 만들기</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <Footer />
+      </>
     );
   }
 }
