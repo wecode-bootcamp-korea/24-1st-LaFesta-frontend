@@ -1,0 +1,118 @@
+.productList {
+  .productListDisplay {
+    padding-right: 2%;
+
+    .menuPath {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 50px;
+      width: 230px;
+      font-size: 13px;
+      font-weight: 350;
+      color: #878787;
+
+      .menuPathSlash {
+        padding: 0 10px;
+      }
+    }
+
+    .categoryHeader {
+      display: flex;
+      margin-bottom: 100px;
+
+      .categoryIntroPic {
+        width: 50%;
+        height: auto;
+      }
+
+      .categoryIntro {
+        margin: 0.5% 0 0 3%;
+        width: 50%;
+
+        .categoryTitle {
+          margin-bottom: 20px;
+          font-size: 25px;
+        }
+
+        .categoryDescription {
+          margin-bottom: 20px;
+          line-height: 22px;
+          font-size: 15px;
+          font-weight: 350;
+        }
+
+        .subCategories {
+          display: flex;
+          height: 20%;
+          line-height: 25px;
+          font-size: 15px;
+
+          .subCategory {
+            display: flex;
+            flex-direction: column;
+            margin-right: 40px;
+
+            div {
+              cursor: pointer;
+            }
+          }
+        }
+
+        .styleFilter {
+          display: flex;
+          justify-content: space-between;
+
+          .styleFilterResult {
+            padding-top: 20px;
+            font-size: 15px;
+          }
+
+          .filterAndAlign {
+            padding: 10px 30px;
+            background-color: rgb(41, 40, 40);
+            border: 0.1px solid rgb(78, 76, 76);
+            border-radius: 27px;
+            font-size: 15px;
+            font-weight: 330;
+            color: white;
+
+            .fa-sliders-h {
+              padding-right: 20px;
+            }
+          }
+
+          .filterAndAlign:hover {
+            background-color: white;
+            color: black;
+          }
+        }
+      }
+    }
+
+    .pageBtn {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+
+      .numberBtn {
+        display: flex;
+        justify-content: space-around;
+        width: 200px;
+
+        a {
+          padding: 2px 16px;
+          margin: 3px 3px;
+          border: 1px solid #e5e5e5;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 38px;
+        }
+
+        .pageMoveBtn {
+          border: none;
+        }
+      }
+    }
+  }
+}

@@ -11,3 +11,9 @@
   clip: rect(0, 0, 0, 0);
   overflow: hidden;
 }
+
+::selection {
+  background-color: #0f5a33;
+  color: white;
+}
+
