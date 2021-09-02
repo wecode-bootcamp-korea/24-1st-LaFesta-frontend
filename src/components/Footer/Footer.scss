@@ -10,6 +10,7 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+      cursor: pointer;
 
       i {
         font-size: 17px;
@@ -64,6 +65,7 @@
     font-size: 11px;
     background: #292929;
     color: #fff;
+    cursor: pointer;
 
     &:hover {
       border: 1px solid #e5e5e5;
@@ -85,6 +87,7 @@
     border: 1px solid #f4f4f4;
     border-radius: 27px;
     background: #fff;
+    cursor: pointer;
   }
 
   h4 {
