@@ -195,6 +195,7 @@ main {
 
   }
 
+  // ---
   .lafestInsideWrapper {
     display: flex;
     flex-direction: column;
@@ -233,27 +234,22 @@ main {
     }
 
     .insides {
-      position: relative;
+      display: flex;
+      overflow: hidden;
 
       img {
-        width: 50%;
+        width: 800px;
         height: 500px;
       }
 
-      li {
-        display: none;
+      .insideContent {
+        display: flex;
+        align-items: flex-end;
+        width: calc(40 * (100vw - 20px) / 40);
 
-        &.active {
-          display: block;
-          margin: 50px 0;
-        }
-
-        .insideContent {
-          display: flex;
-          flex-direction: column;
-          position: absolute;
-          bottom: 60px;
-          right: 100px;
+        figcaption {
+          width: 700px;
+          margin-left: 50px;
 
           span {
             font-size: 10px;
@@ -266,13 +262,13 @@ main {
           }
 
           strong {
-            width: 60%;
             font-size: 12px;
           }
 
           button {
+            display: block;
             width: 23%;
-            margin-top: 10px;
+            margin: 20px 0;
             padding: 8px 0;
             border-radius: 20px;
             background: #292929;

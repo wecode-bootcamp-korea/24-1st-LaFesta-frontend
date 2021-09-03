@@ -8,10 +8,9 @@ class MainPage extends Component {
       margin: 0,
       count: 1,
       saleList: [],
+      insideList: [],
     };
   }
-  // 1. itemCount가 list 보다 작을 경우에 더 하고
-  // 2. itemCount가 list와 같다면 멈춰
 
   handleNextClick = () => {
     const { count, margin, saleList } = this.state;
@@ -35,17 +34,20 @@ class MainPage extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3003/data/mainData-songhyun')
+    fetch('http://localhost:3000/data/mainData-songhyun.json')
       .then(res => res.json())
-      .then(saleItems =>
+      .then(saleItems => {
         this.setState({
-          saleList: saleItems,
-        })
-      );
+          saleList: saleItems.filter(item => item.category.includes('event')),
+          insideList: saleItems.filter(item =>
+            item.category.includes('inside')
+          ),
+        });
+      });
   }
 
   render() {
-    const { saleList, count, margin } = this.state;
+    const { saleList, insideList, count, margin } = this.state;
     const style = {
       marginLeft: margin,
     };
@@ -211,13 +213,13 @@ class MainPage extends Component {
                 </button>
               </li>
               <li className="startCount">
-                <span>1</span>
+                <span>{this.state.count}</span>
               </li>
               <li className="center">
                 <span>/</span>
               </li>
               <li className="endCount">
-                <span>7</span>
+                <span>{this.state.insideList.length}</span>
               </li>
               <li>
                 <button type="button" className="nextBtn">
@@ -227,48 +229,25 @@ class MainPage extends Component {
             </ol>
           </div>
           <ul className="insides">
-            <li className="active">
-              <a>
-                <figure>
-                  <img
-                    src="https://i.postimg.cc/63dd8XXZ/nimble-made-h-MMXh-KSZk7k-unsplash.jpg"
-                    alt="셔츠"
-                  />
-                  <figcaption className="insideContent">
-                    <span>3가지의 완벽한 룩</span>
-                    <h3>당신을 위한 셔츠는?</h3>
-                    <strong>
-                      당신을 위해 라코스테가 준비한 셔츠를 확인해보세요. 이번
-                      새로운 시즌 그리고 앞으로도 당신과 함께 합니다.
-                    </strong>
-                    <button type="button" className="summaryBtn">
-                      자세히 보기
-                    </button>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-            <li>
-              <a>
-                <figure>
-                  <img
-                    src="https://i.postimg.cc/t4x3HPrB/ospan-ali-H8uf5ua5u-W4-unsplash.jpg"
-                    alt="여성 신상품"
-                  />
-                  <figcaption className="insideContent">
-                    <span>움직이는 삶</span>
-                    <h3>라코스테 무브먼트 폴로</h3>
-                    <strong>
-                      구김 방지 소재와 편안한 착용이 가능한 다기능 폴로셔츠
-                      당신의 페이스와 스타일에 맞춰진 새로운 에센셜 디자인. 항상
-                      움직이는 당신을 위해 준비한 라코스테 무브먼트 폴로를
-                      경험해보세요.
-                    </strong>
-                    <button type="button">자세히 보기</button>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
+            {insideList.map(insideItem => {
+              return (
+                <li key={insideItem.id}>
+                  <a>
+                    <figure className="insideContent">
+                      <img src={insideItem.url} alt={insideItem.title} />
+                      <figcaption>
+                        <span>{insideItem.subtitle}</span>
+                        <h3>{insideItem.title}</h3>
+                        <strong>{insideItem.content}</strong>
+                        <button type="button" className="summaryBtn">
+                          자세히 보기
+                        </button>
+                      </figcaption>
+                    </figure>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </section>
       </main>
