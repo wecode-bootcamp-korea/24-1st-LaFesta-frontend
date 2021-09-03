@@ -31,12 +31,37 @@
     justify-content: left;
     margin-bottom: 50px;
 
-    .productPhoto {
-      width: 48%;
-      height: 48%;
-
+    .miniPhoto {
+      position: absolute;
+      z-index: 1;
+      bottom: 150px;
+      width: 70px;
+      height: 70px;
+      opacity: 0.8;
+      left: 20px;
       &:hover {
-        cursor: zoom-in;
+        border: black 1px solid;
+      }
+    }
+
+    .slideBox {
+      width: 1200px;
+      height: 684px;
+      overflow-x: hidden;
+
+      .slideList {
+        width: 2052px;
+        transition: all 0.5s;
+      }
+
+      .productPhoto {
+        width: 684px;
+        height: 684px;
+        float: left;
+
+        &:hover {
+          cursor: zoom-in;
+        }
       }
     }
 
@@ -79,7 +104,7 @@
       display: flex;
       margin-bottom: 20px;
 
-      .outcircle {
+      .outCircle {
         display: flex;
         width: 40px;
         height: 40px;
@@ -88,11 +113,12 @@
 
         &:hover {
           border: 1px solid #989898;
-          transition: all 0.5s ease-in-out 0.1s;
+          transition: ease-in-out 0.1s;
           cursor: pointer;
         }
       }
     }
+
     .color1,
     .color2,
     .color3,
@@ -143,6 +169,7 @@
       text-align: center;
       border-radius: 50px;
       border: #cecece 1px solid;
+      transition: 0.5s;
 
       &:hover {
         background-color: #292929;
@@ -168,6 +195,7 @@
 
       button {
         color: white;
+        transition: 0.5s;
       }
 
       &:hover {

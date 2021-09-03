@@ -6,9 +6,10 @@ class ProductDetail extends Component {
     super(props);
     this.state = {
       ProductInfoList: [],
+      imageNum: 0,
     };
   }
-
+  // /data/productData.json
   componentDidMount() {
     fetch('/data/productData.json', {
       method: 'GET',
@@ -21,6 +22,7 @@ class ProductDetail extends Component {
       });
   }
   render() {
+    const { ProductInfoList } = this.state;
     return (
       <>
         <div className="productDetail">
@@ -28,69 +30,111 @@ class ProductDetail extends Component {
           <div className="list">
             <span className="home">홈</span>&nbsp;&nbsp;/&nbsp;&nbsp;
             <span className="category">
-              {this.state.ProductInfoList[0] &&
-                this.state.ProductInfoList[0].section}
+              {ProductInfoList && ProductInfoList.section}
             </span>
             &nbsp; / &nbsp;
             <span className="category">
-              {this.state.ProductInfoList[0] &&
-                this.state.ProductInfoList[0].category}
+              {ProductInfoList && ProductInfoList.category}
             </span>
             &nbsp; / &nbsp;
-            {this.state.ProductInfoList[0] &&
-              this.state.ProductInfoList[0].name}
+            {ProductInfoList && ProductInfoList.name}
           </div>
           <div className="productMain">
             <div className="productMainFirst">
-              <img
-                alt="productPhoto"
-                className="productPhoto"
-                src={
-                  this.state.ProductInfoList[0] &&
-                  this.state.ProductInfoList[0].images[0]
-                }
-              ></img>
+              <div class="slideBox">
+                <img
+                  src={
+                    ProductInfoList.images &&
+                    ProductInfoList.images[0].image_url
+                  }
+                  className="miniPhoto"
+                  onClick={() => {
+                    this.setState({
+                      imageNum: this.state.imageNum + 1,
+                    });
+                  }}
+                  alt="d"
+                ></img>
+                <div
+                  class="slideList"
+                  style={{
+                    transform: `translate3d(
+                ${this.state.imageNum * -684}px, 0px, 0px`,
+                  }}
+                >
+                  <span class="slide_content slide01">
+                    <img
+                      alt="productPhoto"
+                      className="productPhoto"
+                      src={
+                        ProductInfoList.images &&
+                        ProductInfoList.images[0].image_url
+                      }
+                    ></img>
+                  </span>
+                  <span class="slide_content slide02">
+                    <img
+                      alt="productPhoto"
+                      className="productPhoto"
+                      src={
+                        ProductInfoList.images &&
+                        ProductInfoList.images[1].image_url
+                      }
+                    ></img>
+                  </span>
+                  <span class="slide_content slide03">
+                    <img
+                      alt="productPhoto"
+                      className="productPhoto"
+                      src={
+                        ProductInfoList.images &&
+                        ProductInfoList.images[0].image_url
+                      }
+                    ></img>
+                  </span>
+                </div>
+              </div>
               <div className="productText">
                 <div className="productName">
-                  {this.state.ProductInfoList[0] &&
-                    this.state.ProductInfoList[0].name}
+                  {ProductInfoList && ProductInfoList.name}
                 </div>
                 <div className="productPrice">
                   <div className="productColor">
-                    {this.state.ProductInfoList[0] &&
-                      this.state.ProductInfoList[0].color[0].name}
+                    {ProductInfoList.colors && ProductInfoList.colors[0].name}
                     &nbsp; • &nbsp;
-                    {this.state.ProductInfoList[0] &&
-                      this.state.ProductInfoList[0].color[0].name}
+                    {ProductInfoList.colors && ProductInfoList.colors[0].name}
                   </div>
                   <div>
-                    {this.state.ProductInfoList[0] &&
-                      this.state.ProductInfoList[0].price}
+                    {ProductInfoList.price &&
+                      ProductInfoList.price.replace(
+                        /\B(?=(\d{3})+(?!\d))/g,
+                        ','
+                      )}
                     원
                   </div>
                 </div>
                 <div className="bouns">카드 혜택보기</div>
                 <div className="colorNumber">7 개의 색상</div>
                 <div className="colorBox">
-                  <div className="outcircle">
+                  <div className="outCircle">
                     <div className="color1"></div>
                   </div>
-                  <div className="outcircle">
+                  <div className="outCircle">
                     <div className="color2"></div>
                   </div>
-                  <div className="outcircle">
+                  <div className="outCircle">
                     <div className="color3"></div>
                   </div>
-                  <div className="outcircle">
+                  <div className="outCircle">
                     <div className="color4"></div>
                   </div>
-                  <div className="outcircle">
+                  <div className="outCircle">
                     <div className="color5"></div>
                   </div>
-                  <div className="outcircle">
+                  <div className="outCircle">
                     <div className="color6"></div>
                   </div>
-                  <div className="outcircle">
+                  <div className="outCircle">
                     <div className="color7"></div>
                   </div>
                 </div>
@@ -101,7 +145,7 @@ class ProductDetail extends Component {
                   </button>
                 </div>
                 <div className="productPick">
-                  <button>사이즈 선택하기 </button>
+                  <button>사이즈 선택하기</button>
                 </div>
                 <p className="productCaution">
                   당일배송은 서울지역, 월~금요일 오후 12시까지
@@ -119,45 +163,50 @@ class ProductDetail extends Component {
                 <div className="detailLook">상세히 보기 </div>
                 <div className="productCode">제품코드. PH731E-51N</div>
                 <div className="productText">
-                  {this.state.ProductInfoList[0] &&
-                    this.state.ProductInfoList[0].description_summry}
+                  {ProductInfoList && ProductInfoList.description_summary}
                 </div>
                 <li className="productDetailText">
                   <ul>
                     -
-                    {this.state.ProductInfoList[0] &&
-                      this.state.ProductInfoList[0]
-                        .description_extra_infomation}
+                    {ProductInfoList.description_extra_information &&
+                      ProductInfoList.description_extra_information.split(
+                        ','
+                      )[0]}
                   </ul>
                   <ul>
                     -
-                    {this.state.ProductInfoList[0] &&
-                      this.state.ProductInfoList[0]
-                        .description_extra_infomation}
+                    {ProductInfoList.description_extra_information &&
+                      ProductInfoList.description_extra_information.split(
+                        ','
+                      )[1]}
                   </ul>
                   <ul>
                     -
-                    {this.state.ProductInfoList[0] &&
-                      this.state.ProductInfoList[0]
-                        .description_extra_infomation}
+                    {ProductInfoList.description_extra_information &&
+                      ProductInfoList.description_extra_information.split(
+                        ','
+                      )[2]}
                   </ul>
                   <ul>
                     -
-                    {this.state.ProductInfoList[0] &&
-                      this.state.ProductInfoList[0]
-                        .description_extra_infomation}
+                    {ProductInfoList.description_extra_information &&
+                      ProductInfoList.description_extra_information.split(
+                        ','
+                      )[3]}
                   </ul>
                   <ul>
                     -
-                    {this.state.ProductInfoList[0] &&
-                      this.state.ProductInfoList[0]
-                        .description_extra_infomation}
+                    {ProductInfoList.description_extra_information &&
+                      ProductInfoList.description_extra_information.split(
+                        ','
+                      )[4]}
                   </ul>
                   <ul>
                     -
-                    {this.state.ProductInfoList[0] &&
-                      this.state.ProductInfoList[0]
-                        .description_extra_infomation}
+                    {ProductInfoList.description_extra_information &&
+                      ProductInfoList.description_extra_information.split(
+                        ','
+                      )[5]}
                   </ul>
                 </li>
               </div>
@@ -165,8 +214,7 @@ class ProductDetail extends Component {
                 className="productPhoto"
                 alt="productPhoto"
                 src={
-                  this.state.ProductInfoList[0] &&
-                  this.state.ProductInfoList[0].images[0]
+                  ProductInfoList.images && ProductInfoList.images[0].image_url
                 }
               ></img>
             </div>
@@ -175,16 +223,14 @@ class ProductDetail extends Component {
                 className="productPhoto"
                 alt="productPhoto"
                 src={
-                  this.state.ProductInfoList[0] &&
-                  this.state.ProductInfoList[0].images
+                  ProductInfoList.images && ProductInfoList.images[1].image_url
                 }
               ></img>
               <img
                 className="productPhoto"
                 alt="productPhoto"
                 src={
-                  this.state.ProductInfoList[0] &&
-                  this.state.ProductInfoList[0].images
+                  ProductInfoList.images && ProductInfoList.images[1].image_url
                 }
               ></img>
             </div>
@@ -193,8 +239,7 @@ class ProductDetail extends Component {
                 className="productPhoto"
                 alt="productPhoto"
                 src={
-                  this.state.ProductInfoList[0] &&
-                  this.state.ProductInfoList[0].images
+                  ProductInfoList.images && ProductInfoList.images[1].image_url
                 }
               ></img>
             </div>
