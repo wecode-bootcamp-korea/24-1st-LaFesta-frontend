@@ -124,6 +124,7 @@ class ProductList extends Component {
           </div>
         </div>
         <Footer />
+        <ProductFilter />
       </div>
     );
   }
