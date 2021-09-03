@@ -84,6 +84,7 @@ class ProductList extends Component {
                     </div>
                   </div>
                 </div>
+
                 <div className="styleFilter">
                   <div className="styleFilterResult">
                     {searchStyle.length}개의 결과
@@ -124,7 +125,7 @@ class ProductList extends Component {
           </div>
         </div>
         <Footer />
-        <ProductFilter />
+        <ProductFilter />;
       </div>
     );
   }

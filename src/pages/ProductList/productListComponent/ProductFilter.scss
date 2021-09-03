@@ -1,93 +1,35 @@
-.filterContainer {
-  padding: 0 5%;
-  width: 40%;
-  border: 1px solid black;
+.ProductFilter {
+  .filterContainer {
+    padding: 0 5%;
+    width: 40%;
+    border: 1px solid black;
 
-  .filterTitle {
-    padding: 30px 0;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .alignContainer {
-    padding: 20px 0;
-
-    .titleAlign {
-      padding-bottom: 20px;
-      color: #bebebe;
-      font-size: 11px;
-    }
-
-    .lowerPriceAlign,
-    .higherPriceAlign {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 20px;
-      color: #757575;
-
-      & input {
-        width: 16px;
-        height: 16px;
-      }
-    }
-  }
-
-  .subFilter {
-    .subFilterTitle {
-      padding-bottom: 20px;
-      color: #bebebe;
-      font-size: 11px;
+    .filterTitle {
+      padding: 30px 0;
+      text-align: center;
+      font-size: 16px;
       font-weight: 600;
-    }
 
-    .colorFilter {
-      padding-bottom: 20px;
-      font-size: 15px;
-      color: #757575;
-    }
-
-    .colorBtn {
-      display: flex;
-      justify-content: space-around;
-      padding-bottom: 25px;
-      width: 200px;
-
-      & li {
-        width: 20px;
-        height: 20px;
-        border: none;
-        border-radius: 50%;
-      }
-
-      .redBtn {
-        background-color: #ff0200;
-      }
-
-      .blueBtn {
-        background-color: #0072fd;
-      }
-
-      .greenBtn {
-        background-color: #076b11;
-      }
-
-      .whiteBtn {
-        border: 0.1px solid #bebebe;
+      .closeBtn {
+        text-align: right;
       }
     }
 
-    .fitFilter {
-      padding-bottom: 20px;
-      color: #757575;
-    }
+    .alignContainer {
+      padding: 20px 0;
 
-    .fitChoiceBox {
-      & li {
+      .titleAlign {
+        padding-bottom: 20px;
+        color: #bebebe;
+        font-size: 11px;
+      }
+
+      .lowerPriceAlign,
+      .higherPriceAlign {
         display: flex;
         justify-content: space-between;
         padding-bottom: 20px;
-        color: #bebebe;
+        color: #757575;
 
         & input {
           width: 16px;
@@ -95,26 +37,97 @@
         }
       }
     }
-  }
-  .closeAndResult {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-top: 1px solid #bebebe;
 
-    .eraseAll {
-      border-bottom: 1px solid black;
+    .subFilter {
+      .subFilterTitle {
+        padding-bottom: 20px;
+        color: #bebebe;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .colorFilter {
+        padding-bottom: 20px;
+        font-size: 15px;
+        color: #757575;
+      }
+
+      .colorBtn {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 25px;
+        width: 200px;
+
+        & li {
+          width: 20px;
+          height: 20px;
+          border: none;
+          border-radius: 50%;
+          transition: 0.5s;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.3);
+            transition: 0.5s;
+          }
+        }
+
+        .redBtn {
+          background-color: #ff0200;
+        }
+
+        .blueBtn {
+          background-color: #0072fd;
+        }
+
+        .greenBtn {
+          background-color: #076b11;
+        }
+
+        .whiteBtn {
+          border: 0.1px solid #bebebe;
+        }
+      }
+
+      .fitFilter {
+        padding-bottom: 20px;
+        color: #757575;
+      }
+
+      .fitChoiceBox {
+        & li {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 20px;
+          color: #bebebe;
+
+          & input {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
     }
+    .closeAndResult {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-top: 1px solid #bebebe;
 
-    .filterResult {
-      padding: 10px 30px;
-      background-color: rgb(41, 40, 40);
-      border: 0.1px solid rgb(78, 76, 76);
-      border-radius: 27px;
-      font-size: 15px;
-      font-weight: 340;
-      color: white;
+      .eraseAll {
+        border-bottom: 1px solid black;
+      }
+
+      .filterResult {
+        padding: 10px 30px;
+        background-color: rgb(41, 40, 40);
+        border: 0.1px solid rgb(78, 76, 76);
+        border-radius: 27px;
+        font-size: 15px;
+        font-weight: 340;
+        color: white;
+      }
     }
   }
 }
