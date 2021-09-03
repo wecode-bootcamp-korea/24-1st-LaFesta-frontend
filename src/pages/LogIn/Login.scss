@@ -42,7 +42,7 @@
     }
 
     .idSaveBox {
-      margin-right: 10px;
+      margin-left: 115px;
 
       .idSaveBoxText {
         margin-right: 10px;
@@ -56,10 +56,12 @@
       font-size: 15px;
       color: white;
       border-style: none;
+      margin-left: 13px;
 
       &:hover {
         background-color: #454545;
         transition: all 0.5s ease-in-out 0.1s;
+        cursor: pointer;
       }
     }
   }
@@ -93,9 +95,11 @@
       font-size: 15px;
       color: white;
       border-style: none;
+      margin-left: 230px;
       &:hover {
         background-color: #454545;
         transition: all 0.5s ease-in-out 0.1s;
+        cursor: pointer;
       }
     }
   }

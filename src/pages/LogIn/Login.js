@@ -8,6 +8,7 @@ class Login extends Component {
     this.state = {
       id: '',
       pw: '',
+      em: '',
     };
   }
 
@@ -19,11 +20,12 @@ class Login extends Component {
   };
 
   Postlogin = () => {
+    const { id, pw } = this.state;
     fetch('http://10.58.2.219:8000/postings/posting', {
       method: 'POST',
       body: JSON.stringify({
-        id: this.state.id,
-        password: this.state.pw,
+        id: id,
+        password: pw,
       }),
     })
       .then(response => response.json())
@@ -37,55 +39,70 @@ class Login extends Component {
   };
 
   render() {
+    const { id, pw, em } = this.state;
+    const goToMain = () => {
+      id.includes('@') && pw.length >= 8
+        ? this.Postlogin()
+        : alert('아이디 및 비밀번호를 다시 입력해주세요');
+    };
+    const goToSignUp = () => {
+      em.includes('@') && em.includes('.com')
+        ? this.props.history.push('/SignUp')
+        : alert('이메일을 다시 확인해주세요');
+    };
     return (
       <>
         <div className="Login">
           <div className="backgroudBanner">
             <div className="container">
               <div className="nav">로그인</div>
-              <div className="loginBox">
-                <div className="oldUserBox">
-                  <div className="oldUserTitle">기존 고객</div>
-                  <div>
-                    <input
-                      className="inputId"
-                      name="id"
-                      type="text"
-                      placeholder="이메일/로그인:"
-                      onChange={this.handleInput}
-                    />
+              <article>
+                <div className="loginBox">
+                  <div className="oldUserBox">
+                    <div className="oldUserTitle">기존 고객</div>
+                    <div>
+                      <input
+                        className="inputId"
+                        name="id"
+                        type="text"
+                        placeholder="이메일/로그인:"
+                        onChange={this.handleInput}
+                      />
+                    </div>
+                    <div>
+                      <input
+                        className="inputPw"
+                        name="pw"
+                        type="password"
+                        placeholder="비밀번호:"
+                        onChange={this.handleInput}
+                      />
+                    </div>
+                    <div calssName="loginBtnBox">
+                      <span className="idSaveBox">
+                        <span className="idSaveBoxText">아이디 저장</span>
+                        <input calssName="idSaveInput" type="checkbox" />
+                      </span>
+                      <button onClick={goToMain}>로그인</button>
+                    </div>
                   </div>
-                  <div>
-                    <input
-                      className="inputPw"
-                      name="pw"
-                      type="password"
-                      placeholder="비밀번호:"
-                      onChange={this.handleInput}
-                    />
-                  </div>
-                  <div>
-                    <span className="idSaveBox">
-                      <span className="idSaveBoxText">아이디 저장</span>
-                      <input calssName="idSaveInput" type="checkbox" />
-                    </span>
-                    <button onClick={this.goToMain}>로그인</button>
+                  <div className="newUserBox">
+                    <div className="newUserTitle">신규 고객</div>
+                    <div>
+                      <input
+                        className="inputEm"
+                        type="text"
+                        placeholder="이메일:"
+                        name="em"
+                        onChange={this.handleInput}
+                      />
+                    </div>
+                    <div>
+                      <button onClick={goToSignUp}>계정 만들기</button>
+                    </div>
                   </div>
                 </div>
-                <div className="newUserBox">
-                  <div className="newUserTitle">신규 고객</div>
-                  <div>
-                    <input
-                      className="inputEm"
-                      type="text"
-                      placeholder="이메일:"
-                    />
-                  </div>
-                  <div>
-                    <button>계정 만들기</button>
-                  </div>
-                </div>
-              </div>
+              </article>
             </div>
           </div>
         </div>
