@@ -2,7 +2,54 @@ import React, { Component } from 'react';
 import './MainPage.scss';
 
 class MainPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      margin: 0,
+      count: 1,
+      saleList: [],
+    };
+  }
+  // 1. itemCount가 list 보다 작을 경우에 더 하고
+  // 2. itemCount가 list와 같다면 멈춰
+
+  handleNextClick = () => {
+    const { count, margin, saleList } = this.state;
+
+    saleList.map(item => {
+      if (count < saleList.length) {
+        this.setState({ count: count + 1 });
+        this.setState({ margin: margin - 421 });
+      }
+    });
+  };
+
+  handlePrevClick = () => {
+    const { count, margin, saleList } = this.state;
+    saleList.map(item => {
+      if (!count < saleList.length && count > 1) {
+        this.setState({ count: count - 1 });
+        this.setState({ margin: margin + 421 });
+      }
+    });
+  };
+
+  componentDidMount() {
+    fetch('http://localhost:3003/data/mainData-songhyun')
+      .then(res => res.json())
+      .then(saleItems =>
+        this.setState({
+          saleList: saleItems,
+        })
+      );
+  }
+
   render() {
+    const { saleList, count, margin } = this.state;
+    const style = {
+      marginLeft: margin,
+    };
+
     return (
       <main>
         <section className="newProductWrapper">
@@ -27,74 +74,45 @@ class MainPage extends Component {
             <h3>당신만의 라코스테</h3>
             <ol className="indications">
               <li>
-                <button className="prevBtn" />
-                <i className="fas fa-chevron-left" />
+                <button className="prevBtn" onClick={this.handlePrevClick}>
+                  <i className="fas fa-chevron-left" />
+                </button>
               </li>
               <li className="startCount">
-                <span>1</span>
+                <span>{count}</span>
               </li>
               <li className="center">
                 <span>/</span>
               </li>
               <li className="endCount">
-                <span>7</span>
+                <span>{saleList.length}</span>
               </li>
               <li>
-                <button type="button" class="nextBtn" />
-                <i className="fas fa-chevron-right" />
+                <button
+                  type="button"
+                  className="nextBtn"
+                  onClick={this.handleNextClick}
+                >
+                  <i className="fas fa-chevron-right" />
+                </button>
               </li>
             </ol>
           </div>
-          <ul className="newProducts">
-            <li>
-              <a>
-                <figure className="newProductConent">
-                  <img
-                    src="https://i.postimg.cc/SRY0GDr6/erwans-socks-p-Flj-CK5-HHt-U-unsplash.jpg"
-                    alt="폴로 셔츠"
-                  />
-                  <figcaption>
-                    <strong>그를 위한 새로운 폴로셔츠</strong>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-            <li>
-              <a>
-                <figure className="newProductConent">
-                  <img
-                    src="https://i.postimg.cc/t4x3HPrB/ospan-ali-H8uf5ua5u-W4-unsplash.jpg"
-                    alt="드레스 & 스커트"
-                  />
-                  <figcaption>
-                    <strong>그녀를 위한 새로운 드레스 & 스커트</strong>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-            <li>
-              <a>
-                <figure className="newProductConent">
-                  <img src="https://i.postimg.cc/SRY0GDr6/erwans-socks-p-Flj-CK5-HHt-U-unsplash.jpg" />
-                  <figcaption>
-                    <strong>남성 신상품 7% 혜택</strong>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-            <li>
-              <a>
-                <figure className="newProductConent">
-                  <img
-                    src="https://i.postimg.cc/t4x3HPrB/ospan-ali-H8uf5ua5u-W4-unsplash.jpg"
-                    alt="여성 신상품"
-                  />
-                  <figcaption>
-                    <strong>여성 신상품 7% 혜택</strong>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
+          <ul className="newProducts" style={style}>
+            {saleList.map(saleItem => {
+              return (
+                <li key={saleItem.id}>
+                  <a>
+                    <figure className="newProductConent">
+                      <img src={saleItem.url} alt={saleItem.title} />
+                      <figcaption>
+                        <strong>{saleItem.title}</strong>
+                      </figcaption>
+                    </figure>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </section>
         <section>
@@ -188,8 +206,9 @@ class MainPage extends Component {
             <h3>Lacoste Inside</h3>
             <ol className="indications">
               <li>
-                <button className="prevBtn" />
-                <i className="fas fa-chevron-left" />
+                <button className="prevBtn">
+                  <i className="fas fa-chevron-left" />
+                </button>
               </li>
               <li className="startCount">
                 <span>1</span>
@@ -201,8 +220,9 @@ class MainPage extends Component {
                 <span>7</span>
               </li>
               <li>
-                <button type="button" class="nextBtn" />
-                <i className="fas fa-chevron-right" />
+                <button type="button" className="nextBtn">
+                  <i className="fas fa-chevron-right" />
+                </button>
               </li>
             </ol>
           </div>
