@@ -26,9 +26,17 @@ class ProductDetail extends Component {
         <div className="productDetail">
           <div className="nav">임시</div>
           <div className="list">
-            {this.state.ProductInfoList[0] &&
-              this.state.ProductInfoList[0].section}
-            /
+            <span className="home">홈</span>&nbsp;&nbsp;/&nbsp;&nbsp;
+            <span className="category">
+              {this.state.ProductInfoList[0] &&
+                this.state.ProductInfoList[0].section}
+            </span>
+            &nbsp; / &nbsp;
+            <span className="category">
+              {this.state.ProductInfoList[0] &&
+                this.state.ProductInfoList[0].category}
+            </span>
+            &nbsp; / &nbsp;
             {this.state.ProductInfoList[0] &&
               this.state.ProductInfoList[0].name}
           </div>
@@ -37,7 +45,10 @@ class ProductDetail extends Component {
               <img
                 alt="productPhoto"
                 className="productPhoto"
-                src="https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw7318afb2/PH731E-51N_QL2_24.jpg?imwidth=915&impolicy=product"
+                src={
+                  this.state.ProductInfoList[0] &&
+                  this.state.ProductInfoList[0].images[0]
+                }
               ></img>
               <div className="productText">
                 <div className="productName">
@@ -48,7 +59,7 @@ class ProductDetail extends Component {
                   <div className="productColor">
                     {this.state.ProductInfoList[0] &&
                       this.state.ProductInfoList[0].color[0].name}
-                    •
+                    &nbsp; • &nbsp;
                     {this.state.ProductInfoList[0] &&
                       this.state.ProductInfoList[0].color[0].name}
                   </div>
@@ -84,10 +95,13 @@ class ProductDetail extends Component {
                   </div>
                 </div>
                 <div className="productSize">
-                  <button>SIZE</button>
+                  <button>
+                    SIZE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
                 </div>
                 <div className="productPick">
-                  <button>사이즈 선택하기</button>
+                  <button>사이즈 선택하기 </button>
                 </div>
                 <p className="productCaution">
                   당일배송은 서울지역, 월~금요일 오후 12시까지
@@ -95,8 +109,8 @@ class ProductDetail extends Component {
                   가능하더라도 장바구니에 제품을 담을 수 없습니다
                 </p>
                 <p className="check">
-                  <i class="fas fa-truck-moving"></i>당일배송 가능여부 확인하기
-                  (사이즈를 선택해주세요)
+                  <i class="fas fa-truck-moving"></i>&nbsp;당일배송 가능여부
+                  확인하기 (사이즈를 선택해주세요)
                 </p>
               </div>
             </div>
@@ -152,7 +166,7 @@ class ProductDetail extends Component {
                 alt="productPhoto"
                 src={
                   this.state.ProductInfoList[0] &&
-                  this.state.ProductInfoList[0].images
+                  this.state.ProductInfoList[0].images[0]
                 }
               ></img>
             </div>
