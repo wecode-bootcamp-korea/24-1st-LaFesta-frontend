@@ -7,6 +7,7 @@
     justify-content: left;
 
     .product {
+      position: relative;
       width: 23%;
       height: auto;
       margin: 0 0 50px 2%;
@@ -14,6 +15,20 @@
       .productPic {
         width: 100%;
         height: auto;
+        z-index: 10;
+        transition: 0.5s linear;
+        &:hover {
+          opacity: 0;
+          transition: 0.5s linear;
+        }
+      }
+
+      .productPicReverse {
+        position: absolute;
+        right: 0.1px;
+        width: 100%;
+        height: auto;
+        z-index: -10;
       }
 
       .productInfo {
@@ -33,6 +48,7 @@
 
         .productName {
           margin: 10px 0;
+          z-index: 20;
         }
       }
     }

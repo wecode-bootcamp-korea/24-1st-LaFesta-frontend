@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Product from './productListComponent/Product';
+import Product from './ProductListComponent/Product';
+import ProductFilter from './ProductListComponent/ProductFilter';
 import Footer from '../../components/Footer/Footer';
 import './ProductList.scss';
-import '../ProductList/productListComponent/product.scss';
+import './ProductListComponent/Product.scss';
+import './ProductListComponent/ProductFilter.scss';
 
 class ProductList extends Component {
   constructor(props) {
@@ -48,7 +50,7 @@ class ProductList extends Component {
               <img
                 className="categoryIntroPic"
                 alt="categoryIntroImage"
-                src="https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Library-Sites-LacosteContent/default/dw7a5def12/2021/FW21/PLP/plp-men-clothing-desk-01.jpg?imwidth=915&impolicy=custom"
+                src="https://i.postimg.cc/HkFkNGLv/1-main.jpg"
               />
               <div className="categoryIntro">
                 <div className="categoryTitle">남성 폴로</div>
@@ -102,6 +104,7 @@ class ProductList extends Component {
                     productName={data.productName}
                     productColors={data.productColors}
                     productPic={data.productPic}
+                    productPicReverse={data.productPicReverse}
                     productPrice={data.productPrice}
                   />
                 );

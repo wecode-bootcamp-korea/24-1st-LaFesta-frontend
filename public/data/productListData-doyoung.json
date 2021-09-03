@@ -3,21 +3,24 @@
     "id": 1,
     "productName": "(남성)프렌치 레귤러핏 반팔 폴로",
     "productColors": 1,
-    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPic": "https://i.postimg.cc/htXGM4K7/2-product.jpg",
+    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
     "productPrice": 10000
   },
   {
     "id": 2,
     "productName": "(남성)라코스테 반팔 PARIS 폴로",
     "productColors": 2,
-    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPic": "https://i.postimg.cc/pTJVypJ3/3.jpg",
+    "productPicReverse": "https://i.postimg.cc/PxhR4MBV/3-reverse.jpg",
     "productPrice": 20000
   },
   {
     "id": 3,
     "productName": "(남성)라코스테 클래식핏 오가닉 코튼 폴로",
     "productColors": 3,
-    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPic": "https://i.postimg.cc/PJKqVPL1/4.jpg",
+    "productPicReverse": "https://i.postimg.cc/qMZWTy3g/4-reverse.jpg",
     "productPrice": 30000
   },
   {
@@ -25,6 +28,7 @@
     "productName": "(남성)헤리티지 슬림핏 배색 코튼 피케 폴로",
     "productColors": 4,
     "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
     "productPrice": 40000
   },
   {
@@ -32,6 +36,7 @@
     "productName": "(남성)라코스테 반팔 폴로",
     "productColors": 5,
     "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
     "productPrice": 50000
   },
   {
@@ -39,6 +44,7 @@
     "productName": "(남성)라코스테 반팔 폴로",
     "productColors": 6,
     "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
     "productPrice": 60000
   },
   {
@@ -46,6 +52,7 @@
     "productName": "(남성)반팔폴로 폴로 핏",
     "productColors": 7,
     "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
     "productPrice": 70000
   }
 ]
