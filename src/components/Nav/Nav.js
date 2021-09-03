@@ -7,7 +7,6 @@ class Nav extends Component {
     super(props);
     this.state = {
       isToggleOn: false,
-      isClicked: false,
     };
   }
 
