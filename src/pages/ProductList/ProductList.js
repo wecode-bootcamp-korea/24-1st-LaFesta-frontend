@@ -16,15 +16,15 @@ class ProductList extends Component {
   componentDidMount() {
     fetch('./data/productListData-doyoung.json')
       .then(res => res.json())
-      .then(res =>
+      .then(res => {
         this.setState({
           productData: res,
-        })
-      );
+        });
+      });
   }
 
   handleChange = event => {
-    this.setState({ productStyle: event.target.className });
+    this.setState({ productStyle: event.target.dataset.category });
   };
 
   render() {
@@ -63,21 +63,21 @@ class ProductList extends Component {
                 </div>
                 <div className="styleCategory">
                   <div className="subCategory">
-                    <div className="폴로" onClick={this.handleChange}>
+                    <div data-category="폴로" onClick={this.handleChange}>
                       폴로
                     </div>
-                    <div className="PARIS" onClick={this.handleChange}>
+                    <div data-category="PARIS" onClick={this.handleChange}>
                       파리폴로
                     </div>
-                    <div className="클래식핏" onClick={this.handleChange}>
+                    <div data-category="클래식핏" onClick={this.handleChange}>
                       클래식핏
                     </div>
                   </div>
                   <div className="subCategory">
-                    <div className="레귤러핏" onClick={this.handleChange}>
+                    <div data-category="레귤러핏" onClick={this.handleChange}>
                       레귤러핏
                     </div>
-                    <div className="슬림핏" onClick={this.handleChange}>
+                    <div data-category="슬림핏" onClick={this.handleChange}>
                       슬림핏
                     </div>
                   </div>
