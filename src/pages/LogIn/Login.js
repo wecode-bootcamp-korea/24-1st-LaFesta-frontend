@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Footer from '../../components/Footer/Footer';
 import './Login.scss';
 
 class Login extends Component {
@@ -18,21 +17,35 @@ class Login extends Component {
     });
   };
 
-  Postlogin = () => {
+  postLogin = () => {
     const { id, pw } = this.state;
-    fetch('http://10.58.2.219:8000/postings/posting', {
-      method: 'POST',
-      body: JSON.stringify({
-        id: id,
-        password: pw,
-      }),
-    })
-      .then(response => response.json())
-      .then(response => {
-        if (response.message !== 'SUCCESS') {
-          alert('이메일과 비밀번호를 다시 확인해주세요');
-        }
-      });
+    if (
+      this.state.id.includes('@') &&
+      this.state.id.includes('.com') &&
+      this.state.pw.length >= 8
+    ) {
+      fetch('http://10.58.2.219:8000/postings/posting', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: id,
+          password: pw,
+        }),
+      })
+        .then(response => response.json())
+        .then(response => {
+          if (response.message === 'SUCCESS') {
+            this.props.history.push('/mainPage');
+          } else if (response.message === 'INVALID_USER') {
+            alert('이메일과 비밀번호를 다시 확인해주세요');
+            this.setState({ id: '' });
+            this.setState({ pw: '' });
+          }
+        });
+    } else {
+      alert('이메일 및 비밀번호를 다시 입력해주세요');
+      this.setState({ id: '' });
+      this.setState({ pw: '' });
+    }
   };
 
   goToSignUp = () => {
@@ -41,11 +54,6 @@ class Login extends Component {
 
   render() {
     const { id, pw } = this.state;
-    const goToMain = () => {
-      id.includes('@') && id.includes('.com') && pw.length >= 8
-        ? this.Postlogin()
-        : alert('이메일 및 비밀번호를 다시 입력해주세요');
-    };
     return (
       <>
         <div className="login">
@@ -59,6 +67,7 @@ class Login extends Component {
                     type="id"
                     placeholder="이메일/로그인:"
                     onChange={this.handleInput}
+                    value={id}
                   />
                 </div>
                 <div className="userPw">
@@ -68,15 +77,16 @@ class Login extends Component {
                       name="pw"
                       placeholder="비밀번호:"
                       onChange={this.handleInput}
+                      value={pw}
                     />
                   </div>
                 </div>
                 <div>
-                  <button className="loginBnt" onClick={goToMain}>
+                  <button className="loginBtn" onClick={this.postLogin}>
                     로그인
                   </button>
                   <div className="signUpText">아직 회원이 아니세요?</div>
-                  <button className="loginBnt" onClick={this.goToSignUp}>
+                  <button className="loginBtn" onClick={this.goToSignUp}>
                     회원가입
                   </button>
                 </div>
@@ -84,7 +94,6 @@ class Login extends Component {
             </div>
           </div>
         </div>
-        <Footer />
       </>
     );
   }

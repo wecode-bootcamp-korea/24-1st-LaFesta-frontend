@@ -9,8 +9,6 @@ import MainPage from './pages/MainPage/MainPage';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProductList from './pages/ProductList/ProductList';
 import SignUp from './pages/SignUp/SignUp';
-import SignUpCertification from './pages/SignUp/SignUpCertification';
-import SignUpUserInfo from './pages/SignUp/SignUpUserInfo';
 import Login from './pages/LogIn/Login';
 
 class Routes extends Component {
@@ -19,7 +17,6 @@ class Routes extends Component {
       <Router>
         <Switch>
           <Route exact path="/nav" component={Nav} />
-          <Route exact path="/footer" component={Footer} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/mainPage" component={MainPage} />
           <Route exact path="/productDetail" component={ProductDetail} />
@@ -27,6 +24,7 @@ class Routes extends Component {
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/logIn" component={Login} />
         </Switch>
+        <Footer />
       </Router>
     );
   }

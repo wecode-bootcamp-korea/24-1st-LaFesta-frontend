@@ -35,7 +35,7 @@ class SignUpCertification extends Component {
           <div className="btn">
             <button
               className="certificationBnt"
-              onClick={() => this.state.checked && this.props.goToNext(3)}
+              onClick={() => this.props.goToNext(3)}
             >
               계속
             </button>
