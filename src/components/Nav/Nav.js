@@ -7,6 +7,7 @@ class Nav extends Component {
     super(props);
     this.state = {
       isToggleOn: false,
+      isClicked: false,
     };
   }
 
@@ -31,45 +32,45 @@ class Nav extends Component {
             />
           </Link>
         </div>
-        <div className="navMeun" onMouseEnter={this.toggleMouse}>
+        <div className="navMenu" onMouseEnter={this.toggleMouse}>
           <ul className="categorys">
             <li>
-              <Link to="/">New</Link>
+              <Link>New</Link>
             </li>
             <li>
-              <Link to="/">Men</Link>
+              <Link>Men</Link>
             </li>
             <li>
-              <Link to="/">Women</Link>
+              <Link>Women</Link>
             </li>
             <li>
-              <Link to="/">Kids</Link>
+              <Link>Kids</Link>
             </li>
             <li>
-              <Link to="/">Sale</Link>
+              <Link>Sale</Link>
             </li>
             <li>
-              <Link to="/">나의 라페스타 폴로</Link>
+              <Link>나의 라페스타 폴로</Link>
             </li>
             <li>
-              <Link to="/">Lafesta inside</Link>
+              <Link>Lafesta inside</Link>
             </li>
           </ul>
-          <div className={isToggleOn ? 'toggleMeun' : 'toggleWrapper'}>
+          <div className={isToggleOn ? 'toggleMenu' : 'toggleWrapper'}>
             <div className="robeWrappers">
               <h3>의류</h3>
               <ul>
                 <li>
-                  <Link to="/">폴로</Link>
+                  <Link>폴로</Link>
                 </li>
                 <li>
-                  <Link to="/">셔츠</Link>
+                  <Link>셔츠</Link>
                 </li>
                 <li>
-                  <Link to="/">티셔츠</Link>
+                  <Link>티셔츠</Link>
                 </li>
                 <li>
-                  <Link to="/">니트&스웨터</Link>
+                  <Link>니트&스웨터</Link>
                 </li>
               </ul>
             </div>
@@ -77,10 +78,10 @@ class Nav extends Component {
               <h3>신발</h3>
               <ul>
                 <li>
-                  <Link to="/">스포츠</Link>
+                  <Link>스포츠</Link>
                 </li>
                 <li>
-                  <Link to="/">캐쥬얼</Link>
+                  <Link>캐쥬얼</Link>
                 </li>
               </ul>
             </div>
@@ -88,16 +89,16 @@ class Nav extends Component {
               <h3>액세사리</h3>
               <ul>
                 <li>
-                  <Link to="/">모자</Link>
+                  <Link>모자</Link>
                 </li>
                 <li>
-                  <Link to="/">스카프&장갑</Link>
+                  <Link>스카프&장갑</Link>
                 </li>
                 <li>
-                  <Link to="/">언더웨어</Link>
+                  <Link>언더웨어</Link>
                 </li>
                 <li>
-                  <Link to="/">양말</Link>
+                  <Link>양말</Link>
                 </li>
               </ul>
             </div>
@@ -118,25 +119,29 @@ class Nav extends Component {
           </div>
         </div>
         <form className="searchForm">
-          <button>
+          <button type="button">
             <i className="fas fa-search icon"></i>
           </button>
           <input type="text" aria-label="searchform" className="searchInput" />
         </form>
         <ul className="userCategorys">
           <li>
-            <Link to="/">
+            <Link>
               <i className="fas fa-map-marker-alt icon"></i>
               <span className="a11y-hidden">map</span>
             </Link>
           </li>
           <li>
-            <i className="fas fa-user icon"></i>
-            <span className="a11y-hidden">user</span>
+            <Link to="/logIn">
+              <i className="fas fa-user icon"></i>
+              <span className="a11y-hidden">user</span>
+            </Link>
           </li>
           <li>
-            <span className="a11y-hidden">cart</span>
-            <i className="fas fa-shopping-cart icon"></i>
+            <Link to="/">
+              <span className="a11y-hidden">cart</span>
+              <i className="fas fa-shopping-cart icon"></i>
+            </Link>
           </li>
         </ul>
       </nav>
