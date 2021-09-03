@@ -6,16 +6,16 @@
   }
 
   .container {
+    padding: 20px 50px;
     margin: 0 170px;
     background-color: white;
-    padding: 20px 50px;
   }
 
   .nav {
-    font-size: 20px;
-    border-bottom: #e9e9e9 2px solid;
     margin-bottom: 40px;
     padding-bottom: 20px;
+    font-size: 20px;
+    border-bottom: #e9e9e9 2px solid;
     text-align: center;
   }
 
@@ -23,10 +23,10 @@
     margin-bottom: 40px;
 
     .user {
+      padding: 10px 0;
       background-color: #f8f8f8;
       font-size: 13px;
       border-bottom: 1px #e9e9e9 solid;
-      padding: 10px 0;
       text-align: center;
     }
 
@@ -43,8 +43,8 @@
   .userRulePlusOn {
     display: block;
     padding: 20px 60px;
-    text-align: left;
     color: #797979;
+    text-align: left;
     font-size: 14px;
 
     .title {
@@ -52,6 +52,7 @@
       text-align: center;
       margin-bottom: 10px;
     }
+
     p {
       margin-bottom: 10px;
     }
@@ -73,10 +74,12 @@
       text-align: center;
       margin-bottom: 10px;
     }
+
     p {
       margin-bottom: 10px;
     }
   }
+
   input {
     margin: 8px;
   }
@@ -88,11 +91,12 @@
   .userAgreement {
     margin-bottom: 35px;
   }
+
   table {
+    margin-bottom: 10px;
     border: 1px solid #444444;
     border-collapse: collapse;
     font-size: 8px;
-    margin-bottom: 10px;
 
     td,
     th {
@@ -102,18 +106,21 @@
       border: 1px solid #444444;
     }
   }
+
   .btn {
     text-align: right;
   }
+
   .nextBtn {
-    background-color: rgb(32, 102, 72);
     width: 150px;
     height: 50px;
+    margin-top: 20px;
     font-size: 15px;
+    background-color: rgb(32, 102, 72);
     color: white;
     border-style: none;
     cursor: pointer;
-    margin-top: 20px;
+    transition: all 0.5s;
 
     &:hover {
       background-color: #454545;

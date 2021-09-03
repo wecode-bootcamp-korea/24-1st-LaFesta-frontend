@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SignUpTermsUse from './SignUpTermsUse';
 import SignUpCertification from './SignUpCertification';
 import SignUpUserInfo from './SignUpUserInfo';
-import Footer from '../../components/Footer/Footer';
 import './SignUp.scss';
 
 class SignUp extends Component {
@@ -13,17 +12,25 @@ class SignUp extends Component {
       pw: '',
       userRulePlusClassName: false,
       userInfoPlusClassName: false,
-      ischecked: false,
       next: 1,
+      checkList: [false, false, false, false, false],
     };
   }
 
   goToNext = id => {
-    this.setState({ next: id });
+    this.state.checkList[0] &&
+    this.state.checkList[1] &&
+    this.state.checkList[2] &&
+    this.state.checkList[3]
+      ? this.setState({ next: id })
+      : alert('체크박스는 필수사항입니다.');
   };
 
   headleChange = e => {
-    this.setState({ ischecked: e.target.checked });
+    const newCheckList = [...this.state.checkList];
+    const checkPick = this.state.checkList[e.target.id - 1];
+    newCheckList.splice(e.target.id - 1, 1, !checkPick);
+    this.setState({ checkList: newCheckList });
   };
 
   toggleUserRulePlus = () => {
@@ -42,7 +49,7 @@ class SignUp extends Component {
         <SignUpTermsUse
           userRulePlusClassName={this.state.userRulePlusClassName}
           userInfoPlusClassName={this.state.userInfoPlusClassName}
-          ischecked={this.state.ischecked}
+          checkList={this.state.checkList}
           toggleUserRulePlus={this.toggleUserRulePlus}
           toggleUserInfoPlus={this.toggleUserInfoPlus}
           goToNext={this.goToNext}
@@ -59,7 +66,6 @@ class SignUp extends Component {
     return (
       <div className="signUp">
         <div className="backgroudBanner">{MAPPING_SIGNUP[this.state.next]}</div>
-        <Footer />
       </div>
     );
   }

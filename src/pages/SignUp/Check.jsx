@@ -6,8 +6,9 @@ class Check extends Component {
       <div className="check">
         <input
           type="checkbox"
-          checked={this.props.ischecked}
+          checked={this.props.checkList}
           onChange={this.props.headleChange}
+          id={this.props.id}
         />
         {this.props.text}
       </div>

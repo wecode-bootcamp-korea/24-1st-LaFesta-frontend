@@ -1,20 +1,19 @@
 .signUpCertification {
   .backgroudBanner {
-    width: 100%;
     background-color: #206648;
     padding: 100px 0;
   }
 
   .container {
     margin: 0 170px;
-    background-color: white;
     padding: 20px 50px 50px 50px;
+    background-color: white;
 
     .nav {
-      font-size: 20px;
-      border-bottom: #e9e9e9 2px solid;
       margin-bottom: 40px;
       padding-bottom: 20px;
+      font-size: 20px;
+      border-bottom: #e9e9e9 2px solid;
       text-align: center;
     }
 
@@ -23,8 +22,8 @@
     }
 
     .age {
-      font-size: 8px;
       margin-bottom: 10px;
+      font-size: 8px;
     }
 
     input {
@@ -48,13 +47,14 @@
     }
 
     .certificationBnt {
-      background-color: rgb(32, 102, 72);
       width: 150px;
       height: 50px;
-      font-size: 15px;
+      background-color: rgb(32, 102, 72);
       color: white;
+      font-size: 15px;
       border-style: none;
       cursor: pointer;
+      transition: all 0.5s;
 
       &:hover {
         background-color: #454545;

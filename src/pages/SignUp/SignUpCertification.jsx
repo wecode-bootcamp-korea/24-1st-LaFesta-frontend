@@ -35,7 +35,11 @@ class SignUpCertification extends Component {
           <div className="btn">
             <button
               className="certificationBnt"
-              onClick={() => this.props.goToNext(3)}
+              onClick={() =>
+                this.state.checked
+                  ? this.props.goToNext(3)
+                  : alert('체크박스는 필수사항입니다.')
+              }
             >
               계속
             </button>

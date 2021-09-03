@@ -13,7 +13,10 @@ class SignUpTermsUse extends Component {
           <div className="users">
             <div>
               <div className="user">#이용약관</div>
-              <div className="user detail" onClick={this.toggleUserRulePlus}>
+              <div
+                className="user detail"
+                onClick={this.props.toggleUserRulePlus}
+              >
                 상세보기 +
               </div>
               <div
@@ -57,36 +60,42 @@ class SignUpTermsUse extends Component {
           </div>
           <div className="userAgreement">
             <Check
-              ischecked={this.props.ischecked}
+              checkList={this.props.checkList[0]}
               headleChange={this.props.headleChange}
               text="이용약관에 동의합니다 (필수)"
+              id="1"
             />
             <Check
-              ischecked={this.props.ischecked}
+              checkList={this.props.checkList[1]}
               headleChange={this.props.headleChange}
               text="개인정보 수집/이용에 동의합니다 (필수)"
+              id="2"
             />
             <Check
-              ischecked={this.props.ischecked}
+              checkList={this.props.checkList[2]}
               headleChange={this.props.headleChange}
               text="개인정보 취급 위탁동의 (구매 및 배송 등 관련) (필수)"
+              id="3"
             />
             <Check
-              ischecked={this.props.ischecked}
+              checkList={this.props.checkList[3]}
               headleChange={this.props.headleChange}
               text="개인정보 국외이전에 대한 동의 (필수)"
+              id="4"
             />
-
             <Check
-              ischecked={this.props.ischecked}
+              checkList={this.props.checkList[4]}
               headleChange={this.props.headleChange}
               text="마케팅 활용 개인정보 수집/이용 동의합니다 (선택)"
+              id="5"
             />
           </div>
           <table>
-            <th>개인정보 수집 이용 목적</th>
-            <th>수집하려는 개인 정보</th>
-            <th>개인정보 보유, 이용기간</th>
+            <tr>
+              <th>개인정보 수집 이용 목적</th>
+              <th>수집하려는 개인 정보</th>
+              <th>개인정보 보유, 이용기간</th>
+            </tr>
             <tr>
               <td>
                 이벤트, 신제품 출시, 쿠폰, 세일 및 광고성 뉴스레터/SMS 발송,
