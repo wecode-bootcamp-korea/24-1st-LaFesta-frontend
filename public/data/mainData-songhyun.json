@@ -1,35 +1,67 @@
 [{
     "id": 1,
+    "category": "event",
     "title": "그를 위한 새로운 폴로셔츠",
     "url": "https://i.postimg.cc/Pqqgt55r/2-product.jpg"
   },
   {
     "id": 2,
+    "category": "event",
     "title": "그녀를 위한 새로운 드레스 & 스커트",
     "url": "https://i.postimg.cc/6qT8vmNx/michael-meyer-kon-I06hq-Tv-U-unsplash-1.jpg"
   },
   {
     "id": 3,
+    "category": "event",
     "title": "여성 신상품 7% 혜택",
     "url": "https://i.postimg.cc/t4x3HPrB/ospan-ali-H8uf5ua5u-W4-unsplash.jpg"
   },
   {
     "id": 4,
+    "category": "event",
     "title": "남성 신상품 7% 혜택",
     "url": "https://i.postimg.cc/SRY0GDr6/erwans-socks-p-Flj-CK5-HHt-U-unsplash.jpg"
   },
   {
     "id": 5,
+    "category": "event",
     "title": "키즈 신상품 7% 혜택",
     "url": "https://i.postimg.cc/8P3Lzy48/ben-white-l-VCHf-Xn3-VME-unsplash.jpg"
-  }, {
+  },
+  {
     "id": 6,
+    "category": "event",
     "title": "매일 입어도 좋은 라코스테 티셔츠",
     "url": "https://i.postimg.cc/JnpgSVLH/dante-labella-f-Kg-B5k-S2-ZAc-unsplash.jpg"
   },
   {
     "id": 7,
+    "category": "event",
     "title": "라코스테 무브먼트 폴로",
     "url": "https://i.postimg.cc/4NknnrtT/13.jpg"
+  },
+  {
+    "id": 8,
+    "category": "inside",
+    "subtitle": "3가지의 완벽한 룩",
+    "title": "당신을 위한 셔츠는?",
+    "content": "당신을 위해 라코스테가 준비한 셔츠를 확인해보세요. 이번 새로운 시즌 그리고 앞으로도 당신과 함께 합니다.",
+    "url": "https://i.postimg.cc/63dd8XXZ/nimble-made-h-MMXh-KSZk7k-unsplash.jpg"
+  },
+  {
+    "id": 9,
+    "category": "inside",
+    "subtitle": "움직이는 삶",
+    "title": "라코스테 무브먼트 폴로",
+    "content": "구김 방지 소재와 편안한 착용이 가능한 다기능 폴로셔츠 당신의 페이스와 스타일에 맞춰진 새로운 에센셜 디자인.항상 움직이는 당신을 위해 준비한 라코스테 무브먼트 폴로를 경험해보세요.",
+    "url": "https://i.postimg.cc/1tfntt0m/brian-asare-u-IT9-Vk0-HHJE-unsplash.jpg"
+  },
+  {
+    "id": 10,
+    "category": "inside",
+    "subtitle": "라코스테의 비밀, 옷감",
+    "title": "라코스테의 압도적 노하우",
+    "content": "생산 과정과 프랑스 공장에서 유니크한 작물까지, 라코스테의 폴로의 가장 처음을 소개합니다.",
+    "url": "https://i.postimg.cc/sx6d6jQL/j-williams-Ns7-QZx-F198g-unsplash.jpg"
   }
 ]
