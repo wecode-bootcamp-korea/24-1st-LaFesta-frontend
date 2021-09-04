@@ -1,4 +1,13 @@
 .productDetail {
+  .loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background: #fff;
+    z-index: 1000; /* 이 값으로 레이어의 위치를 조정합니다. */
+  }
   .nav {
     height: 80px;
     background-color: red;
@@ -119,13 +128,7 @@
       }
     }
 
-    .color1,
-    .color2,
-    .color3,
-    .color4,
-    .color5,
-    .color6,
-    .color7 {
+    .circle {
       width: 20px;
       height: 20px;
       border-radius: 50%;
@@ -133,7 +136,7 @@
     }
 
     .color1 {
-      background-color: #3a483b;
+      background-color: red;
     }
 
     .color2 {
@@ -178,7 +181,7 @@
 
         button {
           color: white;
-          transition: all 0.5s ease-in-out 0.1s;
+          transition: 0.5s;
         }
       }
     }
@@ -192,10 +195,10 @@
       text-align: center;
       border-radius: 50px;
       border: #cecece 1px solid;
+      transition: 0.5s;
 
       button {
         color: white;
-        transition: 0.5s;
       }
 
       &:hover {
@@ -254,7 +257,8 @@
       .productDetailText {
         margin-top: 20px;
         color: #717171;
-        ul {
+
+        li {
           margin-bottom: 10px;
         }
       }
@@ -268,7 +272,6 @@
 
   .productMainThird {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     margin-bottom: 60px;
 

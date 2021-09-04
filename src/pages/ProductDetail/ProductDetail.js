@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import ProductPhoto from './ProductPhoto';
 import './ProductDetail.scss';
-import Footer from '../../components/Footer/Footer';
 class ProductDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ProductInfoList: [],
+      productInfoList: [],
       imageNum: 0,
     };
   }
-  // /data/productData.json
+
   componentDidMount() {
     fetch('/data/productData.json', {
       method: 'GET',
@@ -17,12 +17,13 @@ class ProductDetail extends Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          ProductInfoList: data.results,
+          productInfoList: data.results,
         });
       });
   }
+
   render() {
-    const { ProductInfoList } = this.state;
+    const { productInfoList } = this.state;
     return (
       <>
         <div className="productDetail">
@@ -30,22 +31,22 @@ class ProductDetail extends Component {
           <div className="list">
             <span className="home">홈</span>&nbsp;&nbsp;/&nbsp;&nbsp;
             <span className="category">
-              {ProductInfoList && ProductInfoList.section}
+              {productInfoList && productInfoList.section}
             </span>
             &nbsp; / &nbsp;
             <span className="category">
-              {ProductInfoList && ProductInfoList.category}
+              {productInfoList && productInfoList.category}
             </span>
             &nbsp; / &nbsp;
-            {ProductInfoList && ProductInfoList.name}
+            {productInfoList && productInfoList.name}
           </div>
           <div className="productMain">
             <div className="productMainFirst">
-              <div class="slideBox">
+              <div className="slideBox">
                 <img
                   src={
-                    ProductInfoList.images &&
-                    ProductInfoList.images[0].image_url
+                    productInfoList.images &&
+                    productInfoList.images[0].image_url
                   }
                   className="miniPhoto"
                   onClick={() => {
@@ -56,92 +57,65 @@ class ProductDetail extends Component {
                   alt="d"
                 ></img>
                 <div
-                  class="slideList"
+                  className="slideList"
                   style={{
                     transform: `translate3d(
                 ${this.state.imageNum * -684}px, 0px, 0px`,
                   }}
                 >
-                  <span class="slide_content slide01">
-                    <img
-                      alt="productPhoto"
-                      className="productPhoto"
-                      src={
-                        ProductInfoList.images &&
-                        ProductInfoList.images[0].image_url
-                      }
-                    ></img>
+                  <span className="slide_content slide01">
+                    <ProductPhoto
+                      productInfoList={this.state.productInfoList}
+                      index="0"
+                    />
                   </span>
-                  <span class="slide_content slide02">
-                    <img
-                      alt="productPhoto"
-                      className="productPhoto"
-                      src={
-                        ProductInfoList.images &&
-                        ProductInfoList.images[1].image_url
-                      }
-                    ></img>
+                  <span className="slide_content slide02">
+                    <ProductPhoto
+                      productInfoList={this.state.productInfoList}
+                      index="1"
+                    />
                   </span>
-                  <span class="slide_content slide03">
-                    <img
-                      alt="productPhoto"
-                      className="productPhoto"
-                      src={
-                        ProductInfoList.images &&
-                        ProductInfoList.images[0].image_url
-                      }
-                    ></img>
+                  <span className="slide_content slide03">
+                    <ProductPhoto
+                      productInfoList={this.state.productInfoList}
+                      index="0"
+                    />
                   </span>
                 </div>
               </div>
               <div className="productText">
                 <div className="productName">
-                  {ProductInfoList && ProductInfoList.name}
+                  {productInfoList && productInfoList.name}
                 </div>
                 <div className="productPrice">
                   <div className="productColor">
-                    {ProductInfoList.colors && ProductInfoList.colors[0].name}
+                    {productInfoList.colors && productInfoList.colors[0].name}
                     &nbsp; • &nbsp;
-                    {ProductInfoList.colors && ProductInfoList.colors[0].name}
+                    {productInfoList.colors && productInfoList.colors[0].name}
                   </div>
                   <div>
-                    {ProductInfoList.price &&
-                      ProductInfoList.price.replace(
-                        /\B(?=(\d{3})+(?!\d))/g,
-                        ','
-                      )}
+                    {productInfoList.price &&
+                      productInfoList.price
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                     원
                   </div>
                 </div>
                 <div className="bouns">카드 혜택보기</div>
                 <div className="colorNumber">7 개의 색상</div>
                 <div className="colorBox">
-                  <div className="outCircle">
-                    <div className="color1"></div>
-                  </div>
-                  <div className="outCircle">
-                    <div className="color2"></div>
-                  </div>
-                  <div className="outCircle">
-                    <div className="color3"></div>
-                  </div>
-                  <div className="outCircle">
-                    <div className="color4"></div>
-                  </div>
-                  <div className="outCircle">
-                    <div className="color5"></div>
-                  </div>
-                  <div className="outCircle">
-                    <div className="color6"></div>
-                  </div>
-                  <div className="outCircle">
-                    <div className="color7"></div>
-                  </div>
+                  {[1, 2, 3, 4, 5, 6, 7].map(circle => {
+                    return (
+                      <div className="outCircle" key={circle}>
+                        <div className={`color${circle} circle`}></div>
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className="productSize">
                   <button>
                     SIZE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <i class="fas fa-chevron-right"></i>
+                    <i className="fas fa-chevron-right"></i>
                   </button>
                 </div>
                 <div className="productPick">
@@ -153,7 +127,7 @@ class ProductDetail extends Component {
                   가능하더라도 장바구니에 제품을 담을 수 없습니다
                 </p>
                 <p className="check">
-                  <i class="fas fa-truck-moving"></i>&nbsp;당일배송 가능여부
+                  <i className="fas fa-truck-moving"></i>&nbsp;당일배송 가능여부
                   확인하기 (사이즈를 선택해주세요)
                 </p>
               </div>
@@ -163,89 +137,45 @@ class ProductDetail extends Component {
                 <div className="detailLook">상세히 보기 </div>
                 <div className="productCode">제품코드. PH731E-51N</div>
                 <div className="productText">
-                  {ProductInfoList && ProductInfoList.description_summary}
+                  {productInfoList && productInfoList.description_summary}
                 </div>
-                <li className="productDetailText">
-                  <ul>
-                    -
-                    {ProductInfoList.description_extra_information &&
-                      ProductInfoList.description_extra_information.split(
-                        ','
-                      )[0]}
-                  </ul>
-                  <ul>
-                    -
-                    {ProductInfoList.description_extra_information &&
-                      ProductInfoList.description_extra_information.split(
-                        ','
-                      )[1]}
-                  </ul>
-                  <ul>
-                    -
-                    {ProductInfoList.description_extra_information &&
-                      ProductInfoList.description_extra_information.split(
-                        ','
-                      )[2]}
-                  </ul>
-                  <ul>
-                    -
-                    {ProductInfoList.description_extra_information &&
-                      ProductInfoList.description_extra_information.split(
-                        ','
-                      )[3]}
-                  </ul>
-                  <ul>
-                    -
-                    {ProductInfoList.description_extra_information &&
-                      ProductInfoList.description_extra_information.split(
-                        ','
-                      )[4]}
-                  </ul>
-                  <ul>
-                    -
-                    {ProductInfoList.description_extra_information &&
-                      ProductInfoList.description_extra_information.split(
-                        ','
-                      )[5]}
-                  </ul>
-                </li>
+                <ul className="productDetailText">
+                  {[1, 2, 3, 4, 5, 6].map(list => {
+                    return (
+                      <li>
+                        -
+                        {productInfoList.description_extra_information &&
+                          productInfoList.description_extra_information.split(
+                            ','
+                          )[list - 1]}
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
-              <img
-                className="productPhoto"
-                alt="productPhoto"
-                src={
-                  ProductInfoList.images && ProductInfoList.images[0].image_url
-                }
-              ></img>
+              <ProductPhoto
+                productInfoList={this.state.productInfoList}
+                index="0"
+              />
             </div>
             <div className="productMainThird">
-              <img
-                className="productPhoto"
-                alt="productPhoto"
-                src={
-                  ProductInfoList.images && ProductInfoList.images[1].image_url
-                }
-              ></img>
-              <img
-                className="productPhoto"
-                alt="productPhoto"
-                src={
-                  ProductInfoList.images && ProductInfoList.images[1].image_url
-                }
-              ></img>
+              <ProductPhoto
+                productInfoList={this.state.productInfoList}
+                index="1"
+              />
+              <ProductPhoto
+                productInfoList={this.state.productInfoList}
+                index="1"
+              />
             </div>
             <div className="productMainFourth">
-              <img
-                className="productPhoto"
-                alt="productPhoto"
-                src={
-                  ProductInfoList.images && ProductInfoList.images[1].image_url
-                }
-              ></img>
+              <ProductPhoto
+                productInfoList={this.state.productInfoList}
+                index="1"
+              />
             </div>
           </div>
         </div>
-        <Footer />
       </>
     );
   }
