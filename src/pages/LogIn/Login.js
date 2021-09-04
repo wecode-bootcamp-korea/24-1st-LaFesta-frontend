@@ -24,7 +24,7 @@ class Login extends Component {
       this.state.id.includes('.com') &&
       this.state.pw.length >= 8
     ) {
-      fetch('http://10.58.2.219:8000/postings/posting', {
+      fetch('http://172.30.1.25:8000/users/signin', {
         method: 'POST',
         body: JSON.stringify({
           email: id,
@@ -33,9 +33,9 @@ class Login extends Component {
       })
         .then(response => response.json())
         .then(response => {
-          if (response.message === 'SUCCESS') {
+          if (response.MESSAGE === 'SUCCESS') {
             this.props.history.push('/mainPage');
-          } else if (response.message === 'INVALID_USER') {
+          } else if (response.MESSAGE === 'INVALID_USER') {
             alert('이메일과 비밀번호를 다시 확인해주세요');
             this.setState({ id: '' });
             this.setState({ pw: '' });
