@@ -12,7 +12,13 @@ class ProductList extends Component {
     this.state = {
       productData: [],
       productStyle: '',
+      filterMoveNum: 1,
+      grayDisplayNum: -1,
     };
+    // this.compareBy_ASC.bind(this);
+    // this.sortBy_ASC.bind(this);
+    // this.compareBy_DESC.bind(this);
+    // this.sortBy_DESC.bind(this);
   }
 
   componentDidMount() {
@@ -29,10 +35,56 @@ class ProductList extends Component {
     this.setState({ productStyle: event.target.dataset.category });
   };
 
+  hideFilter = num => {
+    this.setState({
+      filterMoveNum: num,
+    });
+  };
+
+  applygrayDisplay = num => {
+    this.setState({
+      grayDisplayNum: num,
+    });
+  };
+
+  // compareBy_ASC(key) {
+  //   return function (a, b) {
+  //     var x = parseInt(a[key]);
+  //     var y = parseInt(b[key]);
+
+  //     if (x < y) return -1;
+  //     if (x > y) return 1;
+  //     return 0;
+  //   };
+  // }
+
+  // sortBy_ASC(key) {
+  //   let arrayCopy = [...this.state.productData];
+  //   arrayCopy.sort(this.compareBy_ASC(key));
+  //   this.setState({ productData: arrayCopy });
+  // }
+
+  // compareBy_DESC(key) {
+  //   return function (a, b) {
+  //     var x = parseInt(a[key]);
+  //     var y = parseInt(b[key]);
+
+  //     if (x > y) return -1;
+  //     if (x < y) return 1;
+  //     return 0;
+  //   };
+  // }
+
+  // sortBy_DESC(key) {
+  //   let arrayCopy = [...this.state.productData];
+  //   arrayCopy.sort(this.compareBy_DESC(key));
+  //   this.setState({ productData: arrayCopy });
+  // }
+
   render() {
     const { productData, productStyle } = this.state;
     const searchStyle = productData.filter(data =>
-      data.productName.includes(productStyle)
+      data.product_Style.includes(productStyle)
     );
 
     return (
@@ -47,6 +99,12 @@ class ProductList extends Component {
               <span>의류</span>
             </div>
             <header className="categoryHeader">
+              <div
+                className="grayDisplay"
+                style={{
+                  zIndex: `this.state.grayDisplayNum`,
+                }}
+              ></div>
               <img
                 className="categoryIntroPic"
                 alt="categoryIntroImage"
@@ -65,10 +123,14 @@ class ProductList extends Component {
                 </div>
                 <div className="styleCategory">
                   <div className="subCategory">
-                    <div data-category="폴로" onClick={this.handleChange}>
+                    <div
+                      className="resetStyleBtn"
+                      data-category=""
+                      onClick={this.handleChange}
+                    >
                       폴로
                     </div>
-                    <div data-category="PARIS" onClick={this.handleChange}>
+                    <div data-category="파리폴로" onClick={this.handleChange}>
                       파리폴로
                     </div>
                     <div data-category="클래식핏" onClick={this.handleChange}>
@@ -89,7 +151,12 @@ class ProductList extends Component {
                   <div className="styleFilterResult">
                     {searchStyle.length}개의 결과
                   </div>
-                  <div className="filterAndAlign">
+                  <div
+                    className="filterAndAlign"
+                    onClick={() => {
+                      this.setState({ filterMoveNum: 0.51 });
+                    }}
+                  >
                     <i className="fas fa-sliders-h"></i> 필터 및 정렬
                   </div>
                 </div>
@@ -125,7 +192,13 @@ class ProductList extends Component {
           </div>
         </div>
         <Footer />
-        <ProductFilter />;
+        <ProductFilter
+          filterMoveNum={this.state.filterMoveNum}
+          hideFilter={this.hideFilter}
+          searchStyle={searchStyle}
+          priceASC={this.sortBy_ASC}
+          priceDESC={this.sortBy_DESC}
+        />
       </div>
     );
   }

@@ -1,34 +1,42 @@
 .ProductFilter {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  transition: 0.7s linear;
+
   .filterContainer {
-    padding: 0 5%;
-    width: 40%;
-    border: 1px solid black;
+    padding: 0 90px;
+    background-color: white;
+    width: 49%;
 
     .filterTitle {
-      padding: 30px 0;
+      padding: 5% 0;
       text-align: center;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
 
       .closeBtn {
         text-align: right;
+        cursor: pointer;
       }
     }
 
     .alignContainer {
-      padding: 20px 0;
+      padding: 5% 0;
 
       .titleAlign {
         padding-bottom: 20px;
         color: #bebebe;
-        font-size: 11px;
+        font-size: 12px;
       }
 
       .lowerPriceAlign,
       .higherPriceAlign {
         display: flex;
         justify-content: space-between;
-        padding-bottom: 20px;
+        padding-bottom: 5%;
         color: #757575;
 
         & input {
@@ -40,14 +48,14 @@
 
     .subFilter {
       .subFilterTitle {
-        padding-bottom: 20px;
+        padding-bottom: 5%;
         color: #bebebe;
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
       }
 
       .colorFilter {
-        padding-bottom: 20px;
+        padding-bottom: 5%;
         font-size: 15px;
         color: #757575;
       }
@@ -55,7 +63,7 @@
       .colorBtn {
         display: flex;
         justify-content: space-around;
-        padding-bottom: 25px;
+        padding-bottom: 8%;
         width: 200px;
 
         & li {
@@ -90,7 +98,7 @@
       }
 
       .fitFilter {
-        padding-bottom: 20px;
+        padding-bottom: 8%;
         color: #757575;
       }
 
@@ -98,7 +106,7 @@
         & li {
           display: flex;
           justify-content: space-between;
-          padding-bottom: 20px;
+          padding-bottom: 5%;
           color: #bebebe;
 
           & input {
@@ -112,11 +120,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 0;
+      padding: 30px 0;
       border-top: 1px solid #bebebe;
 
       .eraseAll {
         border-bottom: 1px solid black;
+        cursor: pointer;
       }
 
       .filterResult {
@@ -127,6 +136,7 @@
         font-size: 15px;
         font-weight: 340;
         color: white;
+        cursor: pointer;
       }
     }
   }
