@@ -49,7 +49,7 @@ class MainPage extends Component {
     }
   };
   componentDidMount() {
-    fetch('http://localhost:3000/data/mainData-songhyun.json')
+    fetch('http://localhost:3001/data/mainData-songhyun.json')
       .then(res => res.json())
       .then(saleItems => {
         this.setState({
@@ -70,15 +70,12 @@ class MainPage extends Component {
       saleMargin,
       insideMargin,
     } = this.state;
-
     const saleStyle = {
       marginLeft: saleMargin,
     };
-
     const insideStyle = {
       marginLeft: insideMargin,
     };
-    
     console.log('render margin >>', saleMargin);
     return (
       <main>
