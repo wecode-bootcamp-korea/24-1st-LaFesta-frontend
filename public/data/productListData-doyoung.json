@@ -1,0 +1,50 @@
+[{
+    "id": 1,
+    "productName": "(남성)프렌치 레귤러핏 반팔 폴로",
+    "productColors": 1,
+    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPrice": 10000
+  },
+  {
+    "id": 2,
+    "productName": "(남성)라코스테 반팔 PARIS 폴로",
+    "productColors": 2,
+    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPrice": 20000
+  },
+  {
+    "id": 3,
+    "productName": "(남성)라코스테 클래식핏 오가닉 코튼 폴로",
+    "productColors": 3,
+    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPrice": 30000
+  },
+  {
+    "id": 4,
+    "productName": "(남성)헤리티지 슬림핏 배색 코튼 피케 폴로",
+    "productColors": 4,
+    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPrice": 40000
+  },
+  {
+    "id": 5,
+    "productName": "(남성)라코스테 반팔 폴로",
+    "productColors": 5,
+    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPrice": 50000
+  },
+  {
+    "id": 6,
+    "productName": "(남성)라코스테 반팔 폴로",
+    "productColors": 6,
+    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPrice": 60000
+  },
+  {
+    "id": 7,
+    "productName": "(남성)반팔폴로 폴로 핏",
+    "productColors": 7,
+    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+    "productPrice": 70000
+  }
+]

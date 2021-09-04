@@ -1,0 +1,69 @@
+.signUpCertification {
+  .backgroudBanner {
+    width: 100%;
+    background-color: #206648;
+    padding: 100px 0;
+  }
+
+  .container {
+    margin: 0 170px;
+    background-color: white;
+    padding: 20px 50px 50px 50px;
+
+    .nav {
+      font-size: 20px;
+      border-bottom: #e9e9e9 2px solid;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+
+    .usercertification {
+      margin-bottom: 10px;
+    }
+
+    .age {
+      font-size: 8px;
+      margin-bottom: 10px;
+    }
+
+    input {
+      margin-right: 5px;
+    }
+
+    .detail {
+      font-size: 10px;
+    }
+
+    .one {
+      margin-bottom: 25px;
+    }
+
+    .two {
+      margin-top: 25px;
+    }
+
+    .btn {
+      text-align: right;
+    }
+
+    .certificationBnt {
+      background-color: rgb(32, 102, 72);
+      width: 150px;
+      height: 50px;
+      font-size: 15px;
+      color: white;
+      border-style: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #454545;
+        transition: all 0.5s ease-in-out 0.1s;
+      }
+    }
+
+    .phone {
+      margin-right: 15px;
+    }
+  }
+}

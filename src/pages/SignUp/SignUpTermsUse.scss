@@ -1,0 +1,123 @@
+.signUpTermsUse {
+  .backgroudBanner {
+    width: 100%;
+    background-color: #206648;
+    padding: 100px 0;
+  }
+
+  .container {
+    margin: 0 170px;
+    background-color: white;
+    padding: 20px 50px;
+  }
+
+  .nav {
+    font-size: 20px;
+    border-bottom: #e9e9e9 2px solid;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .users {
+    margin-bottom: 40px;
+
+    .user {
+      background-color: #f8f8f8;
+      font-size: 13px;
+      border-bottom: 1px #e9e9e9 solid;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .detail {
+      color: #606060;
+      cursor: pointer;
+    }
+  }
+
+  .userRulePlusOff {
+    display: none;
+  }
+
+  .userRulePlusOn {
+    display: block;
+    padding: 20px 60px;
+    text-align: left;
+    color: #797979;
+    font-size: 14px;
+
+    .title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+  }
+
+  .userInfoPlusOff {
+    display: none;
+  }
+
+  .userInfoPlusOn {
+    display: block;
+    padding: 20px 60px;
+    text-align: left;
+    color: #797979;
+    font-size: 14px;
+
+    .title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+  }
+  input {
+    margin: 8px;
+  }
+
+  .check {
+    font-size: 8px;
+  }
+
+  .userAgreement {
+    margin-bottom: 35px;
+  }
+  table {
+    border: 1px solid #444444;
+    border-collapse: collapse;
+    font-size: 8px;
+    margin-bottom: 10px;
+
+    td,
+    th {
+      padding: 5px;
+      width: 400px;
+      text-align: center;
+      border: 1px solid #444444;
+    }
+  }
+  .btn {
+    text-align: right;
+  }
+  .nextBtn {
+    background-color: rgb(32, 102, 72);
+    width: 150px;
+    height: 50px;
+    font-size: 15px;
+    color: white;
+    border-style: none;
+    cursor: pointer;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: #454545;
+      transition: all 0.5s ease-in-out 0.1s;
+    }
+  }
+}

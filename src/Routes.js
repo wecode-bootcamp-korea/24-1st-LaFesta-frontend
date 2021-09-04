@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
 import Footer from './components/Footer/Footer';
 import Nav from './components/Nav/Nav';
-
 import Cart from './pages/Cart/Cart';
 import MainPage from './pages/MainPage/MainPage';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
