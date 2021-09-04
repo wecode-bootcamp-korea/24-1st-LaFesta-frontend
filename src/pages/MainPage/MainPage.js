@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './MainPage.scss';
 
+// 1. The Lacoste World MockData()
+// 2. 슬라이드쇼 리스트 숫자 레이아웃 재배치()
+// 3. 첫 번째 아이템/마지막 아이템 버튼 클릭 안되게 막기()
+// 2. 글씨 오타 검토 ()
+// 3. Inside 레이아웃 재배치()
 class MainPage extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +55,7 @@ class MainPage extends Component {
     }
   };
   componentDidMount() {
-    fetch('http://localhost:3001/data/mainData-songhyun.json')
+    fetch('http://localhost:3003/data/mainData-songhyun.json')
       .then(res => res.json())
       .then(saleItems => {
         this.setState({
@@ -76,29 +82,23 @@ class MainPage extends Component {
     const insideStyle = {
       marginLeft: insideMargin,
     };
-    console.log('render margin >>', saleMargin);
+
     return (
       <main>
         <section className="newProductWrapper">
-          <figure>
-            <img
-              src="https://i.postimg.cc/xCSbQ4kC/lena-kudryavtseva-rpi-H-Z9ohmk-unsplash.jpg"
-              alt="신상품"
-            />
-            <figcaption className="newProductContent">
-              <h2>Back to School</h2>
-              <strong>신상품 아이템 구매시,</strong>
-              <p>혜택1. 구매금액별 사은품 증정</p>
-              <p>혜택2. 신규가입시 1만원 할인</p>
-              <button type="button" className="plusBtn">
-                자세히 보기
-              </button>
-            </figcaption>
-          </figure>
+          <div className="newProductContent">
+            <h2>Back to School</h2>
+            <strong>신상품 아이템 구매시,</strong>
+            <p>혜택1. 구매금액별 사은품 증정</p>
+            <p>혜택2. 신규가입시 1만원 할인</p>
+            <button type="button" className="plusBtn">
+              자세히 보기
+            </button>
+          </div>
         </section>
         <section className="newProductSaleWrapper">
           <div>
-            <h3>당신만의 라코스테</h3>
+            <h3>당신만의 라페스타</h3>
             <ol className="indications">
               <li>
                 <button className="prevBtn" onClick={this.handlePrevClick}>
@@ -126,37 +126,34 @@ class MainPage extends Component {
             </ol>
           </div>
           <ul className="newProducts" style={saleStyle}>
-            {saleList.map(saleItem => {
+            {saleList.map((saleItem, index) => {
               return (
-                <li key={saleItem.id}>
-                  <a>
+                <li key={`${index}`}>
+                  <Link>
                     <figure className="newProductConent">
                       <img src={saleItem.url} alt={saleItem.title} />
                       <figcaption>
                         <strong>{saleItem.title}</strong>
                       </figcaption>
                     </figure>
-                  </a>
+                  </Link>
                 </li>
               );
             })}
           </ul>
         </section>
-        <section>
-          <div className="newCollectionWrapper">
-            <img
-              src="https://i.postimg.cc/x8NVZp5T/photo-1597278318687-1d7e1e4e320e.jpg"
-              alt="신상품 컬렉션"
-            />
-
-            <div className="newCollectionContent">
-              <h2>FW 21 신상품 컬렉션! 'LUCKY7' 할인코드</h2>
-              <strong>
-                FW21 신상품 구매시 'LUCKY7' 코드를 입력하시면 멤버십 전용 7%
-                즉시 할인 혜택을 드립니다
-              </strong>
-              <button type="button" className="buyBtn">
-                구매하기
+        <section className="newCollectionWrapper">
+          <div className="newCollectionBg" />
+          <div className="newCollectionContent">
+            <span>LAST CHANCE</span>
+            <h2>SS21 시즌오프 세일 연장</h2>
+            <span>마지막 시즌 오프 세일 찬스 놓치지 마세요!</span>
+            <div className="btnGroup">
+              <button type="button" className="saleManBtn">
+                남성 세일
+              </button>
+              <button type="button" className="saleWomenBtn">
+                여성 세일
               </button>
             </div>
           </div>
@@ -165,10 +162,10 @@ class MainPage extends Component {
           <h2>The Lacoste World</h2>
           <ul className="lafeWorlds">
             <li>
-              <a>
+              <Link>
                 <figure>
                   <img
-                    src="https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
+                    src="https://i.postimg.cc/1tfntt0m/brian-asare-u-IT9-Vk0-HHJE-unsplash.jpg"
                     alt="라이브 컬렉션"
                   />
                   <figcaption className="lafestWorlContent">
@@ -177,10 +174,10 @@ class MainPage extends Component {
                     <button type="button">구매하기</button>
                   </figcaption>
                 </figure>
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link>
                 <figure>
                   <img
                     src="https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
@@ -192,15 +189,13 @@ class MainPage extends Component {
                     <button type="button">구매하기</button>
                   </figcaption>
                 </figure>
-              </a>
+              </Link>
             </li>
-          </ul>
-          <ul className="lafeWorlds">
             <li>
-              <a>
+              <Link>
                 <figure>
                   <img
-                    src="https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
+                    src="https://i.postimg.cc/43KdwYtS/kristian-egelund-v-Jg-JLz-Wm-XDA-unsplash-1.jpg"
                     alt="신발 컬렉션"
                   />
                   <figcaption className="lafestWorlContent">
@@ -209,21 +204,22 @@ class MainPage extends Component {
                     <button type="button">구매하기</button>
                   </figcaption>
                 </figure>
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link>
                 <figure>
                   <img
-                    src="https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
-                    alt="여성 신상품"
+                    src="https://i.postimg.cc/NfXHGrSk/maureen-de-wit-Yx-ZHKf-CPVPU-unsplash.jpg"
+                    alt="새로운  액세사리"
                   />
                   <figcaption className="lafestWorlContent">
                     <h3>라코스테 액세사리 : 새로운 스타일</h3>
                     <strong>신상품 7% 혜택</strong>
+                    <button type="button">구매하기</button>
                   </figcaption>
                 </figure>
-              </a>
+              </Link>
             </li>
           </ul>
         </section>
@@ -263,7 +259,7 @@ class MainPage extends Component {
             {insideList.map(insideItem => {
               return (
                 <li key={insideItem.id}>
-                  <a>
+                  <Link>
                     <figure className="insideContent">
                       <img src={insideItem.url} alt={insideItem.title} />
                       <figcaption>
@@ -275,7 +271,7 @@ class MainPage extends Component {
                         </button>
                       </figcaption>
                     </figure>
-                  </a>
+                  </Link>
                 </li>
               );
             })}

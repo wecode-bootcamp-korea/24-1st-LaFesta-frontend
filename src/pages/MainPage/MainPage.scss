@@ -1,37 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
 main {
   .newProductWrapper {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 536px;
+    background: center/cover url('https://i.postimg.cc/xCSbQ4kC/lena-kudryavtseva-rpi-H-Z9ohmk-unsplash.jpg');
     color: #ffff;
 
-    h2 {
-      font-size: 35px;
-      font-weight: 600;
-    }
-
-    img {
-      width: 100%;
-      height: 500px;
-    }
-
     .newProductContent {
-      position: absolute;
-      bottom: 10%;
-      left: 10%;
+      display: flex;
+      flex-direction: column;
+      margin: 4.5% 0 0 5%;
       font-size: 12px;
 
+      h2 {
+        font-family: 'Rubik', sans-serif;
+        font-size: 36px;
+        cursor: pointer;
+      }
+
+      strong {
+        margin-top: 5px;
+      }
+
+      p {
+        &:last-of-type {
+          margin-bottom: 13px;
+        }
+      }
+
       .plusBtn {
-        margin-top: 10px;
-        padding: 10px 20px;
+        width: 7%;
+        margin-bottom: 4%;
+        padding: 8px 0;
         border: 1px solid #fff;
         border-radius: 20px;
         font-size: 12px;
         background: #fff;
         cursor: pointer;
+        transition: all 0.3s ease-in-out;
 
         &:hover {
-          border: 1px solid #292929;
           background: #292929;
-          color: #fff;
+          border-color: #545454;
+          color: white;
         }
       }
     }
@@ -42,13 +58,16 @@ main {
     display: flex;
     flex-direction: column;
     padding: 0 50px;
+    margin-bottom: 4.5%;
 
     div {
       display: flex;
-      margin: 20px 0;
+      margin-top: 4.5%;
+      margin-bottom: 1.5%;
 
       h3 {
-        font-size: 20px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 19px;
         font-weight: 600;
       }
 
@@ -56,11 +75,11 @@ main {
         display: flex;
         margin-left: auto;
         font-size: 17px;
+        font-weight: 500;
+        font-family: monospace;
         cursor: pointer;
 
-        .startCount {
-          margin-left: 10px;
-        }
+        .startCount {}
 
         .center {
           margin: 0 5px;
@@ -78,19 +97,28 @@ main {
       margin-left: 0;
       overflow: hidden;
 
+      li {
+        margin-right: 4%;
+      }
+
       .newProductConent {
-        width: 420px;
-        height: 100%;
+        width: 353px;
+        height: 640px;
       }
 
       img {
-        width: 83%;
-        height: 90%;
+        width: 100%;
+        height: 95%;
       }
 
       strong {
         font-size: 12px;
         text-decoration: underline;
+        color: #545454;
+
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
   }
@@ -98,9 +126,10 @@ main {
   .newCollectionWrapper {
     display: flex;
 
-    img {
-      width: 50%;
-      height: 500px;
+    .newCollectionBg {
+      width: 60%;
+      height: 600px;
+      background: center/cover url('https://i.postimg.cc/wjpW1KzG/martynas-musteikis-v-F5p-Yc-Nw24-Y-unsplash.jpg');
     }
 
     .newCollectionContent {
@@ -109,78 +138,202 @@ main {
       justify-content: center;
       padding: 0 100px;
 
+      span {
+        &:first-of-type {
+          letter-spacing: 2px;
+          font-size: 7px;
+          font-weight: 600;
+          color: #767676;
+        }
+
+        &:last-of-type {
+          margin-top: 3px;
+          font-size: 11px;
+          color: #545454;
+        }
+      }
+
       h2 {
-        width: 180px;
         font-size: 18px;
         font-weight: 600;
+        font-family: 'Rubik', sans-serif;
+        color: #292929;
       }
 
-      strong {
-        width: 62%;
-        margin-top: 10px;
-      }
-
-      .buyBtn {
-        width: 16%;
-        padding: 6px 0;
-        margin-top: 15px;
+      button {
+        margin: 15px 0 0 11px;
+        padding: 6px 15px;
         border: 1px solid #292929;
         border-radius: 20px;
         background: #292929;
+        font-size: 11px;
         color: #fff;
         cursor: pointer;
+        transition: all 0.3s ease-in-out;
 
         &:hover {
-          border: 1px solid #292929;
+          border: 1px solid #e5e5e5;
           background: #fff;
           color: #292929;
         }
+      }
+
+      .saleManBtn {
+        margin-left: 0;
       }
     }
   }
 
   .lafestWorldWrapper {
-    padding: 20px 30px;
+    padding-top: 6.5%;
+
 
     h2 {
-      margin: 20px 0 20px 82px;
+      font-family: 'Rubik', sans-serif;
+      margin: 20px 0 20px 50px;
       font-size: 18px;
-      font-weight: 600;
     }
 
+    li {
+
+      &:nth-of-type(2n) {
+        padding-left: 57px;
+        padding-bottom: 50px;
+      }
+    }
 
     .lafeWorlds {
       display: flex;
+      flex-wrap: wrap;
       position: relative;
-      margin-left: 90px;
+      margin: 0 3%;
 
-      img {
-        max-width: 90%;
-        margin-bottom: 50px;
+      figure {
+        width: 683px;
+        height: 500px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+
+        .lafestWorlContent {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          bottom: 26%;
+          left: 6%;
+
+          h3 {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+          }
+
+          strong {
+            font-size: 13px;
+          }
+
+          button {
+            width: 80px;
+            margin-top: 17px;
+            padding: 6px 0;
+            border-radius: 20px;
+            font-size: 12px;
+            border-color: #e5e5e5;
+            background: #292929;
+            color: #fff;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+              // border: 1px solid #292929;
+              background: #fff;
+              color: #292929;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.lafestInsideWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0 80px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f4f4f4;
+
+  div {
+    display: flex;
+    margin: 30px 0;
+
+    h3 {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .indications {
+      display: flex;
+      margin-left: auto;
+      font-size: 17px;
+      cursor: pointer;
+
+      .startCount {
+        margin-left: 10px;
       }
 
-      .lafestWorlContent {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        bottom: 90px;
-        margin-left: 40px;
+      .center {
+        margin: 0 5px;
+      }
+
+      .nextBtn {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .insides {
+    display: flex;
+    overflow: hidden;
+    margin-left: 0;
+
+    img {
+      width: 800px;
+      height: 500px;
+    }
+
+    .insideContent {
+      display: flex;
+      align-items: flex-end;
+      width: calc(40 * (100vw - 20px) / 40);
+
+      figcaption {
+        width: 700px;
+        margin-left: 50px;
+
+        span {
+          font-size: 10px;
+          font-weight: 600;
+        }
 
         h3 {
-          font-size: 15px;
+          font-size: 20px;
           font-weight: 600;
         }
 
         strong {
-          margin-top: 5px;
-          font-size: 13px;
+          font-size: 12px;
         }
 
         button {
-          margin-top: 5px;
+          display: block;
+          width: 23%;
+          margin: 20px 0;
           padding: 8px 0;
           border-radius: 20px;
-          font-size: 12px;
           background: #292929;
           color: #fff;
           cursor: pointer;
@@ -189,98 +342,6 @@ main {
             border: 1px solid #292929;
             background: #fff;
             color: #292929;
-          }
-        }
-      }
-    }
-
-  }
-
-  .lafestInsideWrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 0 80px;
-    border-bottom: 1px solid #e5e5e5;
-    background: #f4f4f4;
-
-    div {
-      display: flex;
-      margin: 30px 0;
-
-      h3 {
-        margin-top: 20px;
-        font-size: 20px;
-        font-weight: 600;
-      }
-
-      .indications {
-        display: flex;
-        margin-left: auto;
-        font-size: 17px;
-        cursor: pointer;
-
-        .startCount {
-          margin-left: 10px;
-        }
-
-        .center {
-          margin: 0 5px;
-        }
-
-        .nextBtn {
-          margin-left: 10px;
-        }
-      }
-    }
-
-    .insides {
-      display: flex;
-      overflow: hidden;
-      margin-left: 0;
-
-      img {
-        width: 800px;
-        height: 500px;
-      }
-
-      .insideContent {
-        display: flex;
-        align-items: flex-end;
-        width: calc(40 * (100vw - 20px) / 40);
-
-        figcaption {
-          width: 700px;
-          margin-left: 50px;
-
-          span {
-            font-size: 10px;
-            font-weight: 600;
-          }
-
-          h3 {
-            font-size: 20px;
-            font-weight: 600;
-          }
-
-          strong {
-            font-size: 12px;
-          }
-
-          button {
-            display: block;
-            width: 23%;
-            margin: 20px 0;
-            padding: 8px 0;
-            border-radius: 20px;
-            background: #292929;
-            color: #fff;
-            cursor: pointer;
-
-            &:hover {
-              border: 1px solid #292929;
-              background: #fff;
-              color: #292929;
-            }
           }
         }
       }
