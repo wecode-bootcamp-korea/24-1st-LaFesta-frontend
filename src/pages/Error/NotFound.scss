@@ -1,0 +1,30 @@
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  height: 350px;
+
+  h2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  p {
+    &:last-of-type {
+      margin-bottom: 20px;
+    }
+  }
+
+  a {
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 20px;
+
+    &:hover {
+      background: #000;
+      color: #fff;
+    }
+  }
+}

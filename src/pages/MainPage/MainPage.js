@@ -5,34 +5,49 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      margin: 0,
-      count: 1,
+      saleCount: 1,
+      insideCount: 1,
+      saleMargin: 0,
+      insideMargin: 0,
       saleList: [],
       insideList: [],
     };
   }
 
   handleNextClick = () => {
-    const { count, margin, saleList } = this.state;
+    const { saleCount, saleMargin, saleList } = this.state;
 
-    saleList.map(item => {
-      if (count < saleList.length) {
-        this.setState({ count: count + 1 });
-        this.setState({ margin: margin - 421 });
-      }
-    });
+    if (saleCount < saleList.length) {
+      this.setState({ saleCount: saleCount + 1 });
+      this.setState({ saleMargin: saleMargin - 421 });
+    }
   };
 
   handlePrevClick = () => {
-    const { count, margin, saleList } = this.state;
-    saleList.map(item => {
-      if (!count < saleList.length && count > 1) {
-        this.setState({ count: count - 1 });
-        this.setState({ margin: margin + 421 });
-      }
-    });
+    const { saleCount, saleMargin, saleList } = this.state;
+
+    if (!saleCount < saleList.length && saleCount > 1) {
+      this.setState({ saleCount: saleCount - 1 });
+      this.setState({ saleMargin: saleMargin + 421 });
+    }
   };
 
+  handleInSideNextClick = () => {
+    const { insideCount, insideMargin, insideList } = this.state;
+    if (insideCount < insideList.length) {
+      this.setState({ insideCount: insideCount + 1 });
+      this.setState({ insideMargin: insideMargin - 1516 });
+    }
+  };
+
+  handleInSidePrevClick = () => {
+    const { insideCount, insideMargin, insideList } = this.state;
+
+    if (!insideCount < insideList.length && insideCount > 1) {
+      this.setState({ insideCount: insideCount - 1 });
+      this.setState({ insideMargin: insideMargin + 1516 });
+    }
+  };
   componentDidMount() {
     fetch('http://localhost:3000/data/mainData-songhyun.json')
       .then(res => res.json())
@@ -47,11 +62,24 @@ class MainPage extends Component {
   }
 
   render() {
-    const { saleList, insideList, count, margin } = this.state;
-    const style = {
-      marginLeft: margin,
+    const {
+      saleList,
+      insideList,
+      saleCount,
+      insideCount,
+      saleMargin,
+      insideMargin,
+    } = this.state;
+
+    const saleStyle = {
+      marginLeft: saleMargin,
     };
 
+    const insideStyle = {
+      marginLeft: insideMargin,
+    };
+    
+    console.log('render margin >>', saleMargin);
     return (
       <main>
         <section className="newProductWrapper">
@@ -81,7 +109,7 @@ class MainPage extends Component {
                 </button>
               </li>
               <li className="startCount">
-                <span>{count}</span>
+                <span>{saleCount}</span>
               </li>
               <li className="center">
                 <span>/</span>
@@ -100,7 +128,7 @@ class MainPage extends Component {
               </li>
             </ol>
           </div>
-          <ul className="newProducts" style={style}>
+          <ul className="newProducts" style={saleStyle}>
             {saleList.map(saleItem => {
               return (
                 <li key={saleItem.id}>
@@ -137,7 +165,7 @@ class MainPage extends Component {
           </div>
         </section>
         <section className="lafestWorldWrapper">
-          <h3>The Lacoste World</h3>
+          <h2>The Lacoste World</h2>
           <ul className="lafeWorlds">
             <li>
               <a>
@@ -196,7 +224,6 @@ class MainPage extends Component {
                   <figcaption className="lafestWorlContent">
                     <h3>라코스테 액세사리 : 새로운 스타일</h3>
                     <strong>신상품 7% 혜택</strong>
-                    <button type="button">구매하기</button>
                   </figcaption>
                 </figure>
               </a>
@@ -208,27 +235,34 @@ class MainPage extends Component {
             <h3>Lacoste Inside</h3>
             <ol className="indications">
               <li>
-                <button className="prevBtn">
+                <button
+                  className="prevBtn"
+                  onClick={this.handleInSidePrevClick}
+                >
                   <i className="fas fa-chevron-left" />
                 </button>
               </li>
               <li className="startCount">
-                <span>{this.state.count}</span>
+                <span>{insideCount}</span>
               </li>
               <li className="center">
                 <span>/</span>
               </li>
               <li className="endCount">
-                <span>{this.state.insideList.length}</span>
+                <span>{insideList.length}</span>
               </li>
               <li>
-                <button type="button" className="nextBtn">
+                <button
+                  type="button"
+                  className="nextBtn"
+                  onClick={this.handleInSideNextClick}
+                >
                   <i className="fas fa-chevron-right" />
                 </button>
               </li>
             </ol>
           </div>
-          <ul className="insides">
+          <ul className="insides" style={insideStyle}>
             {insideList.map(insideItem => {
               return (
                 <li key={insideItem.id}>
