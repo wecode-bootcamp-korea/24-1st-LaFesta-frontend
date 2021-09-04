@@ -16,7 +16,9 @@ class SignUp extends Component {
       checkList: [false, false, false, false, false],
     };
   }
-
+  goToLogin = () => {
+    this.props.history.push('/login');
+  };
   goToNext = id => {
     this.state.checkList[0] &&
     this.state.checkList[1] &&
@@ -60,7 +62,7 @@ class SignUp extends Component {
       2: (
         <SignUpCertification goToNext={this.goToNext} next={this.state.next} />
       ),
-      3: <SignUpUserInfo />,
+      3: <SignUpUserInfo goToLogin={this.goToLogin} />,
     };
 
     return (

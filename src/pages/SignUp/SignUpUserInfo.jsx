@@ -16,45 +16,6 @@ class SignUpUserInfo extends Component {
       gender: '',
     };
   }
-  checkLogin = pw => {
-    const { name, email, mobile, year, month, date, pwCheck, gender } =
-      this.state;
-    const num = /[0-9]/;
-    const str = /[a-zA-Z]/;
-    const special = /[~!@#$%^&*()_+|<>?:{}]/;
-    gender &&
-    name &&
-    email.includes('@') &&
-    mobile.length === 11 &&
-    year > 1920 &&
-    year < 2007 &&
-    month > 0 &&
-    month < 13 &&
-    date > 0 &&
-    date < 32 &&
-    num.test(pw) &&
-    str.test(pw) &&
-    special.test(pw) &&
-    pw.length >= 8 &&
-    pwCheck === pw
-      ? this.signUp()
-      : this.setState(
-          {
-            name: '',
-            email: '',
-            mobile: '',
-            year: '',
-            month: '',
-            date: '',
-            pw: '',
-            pwCheck: '',
-            gender: '',
-          },
-          () => {
-            alert('회원가입 정보를 다시 확인해 주세요');
-          }
-        );
-  };
 
   handleInput = e => {
     const { value, name } = e.target;
@@ -66,7 +27,7 @@ class SignUpUserInfo extends Component {
   signUp = () => {
     const { gender, name, email, mobile, year, month, date, pw } = this.state;
     const deleteDash = /\-/g;
-    fetch('http://10.58.7.79:8000/users/signup', {
+    fetch('http://172.30.1.25:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         gender: gender,
@@ -79,15 +40,55 @@ class SignUpUserInfo extends Component {
     })
       .then(response => response.json())
       .then(response => {
-        if (response.message === 'SUCCESS') {
-          alert('성공');
-        } else if (response.message === 'INVALID_USER') {
-          alert('이메일과 비밀번호를 다시 확인해주세요');
+        if (response.MESSAGE === 'SUCCESS') {
+          alert('회원가입 축하드립니다.');
+          this.props.goToLogin();
+        } else if (response.MESSAGE === 'ALREADY EXISTED EMAIL') {
+          alert('이미 가입된 이메일 입니다.');
         }
       });
   };
 
   render() {
+    const checkLogin = pw => {
+      const { name, email, mobile, year, month, date, pwCheck, gender } =
+        this.state;
+      const num = /[0-9]/;
+      const str = /[a-zA-Z]/;
+      const special = /[~!@#$%^&*()_+|<>?:{}]/;
+      gender &&
+      name &&
+      email.includes('@') &&
+      mobile.length >= 11 &&
+      year > 1920 &&
+      year < 2007 &&
+      month > 0 &&
+      month < 13 &&
+      date > 0 &&
+      date < 32 &&
+      num.test(pw) &&
+      str.test(pw) &&
+      special.test(pw) &&
+      pw.length >= 8 &&
+      pwCheck === pw
+        ? this.signUp()
+        : this.setState(
+            {
+              name: '',
+              email: '',
+              mobile: '',
+              year: '',
+              month: '',
+              date: '',
+              pw: '',
+              pwCheck: '',
+              gender: '',
+            },
+            () => {
+              alert('회원가입 정보를 다시 확인해 주세요');
+            }
+          );
+    };
     return (
       <div className="signUpUserInfo">
         <div className="container">
@@ -204,7 +205,7 @@ class SignUpUserInfo extends Component {
               <button
                 className="signUpBtn"
                 onClick={() => {
-                  this.checkLogin(this.state.pw);
+                  checkLogin(this.state.pw);
                 }}
               >
                 가입하기
