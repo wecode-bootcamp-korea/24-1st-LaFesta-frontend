@@ -1,13 +1,7 @@
 .productDetail {
-  .loading {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    background: #fff;
-    z-index: 1000; /* 이 값으로 레이어의 위치를 조정합니다. */
-  }
+  position: relative;
+  overflow-x: hidden;
+
   .nav {
     height: 80px;
     background-color: red;
@@ -16,8 +10,8 @@
   .list {
     height: 60px;
     padding: 23px;
-    font-size: 13px;
     margin-left: 30px;
+    font-size: 13px;
     color: #989898;
 
     .home,
@@ -40,19 +34,28 @@
     justify-content: left;
     margin-bottom: 50px;
 
-    .miniPhoto {
+    .miniPhotoBox {
       position: absolute;
-      z-index: 1;
-      bottom: 150px;
-      width: 70px;
-      height: 70px;
-      opacity: 0.8;
-      left: 20px;
-      &:hover {
-        border: black 1px solid;
+      z-index: 5;
+      width: 60px;
+      height: 300px;
+      top: 350px;
+      margin-left: 10px;
+
+      .miniPhoto {
+        width: 50px;
+        height: 50px;
+        opacity: 0.8;
+        border: #989898 1px solid;
+        opacity: 0.5;
+        transition: all 0.3s;
+        margin-bottom: 10px;
+
+        &:hover {
+          opacity: 1;
+        }
       }
     }
-
     .slideBox {
       width: 1200px;
       height: 684px;
@@ -186,7 +189,7 @@
       }
     }
 
-    .productPick {
+    .productPickOn {
       width: 100%;
       height: 55px;
       padding-top: 16px;
@@ -197,10 +200,6 @@
       border: #cecece 1px solid;
       transition: 0.5s;
 
-      button {
-        color: white;
-      }
-
       &:hover {
         background-color: white;
         transition: all 0.5s ease-in-out 0.1s;
@@ -210,6 +209,35 @@
           color: #292929;
           transition: all 0.5s ease-in-out 0.1s;
         }
+      }
+
+      button {
+        color: white;
+      }
+    }
+    .productPickOff {
+      width: 100%;
+      height: 55px;
+      padding-top: 16px;
+      margin-bottom: 20px;
+      background-color: rgb(32, 102, 72);
+      text-align: center;
+      border-radius: 50px;
+      border: #cecece 1px solid;
+      transition: 0.5s;
+
+      &:hover {
+        background-color: #197c48;
+        transition: all 0.5s ease-in-out 0.1s;
+        cursor: pointer;
+
+        button {
+          transition: all 0.5s ease-in-out 0.1s;
+        }
+      }
+
+      button {
+        color: white;
       }
     }
 

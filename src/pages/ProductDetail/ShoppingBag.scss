@@ -1,0 +1,96 @@
+.ShoppingBag {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 3;
+  transition: 0.7s linear;
+  margin-top: 80px;
+
+  .filterContainer {
+    padding: 0 90px;
+    background-color: white;
+    width: 710px;
+    height: 743px;
+
+    .filterTitle {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0;
+      font-size: 17px;
+
+      .shoppingText {
+        i {
+          color: green;
+          margin-right: 20px;
+        }
+      }
+      .closeBtn {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .shoppingPhotoBox {
+      display: flex;
+      .shoppingPhoto {
+        width: 115px;
+        height: 160px;
+        margin-right: 20px;
+      }
+      .productInfo {
+        .productName {
+          margin-bottom: 10px;
+        }
+        .productSize {
+          margin-bottom: 10px;
+          font-size: 12px;
+          color: #989898;
+        }
+        .productColor {
+          font-size: 12px;
+          color: #989898;
+          margin-bottom: 75px;
+        }
+        .productPrice {
+          font-size: 15px;
+        }
+      }
+    }
+    .shoppingBasket {
+      width: 150px;
+      height: 50px;
+      padding-top: 16px;
+      margin-bottom: 20px;
+      background-color: rgb(32, 102, 72);
+      text-align: center;
+      border-radius: 50px;
+      border: #cecece 1px solid;
+      transition: 0.5s;
+      margin: 20px auto;
+
+      button {
+        transition: all 0.5s ease-in-out 0.1s;
+        cursor: pointer;
+        color: white;
+      }
+
+      &:hover {
+        background-color: #197c48;
+        transition: all 0.5s ease-in-out 0.1s;
+        cursor: pointer;
+      }
+    }
+    .continueBtn {
+      margin-left: 219px;
+      button {
+        text-decoration: underline;
+        font-size: 15px;
+        &:hover {
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
