@@ -29,7 +29,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: rgba(128, 128, 128, 0.4);
+      background-color: rgba(128, 128, 128, 0.5);
     }
 
     .categoryHeader {
@@ -112,6 +112,16 @@
         color: black;
       }
     }
+  }
+}
+
+.products {
+  font-size: 15px;
+
+  .productsLine {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
   }
 }
 

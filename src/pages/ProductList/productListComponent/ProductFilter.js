@@ -4,6 +4,7 @@ class ProductFilter extends Component {
   hideFilter = event => {
     event.preventDefault();
     this.props.hideFilter(event.target.dataset.category);
+    this.props.hideGrayDisplay(event.target.dataset.category * -100);
   };
 
   render() {
@@ -33,19 +34,11 @@ class ProductFilter extends Component {
             <div className="titleAlign">정렬</div>
             <div className="lowerPriceAlign">
               <div>낮은 가격 순</div>
-              <input
-                // onclick={() => this.props.sortBy_DESC('productPrice')}
-                name="priceAlign"
-                type="radio"
-              ></input>
+              <input name="priceAlign" type="radio"></input>
             </div>
             <div className="higherPriceAlign">
               <div>높은 가격 순</div>
-              <input
-                // onclick={() => this.props.sortBy_ASC('productPrice')}
-                name="priceAlign"
-                type="radio"
-              ></input>
+              <input name="priceAlign" type="radio"></input>
             </div>
           </div>
           <div className="subFilter">
@@ -60,15 +53,15 @@ class ProductFilter extends Component {
             <div className="fitFilter">FIT</div>
             <ul className="fitChoiceBox">
               <li>
-                <div>폴로</div>
-                <input type="checkbox"></input>
-              </li>
-              <li>
                 <div>레귤러핏</div>
                 <input type="checkbox"></input>
               </li>
               <li>
                 <div>파리폴로</div>
+                <input type="checkbox"></input>
+              </li>
+              <li>
+                <div>클래식핏</div>
                 <input type="checkbox"></input>
               </li>
               <li>

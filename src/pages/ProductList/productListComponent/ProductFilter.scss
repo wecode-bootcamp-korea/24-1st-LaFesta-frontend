@@ -1,13 +1,14 @@
 .ProductFilter {
   display: flex;
-  position: absolute;
+  position: fixed;
   width: 100%;
+  height: 100%;
   top: 0;
-  z-index: 100;
+  z-index: 10;
   transition: 0.7s linear;
 
   .filterContainer {
-    padding: 0 90px;
+    padding: 0 100px;
     background-color: white;
     width: 49%;
 
@@ -27,7 +28,7 @@
       padding: 5% 0;
 
       .titleAlign {
-        padding-bottom: 20px;
+        padding-bottom: 7%;
         color: #bebebe;
         font-size: 12px;
       }
@@ -48,7 +49,7 @@
 
     .subFilter {
       .subFilterTitle {
-        padding-bottom: 5%;
+        padding-bottom: 7%;
         color: #bebebe;
         font-size: 12px;
         font-weight: 600;
@@ -98,7 +99,7 @@
       }
 
       .fitFilter {
-        padding-bottom: 8%;
+        padding-bottom: 5%;
         color: #757575;
       }
 

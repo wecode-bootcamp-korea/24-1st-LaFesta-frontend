@@ -1,65 +1,86 @@
 [
   {
     "id": 1,
-    "productName": "(남성)프렌치 레귤러핏 반팔 폴로",
-    "product_Style": "클래식핏",
-    "productColors": 1,
-    "productPic": "https://i.postimg.cc/htXGM4K7/2-product.jpg",
-    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
-    "productPrice": 10000
+    "name": "(남성)프렌치 레귤러핏 반팔 폴로",
+    "fits": "클래식핏",
+    "color_num": 1,
+    "colors": "red",
+    "img_url": [
+      "https://i.postimg.cc/htXGM4K7/2-product.jpg",
+      "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg"
+    ],
+    "price": 10000
   },
   {
     "id": 2,
-    "productName": "(남성)라코스테 반팔 PARIS 폴로",
-    "product_Style": "클래식핏",
-    "productColors": 2,
-    "productPic": "https://i.postimg.cc/pTJVypJ3/3.jpg",
-    "productPicReverse": "https://i.postimg.cc/PxhR4MBV/3-reverse.jpg",
-    "productPrice": 20000
+    "name": "(남성)라코스테 반팔 PARIS 폴로",
+    "fits": "클래식핏",
+    "color_num": 1,
+    "colors": "blue",
+    "img_url": [
+      "https://i.postimg.cc/pTJVypJ3/3.jpg",
+      "https://i.postimg.cc/PxhR4MBV/3-reverse.jpg"
+    ],
+    "price": 20000
   },
   {
     "id": 3,
-    "productName": "(남성)라코스테 클래식핏 오가닉 코튼 폴로",
-    "product_Style": "레귤러핏",
-    "productColors": 3,
-    "productPic": "https://i.postimg.cc/PJKqVPL1/4.jpg",
-    "productPicReverse": "https://i.postimg.cc/qMZWTy3g/4-reverse.jpg",
-    "productPrice": 30000
+    "name": "(남성)라코스테 클래식핏 오가닉 코튼 폴로",
+    "fits": "레귤러핏",
+    "color_num": 1,
+    "colors": "green",
+    "img_url": [
+      "https://i.postimg.cc/PJKqVPL1/4.jpg",
+      "https://i.postimg.cc/qMZWTy3g/4-reverse.jpg"
+    ],
+    "price": 30000
   },
   {
     "id": 4,
-    "productName": "(남성)헤리티지 슬림핏 배색 코튼 피케 폴로",
-    "product_Style": "파리폴로",
-    "productColors": 4,
-    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
-    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
-    "productPrice": 40000
+    "name": "(남성)헤리티지 슬림핏 배색 코튼 피케 폴로",
+    "fits": "파리폴로",
+    "color_num": 1,
+    "colors": "white",
+    "img_url": [
+      "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+      "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg"
+    ],
+    "price": 40000
   },
   {
     "id": 5,
-    "productName": "(남성)라코스테 반팔 폴로",
-    "product_Style": "슬림핏",
-    "productColors": 5,
-    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
-    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
-    "productPrice": 50000
+    "name": "(남성)라코스테 반팔 폴로",
+    "fits": "슬림핏",
+    "color_num": 1,
+    "colors": "red",
+    "img_url": [
+      "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+      "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg"
+    ],
+    "price": 50000
   },
   {
     "id": 6,
-    "productName": "(남성)라코스테 반팔 폴로",
-    "product_Style": "레귤러핏",
-    "productColors": 6,
-    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
-    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
-    "productPrice": 60000
+    "name": "(남성)라코스테 반팔 폴로",
+    "fits": "레귤러핏",
+    "color_num": 1,
+    "colors": "blue",
+    "img_url": [
+      "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+      "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg"
+    ],
+    "price": 60000
   },
   {
     "id": 7,
-    "productName": "(남성)반팔폴로 폴로 핏",
-    "product_Style": "파리폴로",
-    "productColors": 7,
-    "productPic": "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
-    "productPicReverse": "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg",
-    "productPrice": 70000
+    "name": "(남성)반팔폴로 폴로 핏",
+    "fits": "파리폴로",
+    "color_num": 1,
+    "colors": "green",
+    "img_url": [
+      "https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Sites-master/default/dw43a87826/PH731E-51N_031_20.jpg?imwidth=690&impolicy=product",
+      "https://i.postimg.cc/Bv2zHzw1/2-product-reverse.jpg"
+    ],
+    "price": 70000
   }
 ]

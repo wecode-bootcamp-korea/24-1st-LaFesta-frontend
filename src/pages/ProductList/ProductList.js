@@ -11,14 +11,10 @@ class ProductList extends Component {
     super(props);
     this.state = {
       productData: [],
-      productStyle: '',
+      productFits: '',
       filterMoveNum: 1,
       grayDisplayNum: -1,
     };
-    // this.compareBy_ASC.bind(this);
-    // this.sortBy_ASC.bind(this);
-    // this.compareBy_DESC.bind(this);
-    // this.sortBy_DESC.bind(this);
   }
 
   componentDidMount() {
@@ -31,60 +27,26 @@ class ProductList extends Component {
       });
   }
 
-  handleChange = event => {
-    this.setState({ productStyle: event.target.dataset.category });
+  styleChange = event => {
+    this.setState({ productFits: event.target.dataset.category });
   };
 
-  hideFilter = num => {
+  hideFilter = () => {
     this.setState({
-      filterMoveNum: num,
+      filterMoveNum: 1,
     });
   };
 
-  applygrayDisplay = num => {
+  hideGrayDisplay = () => {
     this.setState({
-      grayDisplayNum: num,
+      grayDisplayNum: -1,
     });
   };
-
-  // compareBy_ASC(key) {
-  //   return function (a, b) {
-  //     var x = parseInt(a[key]);
-  //     var y = parseInt(b[key]);
-
-  //     if (x < y) return -1;
-  //     if (x > y) return 1;
-  //     return 0;
-  //   };
-  // }
-
-  // sortBy_ASC(key) {
-  //   let arrayCopy = [...this.state.productData];
-  //   arrayCopy.sort(this.compareBy_ASC(key));
-  //   this.setState({ productData: arrayCopy });
-  // }
-
-  // compareBy_DESC(key) {
-  //   return function (a, b) {
-  //     var x = parseInt(a[key]);
-  //     var y = parseInt(b[key]);
-
-  //     if (x > y) return -1;
-  //     if (x < y) return 1;
-  //     return 0;
-  //   };
-  // }
-
-  // sortBy_DESC(key) {
-  //   let arrayCopy = [...this.state.productData];
-  //   arrayCopy.sort(this.compareBy_DESC(key));
-  //   this.setState({ productData: arrayCopy });
-  // }
 
   render() {
-    const { productData, productStyle } = this.state;
+    const { productData, productFits } = this.state;
     const searchStyle = productData.filter(data =>
-      data.product_Style.includes(productStyle)
+      data.fits.includes(productFits)
     );
 
     return (
@@ -102,7 +64,7 @@ class ProductList extends Component {
               <div
                 className="grayDisplay"
                 style={{
-                  zIndex: `this.state.grayDisplayNum`,
+                  zIndex: `${this.state.grayDisplayNum}`,
                 }}
               ></div>
               <img
@@ -126,22 +88,22 @@ class ProductList extends Component {
                     <div
                       className="resetStyleBtn"
                       data-category=""
-                      onClick={this.handleChange}
+                      onClick={this.styleChange}
                     >
                       폴로
                     </div>
-                    <div data-category="파리폴로" onClick={this.handleChange}>
+                    <div data-category="파리폴로" onClick={this.styleChange}>
                       파리폴로
                     </div>
-                    <div data-category="클래식핏" onClick={this.handleChange}>
+                    <div data-category="클래식핏" onClick={this.styleChange}>
                       클래식핏
                     </div>
                   </div>
                   <div className="subCategory">
-                    <div data-category="레귤러핏" onClick={this.handleChange}>
+                    <div data-category="레귤러핏" onClick={this.styleChange}>
                       레귤러핏
                     </div>
-                    <div data-category="슬림핏" onClick={this.handleChange}>
+                    <div data-category="슬림핏" onClick={this.styleChange}>
                       슬림핏
                     </div>
                   </div>
@@ -155,6 +117,7 @@ class ProductList extends Component {
                     className="filterAndAlign"
                     onClick={() => {
                       this.setState({ filterMoveNum: 0.51 });
+                      this.setState({ grayDisplayNum: 10 });
                     }}
                   >
                     <i className="fas fa-sliders-h"></i> 필터 및 정렬
@@ -165,15 +128,17 @@ class ProductList extends Component {
           </section>
           <div className="products">
             <div className="productsLine">
-              {searchStyle.map(data => {
+              {searchStyle.map((data, idx) => {
                 return (
                   <Product
                     key={data.id}
-                    productName={data.productName}
-                    productColors={data.productColors}
-                    productPic={data.productPic}
-                    productPicReverse={data.productPicReverse}
-                    productPrice={data.productPrice}
+                    itemId={data.id}
+                    idx={idx}
+                    productName={data.name}
+                    productColorNum={data.color_num}
+                    productPic={data.img_url[0]}
+                    productPicReverse={data.img_url[1]}
+                    productPrice={data.price}
                   />
                 );
               })}
@@ -195,9 +160,8 @@ class ProductList extends Component {
         <ProductFilter
           filterMoveNum={this.state.filterMoveNum}
           hideFilter={this.hideFilter}
+          hideGrayDisplay={this.hideGrayDisplay}
           searchStyle={searchStyle}
-          priceASC={this.sortBy_ASC}
-          priceDESC={this.sortBy_DESC}
         />
       </div>
     );
