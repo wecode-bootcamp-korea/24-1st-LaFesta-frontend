@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Product from './ProductListComponent/Product';
 import ProductFilter from './ProductListComponent/ProductFilter';
-import Footer from '../../components/Footer/Footer';
 import './ProductList.scss';
-import './ProductListComponent/Product.scss';
+import './ProductListComponent/product.scss';
 import './ProductListComponent/ProductFilter.scss';
 
 class ProductList extends Component {
@@ -156,7 +155,6 @@ class ProductList extends Component {
             </div>
           </div>
         </div>
-        <Footer />
         <ProductFilter
           filterMoveNum={this.state.filterMoveNum}
           hideFilter={this.hideFilter}
