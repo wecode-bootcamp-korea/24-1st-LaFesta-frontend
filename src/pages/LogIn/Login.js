@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { POST_LOGIN_API } from '../../config';
 import './Login.scss';
 
 class Login extends Component {
@@ -19,12 +20,8 @@ class Login extends Component {
 
   postLogin = () => {
     const { id, pw } = this.state;
-    if (
-      this.state.id.includes('@') &&
-      this.state.id.includes('.com') &&
-      this.state.pw.length >= 8
-    ) {
-      fetch('http://172.30.1.25:8000/users/signin', {
+    if (id.includes('@') && id.includes('.com') && pw.length >= 8) {
+      fetch(`${POST_LOGIN_API}`, {
         method: 'POST',
         body: JSON.stringify({
           email: id,
@@ -37,19 +34,17 @@ class Login extends Component {
             this.props.history.push('/mainPage');
           } else if (response.MESSAGE === 'INVALID_USER') {
             alert('이메일과 비밀번호를 다시 확인해주세요');
-            this.setState({ id: '' });
-            this.setState({ pw: '' });
+            this.setState({ id: '', pw: '' });
           }
         });
     } else {
       alert('이메일 및 비밀번호를 다시 입력해주세요');
-      this.setState({ id: '' });
-      this.setState({ pw: '' });
+      this.setState({ id: '', pw: '' });
     }
   };
 
   goToSignUp = () => {
-    this.props.history.push('/SignUp');
+    this.props.history.push('/signUp');
   };
 
   render() {
@@ -57,7 +52,7 @@ class Login extends Component {
     return (
       <>
         <div className="login">
-          <div className="backgroudBanner">
+          <div className="backgroundBanner">
             <div className="container">
               <div className="nav">로그인</div>
               <article>
