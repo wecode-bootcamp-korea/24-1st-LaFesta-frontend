@@ -1,28 +1,30 @@
 .ProductSize {
   display: flex;
   position: absolute;
-  width: 100%;
   top: 0;
+  width: 100%;
+  margin-top: 80px;
   z-index: 3;
   transition: 0.7s linear;
-  margin-top: 80px;
 
   .filterContainer {
-    padding: 0 90px;
-    background-color: white;
     width: 710px;
     height: 743px;
+    padding: 0 90px;
+    background-color: white;
 
     .filterTitle {
-      margin-top: 40px;
-      font-size: 17px;
       display: flex;
       justify-content: space-between;
+      margin-top: 40px;
+      font-size: 17px;
+
       .sizeGuide {
         &:hover {
           cursor: pointer;
         }
       }
+
       .closeBtn {
         &:hover {
           cursor: pointer;

@@ -3,7 +3,7 @@ import './ProductSize.scss';
 
 class ProductSize extends Component {
   render() {
-    const { isSize, productInfoList, hideFilter } = this.props;
+    const { isSize, productInfoList, hideFilter, changeSize } = this.props;
     return (
       <div
         className="ProductSize"
@@ -27,7 +27,7 @@ class ProductSize extends Component {
             <button
               className="sizeBox"
               onClick={() => {
-                this.props.change('00' + productInfoList.sizes[0].size);
+                changeSize('00' + productInfoList.sizes[0].size);
               }}
             >
               00
@@ -36,7 +36,7 @@ class ProductSize extends Component {
             <button
               className="sizeBox"
               onClick={() => {
-                this.props.change('00' + productInfoList.sizes[1].size);
+                changeSize('00' + productInfoList.sizes[1].size);
               }}
             >
               00
@@ -45,7 +45,7 @@ class ProductSize extends Component {
             <button
               className="sizeBox"
               onClick={() => {
-                this.props.change('00' + productInfoList.sizes[2].size);
+                changeSize('00' + productInfoList.sizes[2].size);
               }}
             >
               00
@@ -54,7 +54,7 @@ class ProductSize extends Component {
             <button
               className="sizeBox"
               onClick={() => {
-                this.props.change('00' + productInfoList.sizes[3].size);
+                changeSize('00' + productInfoList.sizes[3].size);
               }}
             >
               00

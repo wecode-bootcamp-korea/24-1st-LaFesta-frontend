@@ -3,6 +3,7 @@ import ProductPhoto from './ProductPhoto';
 import ProductSize from './ProductSize';
 import ProductBonus from './ProductBonus';
 import ShoppingBag from './ShoppingBag';
+import MiniPhoto from './MiniPhoto';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
@@ -30,7 +31,7 @@ class ProductDetail extends Component {
       });
   }
 
-  change = size => {
+  changeSize = size => {
     this.setState({ size: size }, this.hideFilter());
   };
 
@@ -49,8 +50,15 @@ class ProductDetail extends Component {
     }
   };
 
+  changePhoto = mm => {
+    this.setState({
+      imageNum: mm,
+    });
+  };
+
   render() {
-    const { productInfoList } = this.state;
+    const { productInfoList, size, isSize, isBonus, isShoppingBag } =
+      this.state;
     return (
       <div className="productDetail">
         <div className="nav">임시</div>
@@ -70,45 +78,24 @@ class ProductDetail extends Component {
           <div className="productMainFirst">
             <div className="slideBox">
               <div className="miniPhotoBox">
-                <img
-                  alt="miniPhoto"
-                  src={
-                    productInfoList.images &&
-                    productInfoList.images[0].image_url
-                  }
-                  className="miniPhoto"
-                  onClick={() => {
-                    this.setState({
-                      imageNum: 0,
-                    });
-                  }}
-                ></img>
-                <img
-                  alt="miniPhoto"
-                  src={
-                    productInfoList.images &&
-                    productInfoList.images[1].image_url
-                  }
-                  className="miniPhoto"
-                  onClick={() => {
-                    this.setState({
-                      imageNum: -684,
-                    });
-                  }}
-                ></img>
-                <img
-                  alt="miniPhoto"
-                  src={
-                    productInfoList.images &&
-                    productInfoList.images[0].image_url
-                  }
-                  className="miniPhoto"
-                  onClick={() => {
-                    this.setState({
-                      imageNum: -1368,
-                    });
-                  }}
-                ></img>
+                <MiniPhoto
+                  index="0"
+                  productInfoList={productInfoList}
+                  imageNum="0"
+                  changePhoto={this.changePhoto}
+                />
+                <MiniPhoto
+                  index="1"
+                  productInfoList={productInfoList}
+                  imageNum="-684"
+                  changePhoto={this.changePhoto}
+                />
+                <MiniPhoto
+                  index="0"
+                  productInfoList={productInfoList}
+                  imageNum="-1368"
+                  changePhoto={this.changePhoto}
+                />
               </div>
               <div
                 className="slideList"
@@ -118,22 +105,13 @@ class ProductDetail extends Component {
                 }}
               >
                 <span className="slide_content slide01">
-                  <ProductPhoto
-                    productInfoList={this.state.productInfoList}
-                    index="0"
-                  />
+                  <ProductPhoto productInfoList={productInfoList} index="0" />
                 </span>
                 <span className="slide_content slide02">
-                  <ProductPhoto
-                    productInfoList={this.state.productInfoList}
-                    index="1"
-                  />
+                  <ProductPhoto productInfoList={productInfoList} index="1" />
                 </span>
                 <span className="slide_content slide03">
-                  <ProductPhoto
-                    productInfoList={this.state.productInfoList}
-                    index="0"
-                  />
+                  <ProductPhoto productInfoList={productInfoList} index="0" />
                 </span>
               </div>
             </div>
@@ -156,7 +134,7 @@ class ProductDetail extends Component {
                 </div>
               </div>
               <div
-                className="bouns"
+                className="bonus"
                 onClick={() => {
                   this.setState({ isBonus: 0.51 });
                 }}
@@ -176,26 +154,24 @@ class ProductDetail extends Component {
               <div
                 className="productSize"
                 onClick={() => {
-                  this.state.size
-                    ? this.setState({ isShoppingBag: 0.51 })
-                    : this.setState({ isSize: 0.51 });
+                  this.setState({ isSize: 0.51 });
                 }}
               >
                 <button>
-                  SIZE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.size}
+                  SIZE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{size}
                   <i className="fas fa-chevron-right"></i>
                 </button>
               </div>
               <div
-                className={this.state.size ? 'productPickOff' : 'productPickOn'}
+                className={size ? 'productPickOff' : 'productPickOn'}
                 onClick={() => {
-                  this.state.size
+                  size
                     ? this.setState({ isShoppingBag: 0.51 })
                     : this.setState({ isSize: 0.51 });
                 }}
               >
                 <button>
-                  {this.state.size ? '쇼핑백에 추가하기' : '사이즈 선택하기'}
+                  {size ? '쇼핑백에 추가하기' : '사이즈 선택하기'}
                 </button>
               </div>
               <p className="productCaution">
@@ -217,56 +193,36 @@ class ProductDetail extends Component {
                 {productInfoList && productInfoList.description_summary}
               </div>
               <ul className="productDetailText">
-                {[1, 2, 3, 4, 5, 6].map(list => {
-                  return (
-                    <li>
-                      -
-                      {productInfoList.description_extra_information &&
-                        productInfoList.description_extra_information.split(
-                          ','
-                        )[list - 1]}
-                    </li>
-                  );
-                })}
+                {productInfoList.description_extra_information &&
+                  productInfoList.description_extra_information
+                    .split(',')
+                    .map(list => {
+                      return <li>- {list}</li>;
+                    })}
               </ul>
             </div>
-            <ProductPhoto
-              productInfoList={this.state.productInfoList}
-              index="0"
-            />
+            <ProductPhoto productInfoList={productInfoList} index="0" />
           </div>
           <div className="productMainThird">
-            <ProductPhoto
-              productInfoList={this.state.productInfoList}
-              index="1"
-            />
-            <ProductPhoto
-              productInfoList={this.state.productInfoList}
-              index="1"
-            />
+            <ProductPhoto productInfoList={productInfoList} index="1" />
+            <ProductPhoto productInfoList={productInfoList} index="1" />
           </div>
           <div className="productMainFourth">
-            <ProductPhoto
-              productInfoList={this.state.productInfoList}
-              index="1"
-            />
+            <ProductPhoto productInfoList={productInfoList} index="1" />
           </div>
         </div>
         <ProductSize
           hideFilter={this.hideFilter}
-          isSize={this.state.isSize}
-          productInfoList={this.state.productInfoList}
-          change={this.change}
+          isSize={isSize}
+          productInfoList={productInfoList}
+          changeSize={this.changeSize}
         />
-        <ProductBonus
-          hideFilter={this.hideFilter}
-          isBonus={this.state.isBonus}
-        />
+        <ProductBonus hideFilter={this.hideFilter} isBonus={isBonus} />
         <ShoppingBag
           hideFilter={this.hideFilter}
-          isShoppingBag={this.state.isShoppingBag}
-          productInfoList={this.state.productInfoList}
-          size={this.state.size}
+          isShoppingBag={isShoppingBag}
+          productInfoList={productInfoList}
+          size={size}
         />
       </div>
     );

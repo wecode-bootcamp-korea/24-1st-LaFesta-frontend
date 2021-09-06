@@ -72,7 +72,7 @@ class ProductBonus extends Component {
                 <td>2~6개월</td>
               </tr>
             </table>
-            <button onClick={this.hideFilter}>확인</button>
+            <button onClick={hideFilter}>확인</button>
           </div>
         </div>
       </div>

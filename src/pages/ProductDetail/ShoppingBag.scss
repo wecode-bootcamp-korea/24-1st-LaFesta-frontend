@@ -33,6 +33,7 @@
     }
     .shoppingPhotoBox {
       display: flex;
+
       .shoppingPhoto {
         width: 115px;
         height: 160px;
@@ -42,16 +43,19 @@
         .productName {
           margin-bottom: 10px;
         }
+
         .productSize {
           margin-bottom: 10px;
           font-size: 12px;
           color: #989898;
         }
+
         .productColor {
-          font-size: 12px;
-          color: #989898;
           margin-bottom: 75px;
+          color: #989898;
+          font-size: 12px;
         }
+
         .productPrice {
           font-size: 15px;
         }
@@ -61,18 +65,18 @@
       width: 150px;
       height: 50px;
       padding-top: 16px;
+      margin: 20px auto;
       margin-bottom: 20px;
       background-color: rgb(32, 102, 72);
       text-align: center;
       border-radius: 50px;
       border: #cecece 1px solid;
       transition: 0.5s;
-      margin: 20px auto;
 
       button {
+        color: white;
         transition: all 0.5s ease-in-out 0.1s;
         cursor: pointer;
-        color: white;
       }
 
       &:hover {
@@ -83,9 +87,11 @@
     }
     .continueBtn {
       margin-left: 219px;
+
       button {
-        text-decoration: underline;
         font-size: 15px;
+        text-decoration: underline;
+
         &:hover {
           text-decoration: none;
           cursor: pointer;
