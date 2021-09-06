@@ -1,0 +1,202 @@
+.Cart {
+  display: flex;
+  flex-direction: column;
+  padding: 5% 15%;
+  background-color: #f4f4f4;
+
+  .purchaseStep {
+    display: flex;
+    justify-content: center;
+
+    & div {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      .stepNum {
+        width: 40px;
+        line-height: 38px;
+        margin: 0 10px;
+        border: solid 0.5px black;
+        border-radius: 50%;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .stepName {
+        margin-top: 10px;
+      }
+    }
+
+    .stepBar {
+      margin-bottom: 50px;
+      width: 5%;
+      border-bottom: solid 0.5px black;
+    }
+  }
+
+  .purchaseFirstStep {
+    display: flex;
+    justify-content: center;
+
+    .purchaseInfo {
+      display: flex;
+      flex-direction: column;
+
+      .cartList {
+        display: flex;
+        flex-direction: column;
+        margin: 50px 0 20px 0;
+
+        .cartProduct {
+          display: flex;
+          align-items: center;
+          padding: 20px 35px;
+          background-color: white;
+
+          .cartProductPic {
+            width: 103px;
+
+            & img {
+              width: 100%;
+            }
+          }
+
+          .cartProductOpt {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0 70px 0 10px;
+            font-weight: 400;
+
+            & span {
+              padding-bottom: 5px;
+            }
+
+            .productQuantity {
+              width: 25%;
+              margin: 5px 0;
+              padding: 5px 0;
+            }
+          }
+
+          .productRemove {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #f4f4f4;
+            border-radius: 50%;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .cartDiscount {
+        display: flex;
+        flex-direction: column;
+        padding: 25px 35px;
+        margin-bottom: 20px;
+        background-color: white;
+
+        & span {
+          text-align: left;
+          margin-bottom: 10px;
+        }
+
+        & span:first-child {
+          font-size: 19px;
+          margin-bottom: 17px;
+        }
+
+        & div {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 8px;
+
+          .discountApply {
+            width: 75%;
+            padding: 0 10px;
+            border: solid 0.2px gray;
+            border-radius: 5px;
+            font-size: 15px;
+          }
+
+          .applyBtn {
+            padding: 15px 25px;
+            border: solid 0.2px gray;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            font-size: 14px;
+          }
+        }
+      }
+
+      .helpService {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 25px 35px;
+        background-color: white;
+
+        & span {
+          margin-bottom: 8px;
+        }
+      }
+    }
+
+    .priceInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin: 50px 0 0 40px;
+      padding: 25px 45px;
+      width: 370px;
+      height: 260px;
+      background-color: white;
+
+      & div {
+        display: flex;
+        justify-content: space-between;
+
+        & span:last-child {
+          font-weight: 700;
+        }
+      }
+
+      .totalPrice {
+        color: #0f5b33;
+      }
+
+      .orderBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px 0;
+        background-color: #0f5b33;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        transition: 0.4s linear;
+      }
+
+      .orderBtn:hover {
+        background-color: #454545;
+        transition: 0.4s linear;
+      }
+
+      .cardInfo {
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+
+        & i {
+          margin-left: 10px;
+          font-size: 20px;
+          color: gray;
+        }
+      }
+    }
+  }
+}
