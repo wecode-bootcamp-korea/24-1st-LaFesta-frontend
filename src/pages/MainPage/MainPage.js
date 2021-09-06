@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './MainPage.scss';
 
-// 1. The Lacoste World MockData()
-// 2. 슬라이드쇼 리스트 숫자 레이아웃 재배치()
-// 3. 첫 번째 아이템/마지막 아이템 버튼 클릭 안되게 막기()
+// 1. 슬라이드쇼 리스트 숫자 레이아웃 재배치()
 // 2. 글씨 오타 검토 ()
 // 3. Inside 레이아웃 재배치()
 class MainPage extends Component {
@@ -17,6 +15,7 @@ class MainPage extends Component {
       insideMargin: 0,
       saleList: [],
       insideList: [],
+      worldList: [],
     };
   }
 
@@ -40,9 +39,10 @@ class MainPage extends Component {
 
   handleInSideNextClick = () => {
     const { insideCount, insideMargin, insideList } = this.state;
+
     if (insideCount < insideList.length) {
       this.setState({ insideCount: insideCount + 1 });
-      this.setState({ insideMargin: insideMargin - 1516 });
+      this.setState({ insideMargin: insideMargin - 1562 });
     }
   };
 
@@ -51,26 +51,26 @@ class MainPage extends Component {
 
     if (!insideCount < insideList.length && insideCount > 1) {
       this.setState({ insideCount: insideCount - 1 });
-      this.setState({ insideMargin: insideMargin + 1516 });
+      this.setState({ insideMargin: insideMargin + 1562 });
     }
   };
+
   componentDidMount() {
-    fetch('http://localhost:3003/data/mainData-songhyun.json')
+    fetch('http://localhost:3002/data/mainData-songhyun.json')
       .then(res => res.json())
-      .then(saleItems => {
+      .then(items => {
         this.setState({
-          saleList: saleItems.filter(item => item.category.includes('event')),
-          insideList: saleItems.filter(item =>
-            item.category.includes('inside')
-          ),
+          saleList: items.filter(item => item.category.includes('event')),
+          insideList: items.filter(item => item.category.includes('inside')),
+          worldList: items.filter(item => item.category.includes('collection')),
         });
       });
   }
-
   render() {
     const {
       saleList,
       insideList,
+      worldList,
       saleCount,
       insideCount,
       saleMargin,
@@ -101,7 +101,12 @@ class MainPage extends Component {
             <h3>당신만의 라페스타</h3>
             <ol className="indications">
               <li>
-                <button className="prevBtn" onClick={this.handlePrevClick}>
+                <button
+                  type="button"
+                  className="prevBtn"
+                  onClick={this.handlePrevClick}
+                  disabled={saleCount === 1 && true}
+                >
                   <i className="fas fa-chevron-left" />
                 </button>
               </li>
@@ -119,6 +124,7 @@ class MainPage extends Component {
                   type="button"
                   className="nextBtn"
                   onClick={this.handleNextClick}
+                  disabled={saleCount === saleList.length && true}
                 >
                   <i className="fas fa-chevron-right" />
                 </button>
@@ -126,20 +132,18 @@ class MainPage extends Component {
             </ol>
           </div>
           <ul className="newProducts" style={saleStyle}>
-            {saleList.map((saleItem, index) => {
-              return (
-                <li key={`${index}`}>
-                  <Link>
-                    <figure className="newProductConent">
-                      <img src={saleItem.url} alt={saleItem.title} />
-                      <figcaption>
-                        <strong>{saleItem.title}</strong>
-                      </figcaption>
-                    </figure>
-                  </Link>
-                </li>
-              );
-            })}
+            {saleList.map(saleItem => (
+              <li key={`${saleItem.id}`}>
+                <Link to="#">
+                  <figure className="newProductConent">
+                    <img src={saleItem.url} alt={saleItem.title} />
+                    <figcaption>
+                      <strong>{saleItem.title}</strong>
+                    </figcaption>
+                  </figure>
+                </Link>
+              </li>
+            ))}
           </ul>
         </section>
         <section className="newCollectionWrapper">
@@ -161,66 +165,20 @@ class MainPage extends Component {
         <section className="lafestWorldWrapper">
           <h2>The Lacoste World</h2>
           <ul className="lafeWorlds">
-            <li>
-              <Link>
-                <figure>
-                  <img
-                    src="https://i.postimg.cc/1tfntt0m/brian-asare-u-IT9-Vk0-HHJE-unsplash.jpg"
-                    alt="라이브 컬렉션"
-                  />
-                  <figcaption className="lafestWorlContent">
-                    <h3>라코스테 라이브 컬렉션</h3>
-                    <strong>신상품 7% 혜택</strong>
-                    <button type="button">구매하기</button>
-                  </figcaption>
-                </figure>
-              </Link>
-            </li>
-            <li>
-              <Link>
-                <figure>
-                  <img
-                    src="https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
-                    alt="신상품 컬렉션"
-                  />
-                  <figcaption className="lafestWorlContent">
-                    <h3>유니섹스 컬렉션: 더블매치</h3>
-                    <strong>신상품 7% 혜택</strong>
-                    <button type="button">구매하기</button>
-                  </figcaption>
-                </figure>
-              </Link>
-            </li>
-            <li>
-              <Link>
-                <figure>
-                  <img
-                    src="https://i.postimg.cc/43KdwYtS/kristian-egelund-v-Jg-JLz-Wm-XDA-unsplash-1.jpg"
-                    alt="신발 컬렉션"
-                  />
-                  <figcaption className="lafestWorlContent">
-                    <h3>라코스테 신발 : 새로운 스타일</h3>
-                    <strong>신상품 7% 혜택</strong>
-                    <button type="button">구매하기</button>
-                  </figcaption>
-                </figure>
-              </Link>
-            </li>
-            <li>
-              <Link>
-                <figure>
-                  <img
-                    src="https://i.postimg.cc/NfXHGrSk/maureen-de-wit-Yx-ZHKf-CPVPU-unsplash.jpg"
-                    alt="새로운  액세사리"
-                  />
-                  <figcaption className="lafestWorlContent">
-                    <h3>라코스테 액세사리 : 새로운 스타일</h3>
-                    <strong>신상품 7% 혜택</strong>
-                    <button type="button">구매하기</button>
-                  </figcaption>
-                </figure>
-              </Link>
-            </li>
+            {worldList.map(item => (
+              <li key={item.id}>
+                <Link to="#">
+                  <figure>
+                    <img src={item.url} alt={item.title} />
+                    <figcaption className="lafestWorlContent">
+                      <h3>{item.title}</h3>
+                      <strong>신상품 7% 혜택</strong>
+                      <button type="button">구매하기</button>
+                    </figcaption>
+                  </figure>
+                </Link>
+              </li>
+            ))}
           </ul>
         </section>
         <section className="lafestInsideWrapper">
@@ -229,8 +187,10 @@ class MainPage extends Component {
             <ol className="indications">
               <li>
                 <button
+                  type="button"
                   className="prevBtn"
                   onClick={this.handleInSidePrevClick}
+                  disabled={insideCount === 1 && true}
                 >
                   <i className="fas fa-chevron-left" />
                 </button>
@@ -249,6 +209,7 @@ class MainPage extends Component {
                   type="button"
                   className="nextBtn"
                   onClick={this.handleInSideNextClick}
+                  disabled={insideCount === insideList.length && true}
                 >
                   <i className="fas fa-chevron-right" />
                 </button>
@@ -259,10 +220,10 @@ class MainPage extends Component {
             {insideList.map(insideItem => {
               return (
                 <li key={insideItem.id}>
-                  <Link>
-                    <figure className="insideContent">
+                  <Link to="#">
+                    <figure>
                       <img src={insideItem.url} alt={insideItem.title} />
-                      <figcaption>
+                      <figcaption className="insideContent">
                         <span>{insideItem.subtitle}</span>
                         <h3>{insideItem.title}</h3>
                         <strong>{insideItem.content}</strong>
