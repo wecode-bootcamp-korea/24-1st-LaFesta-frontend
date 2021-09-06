@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Category from './Category/Category';
+import PopUp from '../PopUp/PopUp';
 import './Nav.scss';
-// 이벤트 제어(v)
-// 마크업 처리(v)
+
 const clothesCategory = [
   {
     name: '폴로',
@@ -152,7 +153,8 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggleMenu: null,
+      toggleMenu: '',
+      loginUser: false,
     };
   }
 
@@ -164,7 +166,13 @@ class Nav extends Component {
 
   handleMouseLeave = () => {
     this.setState({
-      toggleMenu: null,
+      toggleMenu: '',
+    });
+  };
+
+  handleUserPopUp = () => {
+    this.setState({
+      loginUser: true,
     });
   };
 
@@ -207,7 +215,7 @@ class Nav extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/logIn">
+                <Link to="/logIn" onMouseOver={this.handleUserPopUp}>
                   <i className="fas fa-user icon"></i>
                   <span className="a11y-hidden">user</span>
                 </Link>
@@ -225,19 +233,11 @@ class Nav extends Component {
           <ul className={`subMenu ${toggledMenu ? 'showMenu' : ''}`}>
             {toggledMenu &&
               toggledMenu.subMenu.map(items => (
-                <li key={items.id} className="showItem">
-                  <span>{items.name}</span>
-                  <ul className="subMenuCategries">
-                    {items.categories.map(item => (
-                      <Link to="/">
-                        <li>{item.name}</li>
-                      </Link>
-                    ))}
-                  </ul>
-                </li>
+                <Category key={items.id} className="showItem" items={items} />
               ))}
           </ul>
         </div>
+        {this.state.loginUser && <PopUp />}
       </>
     );
   }
