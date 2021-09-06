@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './MainPage.scss';
 
-// 1. 슬라이드쇼 리스트 숫자 레이아웃 재배치()
-// 2. 글씨 오타 검토 ()
-// 3. Inside 레이아웃 재배치()
 class MainPage extends Component {
   constructor(props) {
     super(props);
@@ -217,25 +214,23 @@ class MainPage extends Component {
             </ol>
           </div>
           <ul className="insides" style={insideStyle}>
-            {insideList.map(insideItem => {
-              return (
-                <li key={insideItem.id}>
-                  <Link to="#">
-                    <figure>
-                      <img src={insideItem.url} alt={insideItem.title} />
-                      <figcaption className="insideContent">
-                        <span>{insideItem.subtitle}</span>
-                        <h3>{insideItem.title}</h3>
-                        <strong>{insideItem.content}</strong>
-                        <button type="button" className="summaryBtn">
-                          자세히 보기
-                        </button>
-                      </figcaption>
-                    </figure>
-                  </Link>
-                </li>
-              );
-            })}
+            {insideList.map(insideItem => (
+              <li key={insideItem.id}>
+                <Link to="#">
+                  <figure>
+                    <img src={insideItem.url} alt={insideItem.title} />
+                    <figcaption className="insideContent">
+                      <span>{insideItem.subtitle}</span>
+                      <h3>{insideItem.title}</h3>
+                      <strong>{insideItem.content}</strong>
+                      <button type="button" className="summaryBtn">
+                        자세히 보기
+                      </button>
+                    </figcaption>
+                  </figure>
+                </Link>
+              </li>
+            ))}
           </ul>
         </section>
       </main>
