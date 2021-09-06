@@ -94,7 +94,6 @@ class Footer extends Component {
           </div>
           <div className="helpWrapper">
             <h4>도움말 및 연락처</h4>
-
             <ul className="helps list">
               <li>
                 <strong>고객센터</strong>
