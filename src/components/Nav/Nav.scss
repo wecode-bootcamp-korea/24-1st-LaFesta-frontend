@@ -1,12 +1,12 @@
 .navContainer {
   position: fixed;
   top: 0;
-  right: 0;
   left: 0;
   display: flex;
-  flex-wrap: wrap;
+  width: 100%;
   padding: 30px 50px;
-
+  z-index: 1;
+  background: #f4f4f4;
 
   .logo {
     display: flex;
@@ -27,49 +27,27 @@
   }
 
   .navMenu {
-    margin-left: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 
     .categorys {
       display: flex;
+      justify-content: space-between;
+      width: 34%;
       font-size: 12px;
 
       li {
         margin: 0 20px;
-
-        &:hover {
-          border-bottom: 2px solid #dbdbdb;
-        }
-      }
-    }
-
-
-    .toggleWrapper {
-      display: none;
-    }
-
-    .toggleMenu {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px 0 0 20px;
-
-      h3 {
-        font-size: 10px;
-        font-weight: 600;
-      }
-
-      a {
-        font-size: 10px;
-        color: #000;
-
-        &:hover {
-          border-bottom: 2px solid #dbdbdb;
-        }
       }
     }
   }
-
+}
+  
   .searchInput {
+    // display: none;
     border: 0;
     outline: 0;
     background: transparent;
@@ -77,7 +55,7 @@
 
   .userCategorys {
     display: flex;
-    margin-left: auto;
+    margin-right: auto;
     cursor: pointer;
 
     li {
@@ -92,4 +70,32 @@
       }
     }
   }
-}
+
+  .showMenuWrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 290px;
+      font-size: 12px;
+      z-index: 2;
+      transform: translate3d(0, 26%, 0);
+      background: #fff;
+
+      .showMenu {
+        display: flex;
+        margin: 0 3%; 
+        transform: translate3d(0, 26%, 0);
+        transition: transform 0.2s cubic-bezier(0.14, 0.47, 0.96, 0.63);
+
+        .showItem{
+          margin-right: 5%;
+
+          span{
+            font-size: 11px;
+            font-weight: 700;
+            color: #292929;
+        }
+      }
+    }
+ }
