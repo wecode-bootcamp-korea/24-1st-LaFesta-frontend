@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "(남성)프렌치 레귤러핏 반팔 폴로",
-    "fits": "클래식핏",
+    "fit": "클래식핏",
     "color_num": 1,
     "colors": "red",
     "img_url": [
@@ -14,7 +14,7 @@
   {
     "id": 2,
     "name": "(남성)라코스테 반팔 PARIS 폴로",
-    "fits": "클래식핏",
+    "fit": "클래식핏",
     "color_num": 1,
     "colors": "blue",
     "img_url": [
@@ -26,7 +26,7 @@
   {
     "id": 3,
     "name": "(남성)라코스테 클래식핏 오가닉 코튼 폴로",
-    "fits": "레귤러핏",
+    "fit": "레귤러핏",
     "color_num": 1,
     "colors": "green",
     "img_url": [
@@ -38,7 +38,7 @@
   {
     "id": 4,
     "name": "(남성)헤리티지 슬림핏 배색 코튼 피케 폴로",
-    "fits": "파리폴로",
+    "fit": "파리폴로",
     "color_num": 1,
     "colors": "white",
     "img_url": [
@@ -50,7 +50,7 @@
   {
     "id": 5,
     "name": "(남성)라코스테 반팔 폴로",
-    "fits": "슬림핏",
+    "fit": "슬림핏",
     "color_num": 1,
     "colors": "red",
     "img_url": [
@@ -62,7 +62,7 @@
   {
     "id": 6,
     "name": "(남성)라코스테 반팔 폴로",
-    "fits": "레귤러핏",
+    "fit": "레귤러핏",
     "color_num": 1,
     "colors": "blue",
     "img_url": [
@@ -74,7 +74,7 @@
   {
     "id": 7,
     "name": "(남성)반팔폴로 폴로 핏",
-    "fits": "파리폴로",
+    "fit": "파리폴로",
     "color_num": 1,
     "colors": "green",
     "img_url": [

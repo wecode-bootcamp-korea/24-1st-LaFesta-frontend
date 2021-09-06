@@ -45,8 +45,10 @@ class ProductList extends Component {
   render() {
     const { productData, productFits } = this.state;
     const searchStyle = productData.filter(data =>
-      data.fits.includes(productFits)
+      data.fit.includes(productFits)
     );
+
+    console.log(productData);
 
     return (
       <div className="productList">
@@ -82,29 +84,17 @@ class ProductList extends Component {
                   </div>
                   <div>라페스타 폴로는 후회하지 않을 선택일거예요.</div>
                 </div>
-                <div className="styleCategory">
+                <div className="styleCategory" onClick={this.styleChange}>
                   <div className="subCategory">
-                    <div
-                      className="resetStyleBtn"
-                      data-category=""
-                      onClick={this.styleChange}
-                    >
-                      폴로
+                    <div className="resetStyleBtn" data-category="">
+                      폴 로
                     </div>
-                    <div data-category="파리폴로" onClick={this.styleChange}>
-                      파리폴로
-                    </div>
-                    <div data-category="클래식핏" onClick={this.styleChange}>
-                      클래식핏
-                    </div>
+                    <div data-category="파리폴로">파리폴로</div>
+                    <div data-category="클래식핏">클래식핏</div>
                   </div>
                   <div className="subCategory">
-                    <div data-category="레귤러핏" onClick={this.styleChange}>
-                      레귤러핏
-                    </div>
-                    <div data-category="슬림핏" onClick={this.styleChange}>
-                      슬림핏
-                    </div>
+                    <div data-category="레귤러핏">레귤러핏</div>
+                    <div data-category="슬림핏">슬림핏</div>
                   </div>
                 </div>
 
@@ -115,8 +105,10 @@ class ProductList extends Component {
                   <div
                     className="filterAndAlign"
                     onClick={() => {
-                      this.setState({ filterMoveNum: 0.51 });
-                      this.setState({ grayDisplayNum: 10 });
+                      this.setState({
+                        filterMoveNum: 0.51,
+                        grayDisplayNum: 10,
+                      });
                     }}
                   >
                     <i className="fas fa-sliders-h"></i> 필터 및 정렬
@@ -128,6 +120,7 @@ class ProductList extends Component {
           <div className="products">
             <div className="productsLine">
               {searchStyle.map((data, idx) => {
+                const [productPic, productPicReverse] = data.img_url;
                 return (
                   <Product
                     key={data.id}
@@ -135,8 +128,8 @@ class ProductList extends Component {
                     idx={idx}
                     productName={data.name}
                     productColorNum={data.color_num}
-                    productPic={data.img_url[0]}
-                    productPicReverse={data.img_url[1]}
+                    productPic={productPic}
+                    productPicReverse={productPicReverse}
                     productPrice={data.price}
                   />
                 );

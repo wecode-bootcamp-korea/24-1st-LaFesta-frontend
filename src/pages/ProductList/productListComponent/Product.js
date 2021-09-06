@@ -23,9 +23,7 @@ class Product extends Component {
           <div className="productInfo">
             <div className="colors">+ {productColorNum} clours</div>
             <div className="productName">{productName}</div>
-            <div className="price">
-              {productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
-            </div>
+            <div className="price">{productPrice.toLocaleString('en')}원</div>
           </div>
         </Link>
       </div>
