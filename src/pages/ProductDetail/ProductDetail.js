@@ -31,6 +31,15 @@ class ProductDetail extends Component {
       });
   }
 
+  postProduct = () => {
+    fetch('http://10.58.7.79:8000/users/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        product_id: this.state.productInfoList.product_id,
+      }),
+    });
+  };
+
   changeSize = size => {
     this.setState({ size: size }, this.hideFilter());
   };
@@ -50,10 +59,14 @@ class ProductDetail extends Component {
     }
   };
 
-  changePhoto = mm => {
+  changePhoto = photo => {
     this.setState({
-      imageNum: mm,
+      imageNum: photo,
     });
+  };
+
+  gotoCart = () => {
+    this.props.history.push('/cart');
   };
 
   render() {
@@ -146,7 +159,14 @@ class ProductDetail extends Component {
                 {[1, 2, 3, 4, 5, 6, 7].map(circle => {
                   return (
                     <div className="outCircle" key={circle}>
-                      <div className={`color${circle} circle`}></div>
+                      <div
+                        className={`color${circle} circle`}
+                        style={{
+                          backgroundColor:
+                            productInfoList.colors &&
+                            productInfoList.colors[0].color,
+                        }}
+                      ></div>
                     </div>
                   );
                 })}
@@ -170,7 +190,7 @@ class ProductDetail extends Component {
                     : this.setState({ isSize: 0.51 });
                 }}
               >
-                <button>
+                <button onClick={size && this.postProduct}>
                   {size ? '쇼핑백에 추가하기' : '사이즈 선택하기'}
                 </button>
               </div>
@@ -223,6 +243,7 @@ class ProductDetail extends Component {
           isShoppingBag={isShoppingBag}
           productInfoList={productInfoList}
           size={size}
+          gotoCart={this.gotoCart}
         />
       </div>
     );

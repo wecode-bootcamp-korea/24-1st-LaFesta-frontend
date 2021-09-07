@@ -9,7 +9,8 @@
     "colors": [
       {
         "id": 1,
-        "name": "S71"
+        "name": "S71",
+        "color": "red"
       },
       {
         "id": 2,

@@ -52,7 +52,7 @@ class ShoppingBag extends Component {
             </div>
           </div>
           <div className="shoppingBasket">
-            <button>장바구니 보기</button>
+            <button onClick={this.props.gotoCart}>장바구니 보기</button>
           </div>
           <div className="continueBtn">
             <button onClick={hideFilter}>계속 쇼핑하기</button>
