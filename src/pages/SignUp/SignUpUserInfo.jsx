@@ -24,10 +24,10 @@ class SignUpUserInfo extends Component {
     });
   };
 
-  SignUp = () => {
-    const { gender, name, email, mobile, year, month, date } = this.state;
+  signUp = () => {
+    const { gender, name, email, mobile, year, month, date, pw } = this.state;
     const deleteDash = /\-/g;
-    fetch('http://10.58.7.79:8000/users/signup', {
+    fetch('http://172.30.1.25:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         gender: gender,
@@ -35,46 +35,63 @@ class SignUpUserInfo extends Component {
         email: email,
         phone_number: mobile.replace(deleteDash, ''),
         birthday: year + '-' + month + '-' + date,
-        password: this.state.pw,
+        password: pw,
       }),
     })
       .then(response => response.json())
       .then(response => {
-        if (response.message === 'SUCCESS') {
-          alert('성공');
-        } else if (response.message === 'INVALID_USER') {
-          alert('이메일과 비밀번호를 다시 확인해주세요');
+        if (response.MESSAGE === 'SUCCESS') {
+          alert('회원가입 축하드립니다.');
+          this.props.goToLogin();
+        } else if (response.MESSAGE === 'ALREADY EXISTED EMAIL') {
+          alert('이미 가입된 이메일 입니다.');
         }
       });
   };
 
   render() {
-    const { name, email, mobile, year, month, date, pwCheck, gender } =
+    const { name, email, mobile, year, month, date, pwCheck, gender, pw } =
       this.state;
-
     const checkLogin = pw => {
       const num = /[0-9]/;
       const str = /[a-zA-Z]/;
       const special = /[~!@#$%^&*()_+|<>?:{}]/;
-      gender &&
-      name &&
-      email.includes('@') &&
-      mobile.length === 11 &&
-      year > 1920 &&
-      year < 2007 &&
-      month > 0 &&
-      month < 13 &&
-      date > 0 &&
-      date < 32 &&
-      num.test(pw) &&
-      str.test(pw) &&
-      special.test(pw) &&
-      pw.length >= 8 &&
-      pwCheck === pw
-        ? this.SignUp()
-        : alert('회원가입 정보를 다시 확인해주세요');
-    };
+      const formCheck =
+        gender &&
+        name &&
+        email.includes('@') &&
+        mobile.length >= 11 &&
+        year > 1920 &&
+        year < 2007 &&
+        month > 0 &&
+        month < 13 &&
+        date > 0 &&
+        date < 32 &&
+        num.test(pw) &&
+        str.test(pw) &&
+        special.test(pw) &&
+        pw.length >= 8 &&
+        pwCheck === pw;
 
+      formCheck
+        ? this.signUp()
+        : this.setState(
+            {
+              name: '',
+              email: '',
+              mobile: '',
+              year: '',
+              month: '',
+              date: '',
+              pw: '',
+              pwCheck: '',
+              gender: '',
+            },
+            () => {
+              alert('회원가입 정보를 다시 확인해 주세요');
+            }
+          );
+    };
     return (
       <div className="signUpUserInfo">
         <div className="container">
@@ -88,7 +105,7 @@ class SignUpUserInfo extends Component {
                   <input
                     type="radio"
                     name="gender"
-                    value="male"
+                    value="M"
                     onClick={this.handleInput}
                   />
                 </span>
@@ -97,7 +114,7 @@ class SignUpUserInfo extends Component {
                   <input
                     type="radio"
                     name="gender"
-                    value="female"
+                    value="F"
                     onClick={this.handleInput}
                   />
                 </span>
@@ -105,15 +122,30 @@ class SignUpUserInfo extends Component {
             </div>
             <div className="userName">
               <div className="title">Name</div>
-              <input name="name" type="text" onChange={this.handleInput} />
+              <input
+                name="name"
+                type="text"
+                onChange={this.handleInput}
+                value={name}
+              />
             </div>
             <div className="userEmail">
               <div className="title">E-mail</div>
-              <input name="email" type="email" onChange={this.handleInput} />
+              <input
+                name="email"
+                type="email"
+                onChange={this.handleInput}
+                value={email}
+              />
             </div>
-            <div className="userPhoenNumber">
+            <div className="userPhoneNumber">
               <div className="title">Mobile</div>
-              <input name="mobile" type="tel" onChange={this.handleInput} />
+              <input
+                name="mobile"
+                type="tel"
+                value={this.state.mobile}
+                onChange={this.handleInput}
+              />
             </div>
             <div className="userBirth">
               <div className="title">Birthdays</div>
@@ -123,6 +155,7 @@ class SignUpUserInfo extends Component {
                     name="year"
                     type="text"
                     placeholder="YYYY"
+                    value={year}
                     onChange={this.handleInput}
                   ></input>
                 </div>
@@ -131,6 +164,7 @@ class SignUpUserInfo extends Component {
                     name="month"
                     type="text"
                     placeholder="MM"
+                    value={month}
                     onChange={this.handleInput}
                   ></input>
                 </div>
@@ -139,6 +173,7 @@ class SignUpUserInfo extends Component {
                     name="date"
                     type="text"
                     placeholder="DD"
+                    value={date}
                     onChange={this.handleInput}
                   ></input>
                 </div>
@@ -147,7 +182,12 @@ class SignUpUserInfo extends Component {
             <div className="userPw">
               Password
               <div>
-                <input type="password" name="pw" onChange={this.handleInput} />
+                <input
+                  type="password"
+                  name="pw"
+                  onChange={this.handleInput}
+                  value={pw}
+                />
                 <div className="pwText">
                   (영문, 숫자, 특수문자 모두 포함 8자 이상)
                 </div>
@@ -159,15 +199,16 @@ class SignUpUserInfo extends Component {
                 <input
                   type="password"
                   name="pwCheck"
+                  value={pwCheck}
                   onChange={this.handleInput}
                 />
               </div>
             </div>
             <div>
               <button
-                className="signUpBnt"
+                className="signUpBtn"
                 onClick={() => {
-                  checkLogin(this.state.pw);
+                  checkLogin(pw);
                 }}
               >
                 가입하기
