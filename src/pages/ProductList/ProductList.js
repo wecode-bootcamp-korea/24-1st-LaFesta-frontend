@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Product from './ProductListComponent/Product';
 import ProductFilter from './ProductListComponent/ProductFilter';
 import './ProductList.scss';
-import './ProductListComponent/product.scss';
+import './ProductListComponent/Product.scss';
 import './ProductListComponent/ProductFilter.scss';
 
 class ProductList extends Component {
