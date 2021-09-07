@@ -65,7 +65,7 @@ class MainPage extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3001/data/mainData-songhyun.json')
+    fetch('http://localhost:3000/data/mainData-songhyun.json')
       .then(res => res.json())
       .then(items => {
         this.setState({ list: items });
