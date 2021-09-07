@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './MainItem.scss';
+
 class MainItem extends Component {
   render() {
     const { item } = this.props;
-
     return (
-      <li key={item.id}>
+      <li>
         <Link to="#">
           <figure>
             <img src={item.url} alt={item.title} />

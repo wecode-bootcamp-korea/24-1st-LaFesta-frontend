@@ -2,85 +2,100 @@ import React, { Component } from 'react';
 import MainItem from './MainItem/MainItem';
 import './MainPage.scss';
 
-let saleMargin = 0;
-let insideMargin = 0;
 class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      evnentCount: 1,
+      eventCount: 1,
       insideCount: 1,
       list: [],
     };
+    this.saleMargin = 0;
+    this.insideMargin = 0;
   }
 
   handleNextClick = () => {
-    const { evnentCount, list } = this.state;
-    const length = list.filter(item => item.category === 'event').length;
+    const { eventCount, list } = this.state;
+    const length = Number(list.map(item => item.eventList.length));
+    console.log(length);
 
-    if (evnentCount < length) {
+    if (eventCount < length) {
       this.setState({
-        evnentCount: evnentCount + 1,
+        eventCount: eventCount + 1,
       });
-      saleMargin -= 421;
+      this.saleMargin -= 421;
     }
   };
 
   handlePrevClick = () => {
-    const { evnentCount, list } = this.state;
-    const length = list.filter(item => item.category === 'event').length;
+    const { eventCount, list } = this.state;
+    const length = Number(list.map(item => item.eventList.length));
 
-    if (!evnentCount < length && evnentCount > 1) {
+    if (!eventCount < length && eventCount > 1) {
       this.setState({
-        evnentCount: evnentCount - 1,
+        eventCount: eventCount - 1,
       });
-      saleMargin += 421;
+      this.saleMargin += 421;
     }
   };
 
   handleInSideNextClick = () => {
     const { insideCount, list } = this.state;
-    const length = list.filter(item => item.category === 'inside').length;
+    const length = Number(list.map(item => item.insideList.length));
 
     if (insideCount < length) {
       this.setState({
         insideCount: insideCount + 1,
       });
 
-      insideMargin -= 1562;
+      this.insideMargin -= 1562;
     }
   };
 
   handleInSidePrevClick = () => {
     const { insideCount, list } = this.state;
-    const length = list.filter(item => item.category === 'inside').length;
+    const length = Number(list.map(item => item.insideList.length));
 
     if (!insideCount < length && insideCount > 1) {
       this.setState({
         insideCount: insideCount - 1,
       });
 
-      insideMargin += 1562;
+      this.insideMargin += 1562;
     }
   };
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/mainData-songhyun.json')
+    fetch('http://localhost:3007/data/mainData-songhyun.json')
       .then(res => res.json())
-      .then(items => {
-        this.setState({ list: items });
+      .then(lists => {
+        const init = {
+          insideList: [],
+          eventList: [],
+          collectionList: [],
+        };
+
+        lists.forEach(item => {
+          const obj = {
+            inside: 'insideList',
+            collection: 'collectionList',
+            event: 'eventList',
+          };
+          init[obj[item.category]].push(item);
+        });
+        this.setState({ list: [init] });
       });
   }
   render() {
-    const { evnentCount, insideCount, list } = this.state;
-    const saleLength = list.filter(item => item.category === 'event').length;
-    const insideLength = list.filter(item => item.category === 'inside').length;
+    const { eventCount, insideCount, list } = this.state;
+    const saleLength = list.map(item => item.eventList.length);
+    const insideLength = list.map(item => item.insideList.length);
 
     const saleStyle = {
-      marginLeft: saleMargin,
+      marginLeft: this.saleMargin,
     };
     const insideStyle = {
-      marginLeft: insideMargin,
+      marginLeft: this.insideMargin,
     };
 
     return (
@@ -105,26 +120,26 @@ class MainPage extends Component {
                   type="button"
                   className="prevBtn"
                   onClick={this.handlePrevClick}
-                  disabled={evnentCount === 1}
+                  disabled={eventCount === 1}
                 >
                   <i className="fas fa-chevron-left" />
                 </button>
               </li>
               <li className="startCount">
-                <span>{evnentCount}</span>
+                <span>{eventCount}</span>
               </li>
               <li className="center">
                 <span>/</span>
               </li>
               <li className="endCount">
-                <span>{saleLength}</span>
+                <span>{Number(saleLength)}</span>
               </li>
               <li>
                 <button
                   type="button"
                   className="nextBtn"
                   onClick={this.handleNextClick}
-                  disabled={evnentCount === saleLength}
+                  disabled={eventCount === Number(saleLength)}
                 >
                   <i className="fas fa-chevron-right" />
                 </button>
@@ -132,15 +147,9 @@ class MainPage extends Component {
             </ol>
           </div>
           <ul className="newProducts" style={saleStyle}>
-            {list.map(item => {
-              if (item.category === 'event') {
-                return (
-                  <>
-                    <MainItem item={item} />
-                  </>
-                );
-              }
-            })}
+            {list.map(item =>
+              item.eventList.map(item => <MainItem key={item.id} item={item} />)
+            )}
           </ul>
         </section>
         <section className="newCollectionWrapper">
@@ -162,15 +171,11 @@ class MainPage extends Component {
         <section className="lafestWorldWrapper">
           <h2>The Lacoste World</h2>
           <ul className="lafeWorlds">
-            {list.map(item => {
-              if (item.category === 'collection') {
-                return (
-                  <>
-                    <MainItem item={item} />
-                  </>
-                );
-              }
-            })}
+            {list.map(item =>
+              item.collectionList.map(item => (
+                <MainItem key={item.id} item={item} />
+              ))
+            )}
           </ul>
         </section>
         <section className="lafestInsideWrapper">
@@ -194,30 +199,28 @@ class MainPage extends Component {
                 <span>/</span>
               </li>
               <li className="endCount">
-                <span>{insideLength}</span>
+                <span>{Number(insideLength)}</span>
               </li>
               <li>
-                <button
-                  type="button"
-                  className="nextBtn"
-                  onClick={this.handleInSideNextClick}
-                  disabled={insideCount === insideLength}
-                >
-                  <i className="fas fa-chevron-right" />
-                </button>
+                {
+                  <button
+                    type="button"
+                    className="nextBtn"
+                    onClick={this.handleInSideNextClick}
+                    disabled={insideCount === Number(insideLength)}
+                  >
+                    <i className="fas fa-chevron-right" />
+                  </button>
+                }
               </li>
             </ol>
           </div>
           <ul className="insides" style={insideStyle}>
-            {list.map(item => {
-              if (item.category === 'inside') {
-                return (
-                  <>
-                    <MainItem item={item} />
-                  </>
-                );
-              }
-            })}
+            {list.map(item =>
+              item.insideList.map(item => (
+                <MainItem key={item.id} item={item} />
+              ))
+            )}
           </ul>
         </section>
       </main>
