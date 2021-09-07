@@ -1,0 +1,71 @@
+.navContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  padding: 30px 50px;
+  z-index: 1;
+  background: #f4f4f4;
+
+  .logo {
+    display: flex;
+    width: 130px;
+    cursor: pointer;
+
+    h1 {
+      padding-right: 10px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    img {
+      width: 28px;
+      height: 20px;
+      transform: rotateY(180deg);
+    }
+  }
+
+  .navMenu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .categorys {
+      display: flex;
+      justify-content: space-between;
+      width: 34%;
+      font-size: 12px;
+
+      li {
+        margin: 0 20px;
+      }
+    }
+  }
+}
+
+.searchInput {
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.userCategorys {
+  display: flex;
+  margin-right: auto;
+  cursor: pointer;
+
+  li {
+    padding-left: 22px;
+
+    .icon {
+      font-size: 15px;
+    }
+
+    :hover {
+      color: #dbdbdb;
+    }
+  }
+}

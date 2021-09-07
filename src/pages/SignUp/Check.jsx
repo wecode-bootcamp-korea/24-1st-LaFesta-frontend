@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 
 class Check extends Component {
   render() {
+    const { checkList, handleChange, id, text } = this.props;
     return (
       <div className="check">
         <input
           type="checkbox"
-          checked={this.props.ischecked}
-          onChange={this.props.headleChange}
+          checked={checkList}
+          onChange={handleChange}
+          id={id}
         />
-        {this.props.text}
+        {text}
       </div>
     );
   }
