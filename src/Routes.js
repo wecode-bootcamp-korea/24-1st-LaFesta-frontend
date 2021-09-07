@@ -24,7 +24,7 @@ class Routes extends Component {
           <Route exact path="/productList" component={ProductList} />
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/logIn" component={Login} />
-          <Route export path="/error" component={NotFound} />
+          <Route to="/error" component={NotFound} />
         </Switch>
         <Footer />
       </Router>
