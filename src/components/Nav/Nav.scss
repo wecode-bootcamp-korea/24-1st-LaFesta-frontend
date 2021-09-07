@@ -45,27 +45,33 @@
     }
   }
 }
-  
-  .searchInput {
-    border: 0;
-    outline: 0;
-    background: transparent;
-  }
 
-  .userCategorys {
-    display: flex;
-    margin-right: auto;
-    cursor: pointer;
+.searchInput {
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
 
-    li {
-      padding-left: 22px;
+.userCategorys {
+  display: flex;
+  margin-right: auto;
+  cursor: pointer;
 
-      .icon {
-        font-size: 15px;
-      }
+  li {
+    padding-left: 22px;
 
-      :hover {
-        color: #dbdbdb;
-      }
+    .icon {
+      font-size: 15px;
+    }
+
+    :hover {
+      color: #dbdbdb;
     }
   }
+}
+
+#test {
+  width: 100%;
+  height: 1500px;
+
+}

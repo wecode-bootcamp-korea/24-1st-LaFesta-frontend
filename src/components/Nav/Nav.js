@@ -165,19 +165,22 @@ class Nav extends Component {
   };
 
   handleMouseLeave = () => {
+    const { loginUser } = this.state;
     this.setState({
       toggleMenu: '',
+      loginUser: !loginUser,
     });
   };
 
   handleUserPopUp = () => {
+    const { loginUser } = this.state;
     this.setState({
-      loginUser: true,
+      loginUser: !loginUser,
     });
   };
 
   render() {
-    const { toggleMenu } = this.state;
+    const { toggleMenu, loginUser } = this.state;
     const toggledMenu = menu.find(item => item.name === toggleMenu);
     return (
       <>
@@ -237,7 +240,12 @@ class Nav extends Component {
               ))}
           </ul>
         </div>
-        {this.state.loginUser && <PopUp />}
+        {loginUser && (
+          <PopUp
+            name={localStorage.getItem('user_name') || '이송현'}
+            onMouseLeave={this.handleMouseLeave}
+          />
+        )}
       </>
     );
   }
