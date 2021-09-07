@@ -242,7 +242,7 @@ class Nav extends Component {
         </div>
         {loginUser && (
           <PopUp
-            name={localStorage.getItem('user_name') || '이송현'}
+            name={localStorage.getItem('user_name')}
             onMouseLeave={this.handleMouseLeave}
           />
         )}
