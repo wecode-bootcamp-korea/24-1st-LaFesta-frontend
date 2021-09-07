@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 class CartList extends Component {
   render() {
+    const { cartProductName, cartProductPrice } = this.props;
+
     return (
       <ul className="cartList">
         <li className="cartProduct">
@@ -12,9 +14,9 @@ class CartList extends Component {
             />
           </div>
           <div className="cartProductOpt">
-            <span>(남성)프렌치 레귤러 반팔 폴로</span>
-            <span>031, 사이즈: 004</span>
-            <span>139,000 원</span>
+            <span>{cartProductName}</span>
+            <span>color, 사이즈: 004</span>
+            <span>{cartProductPrice.toLocaleString('en')}원</span>
             <select className="productQuantity">
               <option value="0">0</option>
               <option value="1" selected>

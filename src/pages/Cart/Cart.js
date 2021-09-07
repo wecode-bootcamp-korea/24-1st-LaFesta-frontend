@@ -6,7 +6,26 @@ import './CartComponent/CartList.scss';
 import './CartComponent/PriceInfo.scss';
 
 class Cart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartListData: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('./data/cartListData-doyoung.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          cartListData: res,
+        });
+      });
+  }
+
   render() {
+    const { cartListData } = this.state;
+
     return (
       <div className="Cart">
         <header className="purchaseStep">
@@ -27,7 +46,15 @@ class Cart extends Component {
         </header>
         <div className="purchaseFirstStep">
           <section className="purchaseInfo">
-            <CartList />
+            {cartListData.map(data => {
+              return (
+                <CartList
+                  key={data.id}
+                  cartProductName={data.name}
+                  cartProductPrice={data.price}
+                />
+              );
+            })}
             <div className="cartDiscount">
               <span>할인혜택(세일 및 쿠폰)</span>
               <span>사용 가능 포인트: 0원</span>
