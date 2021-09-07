@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import Product from './productListComponent/Product';
-import Footer from '../../components/Footer/Footer';
+import Product from './ProductListComponent/Product';
+import ProductFilter from './ProductListComponent/ProductFilter';
 import './ProductList.scss';
-import '../ProductList/productListComponent/product.scss';
+import './ProductListComponent/product.scss';
+import './ProductListComponent/ProductFilter.scss';
 
 class ProductList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       productData: [],
-      productStyle: '',
+      productFits: '',
+      filterMoveNum: 1,
+      grayDisplayNum: -1,
     };
   }
 
@@ -23,15 +26,29 @@ class ProductList extends Component {
       });
   }
 
-  handleChange = event => {
-    this.setState({ productStyle: event.target.dataset.category });
+  styleChange = event => {
+    this.setState({ productFits: event.target.dataset.category });
+  };
+
+  hideFilter = () => {
+    this.setState({
+      filterMoveNum: 1,
+    });
+  };
+
+  hideGrayDisplay = () => {
+    this.setState({
+      grayDisplayNum: -1,
+    });
   };
 
   render() {
-    const { productData, productStyle } = this.state;
+    const { productData, productFits } = this.state;
     const searchStyle = productData.filter(data =>
-      data.productName.includes(productStyle)
+      data.fit.includes(productFits)
     );
+
+    console.log(productData);
 
     return (
       <div className="productList">
@@ -45,10 +62,16 @@ class ProductList extends Component {
               <span>의류</span>
             </div>
             <header className="categoryHeader">
+              <div
+                className="grayDisplay"
+                style={{
+                  zIndex: `${this.state.grayDisplayNum}`,
+                }}
+              ></div>
               <img
                 className="categoryIntroPic"
                 alt="categoryIntroImage"
-                src="https://imageapac1.lacoste.com/dw/image/v2/BBCL_PRD/on/demandware.static/-/Library-Sites-LacosteContent/default/dw7a5def12/2021/FW21/PLP/plp-men-clothing-desk-01.jpg?imwidth=915&impolicy=custom"
+                src="https://i.postimg.cc/HkFkNGLv/1-main.jpg"
               />
               <div className="categoryIntro">
                 <div className="categoryTitle">남성 폴로</div>
@@ -61,32 +84,33 @@ class ProductList extends Component {
                   </div>
                   <div>라페스타 폴로는 후회하지 않을 선택일거예요.</div>
                 </div>
-                <div className="styleCategory">
+                <div className="styleCategory" onClick={this.styleChange}>
                   <div className="subCategory">
-                    <div data-category="폴로" onClick={this.handleChange}>
-                      폴로
+                    <div className="resetStyleBtn" data-category="">
+                      폴 로
                     </div>
-                    <div data-category="PARIS" onClick={this.handleChange}>
-                      파리폴로
-                    </div>
-                    <div data-category="클래식핏" onClick={this.handleChange}>
-                      클래식핏
-                    </div>
+                    <div data-category="파리폴로">파리폴로</div>
+                    <div data-category="클래식핏">클래식핏</div>
                   </div>
                   <div className="subCategory">
-                    <div data-category="레귤러핏" onClick={this.handleChange}>
-                      레귤러핏
-                    </div>
-                    <div data-category="슬림핏" onClick={this.handleChange}>
-                      슬림핏
-                    </div>
+                    <div data-category="레귤러핏">레귤러핏</div>
+                    <div data-category="슬림핏">슬림핏</div>
                   </div>
                 </div>
+
                 <div className="styleFilter">
                   <div className="styleFilterResult">
                     {searchStyle.length}개의 결과
                   </div>
-                  <div className="filterAndAlign">
+                  <div
+                    className="filterAndAlign"
+                    onClick={() => {
+                      this.setState({
+                        filterMoveNum: 0.51,
+                        grayDisplayNum: 10,
+                      });
+                    }}
+                  >
                     <i className="fas fa-sliders-h"></i> 필터 및 정렬
                   </div>
                 </div>
@@ -95,14 +119,18 @@ class ProductList extends Component {
           </section>
           <div className="products">
             <div className="productsLine">
-              {searchStyle.map(data => {
+              {searchStyle.map((data, idx) => {
+                const [productPic, productPicReverse] = data.img_url;
                 return (
                   <Product
                     key={data.id}
-                    productName={data.productName}
-                    productColors={data.productColors}
-                    productPic={data.productPic}
-                    productPrice={data.productPrice}
+                    itemId={data.id}
+                    idx={idx}
+                    productName={data.name}
+                    productColorNum={data.color_num}
+                    productPic={productPic}
+                    productPicReverse={productPicReverse}
+                    productPrice={data.price}
                   />
                 );
               })}
@@ -120,7 +148,12 @@ class ProductList extends Component {
             </div>
           </div>
         </div>
-        <Footer />
+        <ProductFilter
+          filterMoveNum={this.state.filterMoveNum}
+          hideFilter={this.hideFilter}
+          hideGrayDisplay={this.hideGrayDisplay}
+          searchStyle={searchStyle}
+        />
       </div>
     );
   }

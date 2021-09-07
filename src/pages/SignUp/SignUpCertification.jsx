@@ -7,21 +7,23 @@ class SignUpCertification extends Component {
     this.state = { checked: false };
   }
 
-  headleChange = e => {
+  handleChange = e => {
     this.setState({ checked: e.target.checked });
   };
 
   render() {
+    const { checked } = this.state;
+    const { goToNextPage } = this.props;
     return (
       <div className="signUpCertification">
         <div className="container">
           <div className="nav">회원가입</div>
-          <div className="usercertification">본인인증</div>
+          <div className="userCertification">본인인증</div>
           <div className="age">
             <input
               type="checkbox"
-              checked={this.state.checked}
-              onChange={this.headleChange}
+              checked={checked}
+              onChange={this.handleChange}
             />
             14세 이상
           </div>
@@ -35,7 +37,9 @@ class SignUpCertification extends Component {
           <div className="btn">
             <button
               className="certificationBnt"
-              onClick={() => this.props.goToNext(3)}
+              onClick={() =>
+                checked ? goToNextPage() : alert('체크박스는 필수사항입니다.')
+              }
             >
               계속
             </button>

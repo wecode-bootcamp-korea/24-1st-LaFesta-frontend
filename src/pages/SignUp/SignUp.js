@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SignUpTermsUse from './SignUpTermsUse';
 import SignUpCertification from './SignUpCertification';
 import SignUpUserInfo from './SignUpUserInfo';
-import Footer from '../../components/Footer/Footer';
 import './SignUp.scss';
 
 class SignUp extends Component {
@@ -11,55 +10,73 @@ class SignUp extends Component {
     this.state = {
       id: '',
       pw: '',
-      userRulePlusClassName: false,
-      userInfoPlusClassName: false,
-      ischecked: false,
-      next: 1,
+      isUserRulePlusMore: false,
+      isUserInfoPlusMore: false,
+      pageIndex: 1,
+      checkList: [
+        { required: true, status: false },
+        { required: true, status: false },
+        { required: true, status: false },
+        { required: true, status: false },
+        { required: false, status: false },
+      ],
     };
   }
-
-  goToNext = id => {
-    this.setState({ next: id });
+  goToLogin = () => {
+    this.props.history.push('/login');
   };
 
-  headleChange = e => {
-    this.setState({ ischecked: e.target.checked });
+  goToNextPage = () => {
+    this.state.checkList.every(checked => checked.required === checked.status)
+      ? this.setState({ pageIndex: this.state.pageIndex + 1 })
+      : alert('체크박스는 필수사항입니다.');
+  };
+
+  handleChange = e => {
+    const newCheckList = [...this.state.checkList];
+    const checkPick = this.state.checkList[e.target.id - 1];
+    newCheckList.splice(e.target.id - 1, 1, !checkPick);
+    this.setState({ checkList: newCheckList });
   };
 
   toggleUserRulePlus = () => {
-    const { userRulePlusClassName } = this.state;
-    this.setState({ userRulePlusClassName: !userRulePlusClassName });
+    const { isUserRulePlusMore } = this.state;
+    this.setState({ isUserRulePlusMore: !isUserRulePlusMore });
   };
 
   toggleUserInfoPlus = () => {
-    const { userInfoPlusClassName } = this.state;
-    this.setState({ userInfoPlusClassName: !userInfoPlusClassName });
+    const { isUserInfoPlusMore } = this.state;
+    this.setState({ isUserInfoPlusMore: !isUserInfoPlusMore });
   };
 
   render() {
+    const { isUserRulePlusMore, isUserInfoPlusMore, checkList, pageIndex } =
+      this.state;
     const MAPPING_SIGNUP = {
       1: (
         <SignUpTermsUse
-          userRulePlusClassName={this.state.userRulePlusClassName}
-          userInfoPlusClassName={this.state.userInfoPlusClassName}
-          ischecked={this.state.ischecked}
+          isUserRulePlusMore={isUserRulePlusMore}
+          isUserInfoPlusMore={isUserInfoPlusMore}
+          checkList={checkList}
           toggleUserRulePlus={this.toggleUserRulePlus}
           toggleUserInfoPlus={this.toggleUserInfoPlus}
-          goToNext={this.goToNext}
-          headleChange={this.headleChange}
-          next={this.state.next}
+          goToNextPage={this.goToNextPage}
+          handleChange={this.handleChange}
+          pageIndex={pageIndex}
         />
       ),
       2: (
-        <SignUpCertification goToNext={this.goToNext} next={this.state.next} />
+        <SignUpCertification
+          goToNextPage={this.goToNextPage}
+          next={pageIndex}
+        />
       ),
-      3: <SignUpUserInfo />,
+      3: <SignUpUserInfo goToLogin={this.goToLogin} />,
     };
 
     return (
       <div className="signUp">
-        <div className="backgroudBanner">{MAPPING_SIGNUP[this.state.next]}</div>
-        <Footer />
+        <div className="backgroundBanner">{MAPPING_SIGNUP[pageIndex]}</div>
       </div>
     );
   }
