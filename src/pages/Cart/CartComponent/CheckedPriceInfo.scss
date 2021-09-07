@@ -1,0 +1,39 @@
+.checkedInfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  width: 370px;
+
+  .checkedPriceInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px 45px;
+    margin-bottom: 3px;
+    height: 150px;
+    background-color: white;
+
+    & div {
+      display: flex;
+      justify-content: space-between;
+
+      & span:last-child {
+        font-weight: 700;
+      }
+    }
+
+    .totalPrice {
+      color: #0f5b33;
+    }
+  }
+
+  .checkedAddress {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px 45px;
+    height: 150px;
+    background-color: white;
+    color: #bfbfbf;
+  }
+}

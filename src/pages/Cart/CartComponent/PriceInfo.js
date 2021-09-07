@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './PriceInfo.scss';
 
 class PriceInfo extends Component {
   render() {

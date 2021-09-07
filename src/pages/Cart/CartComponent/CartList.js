@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './CartList.scss';
 
 class CartList extends Component {
   render() {
