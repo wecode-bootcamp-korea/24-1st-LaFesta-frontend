@@ -1,78 +1,81 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import MainItem from './MainItem/MainItem';
 import './MainPage.scss';
 
+let saleMargin = 0;
+let insideMargin = 0;
 class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      saleCount: 1,
+      evnentCount: 1,
       insideCount: 1,
-      saleMargin: 0,
-      insideMargin: 0,
-      saleList: [],
-      insideList: [],
-      worldList: [],
+      list: [],
     };
   }
 
   handleNextClick = () => {
-    const { saleCount, saleMargin, saleList } = this.state;
+    const { evnentCount, list } = this.state;
+    const length = list.filter(item => item.category === 'event').length;
 
-    if (saleCount < saleList.length) {
-      this.setState({ saleCount: saleCount + 1 });
-      this.setState({ saleMargin: saleMargin - 421 });
+    if (evnentCount < length) {
+      this.setState({
+        evnentCount: evnentCount + 1,
+      });
+      saleMargin -= 421;
     }
   };
 
   handlePrevClick = () => {
-    const { saleCount, saleMargin, saleList } = this.state;
+    const { evnentCount, list } = this.state;
+    const length = list.filter(item => item.category === 'event').length;
 
-    if (!saleCount < saleList.length && saleCount > 1) {
-      this.setState({ saleCount: saleCount - 1 });
-      this.setState({ saleMargin: saleMargin + 421 });
+    if (!evnentCount < length && evnentCount > 1) {
+      this.setState({
+        evnentCount: evnentCount - 1,
+      });
+      saleMargin += 421;
     }
   };
 
   handleInSideNextClick = () => {
-    const { insideCount, insideMargin, insideList } = this.state;
+    const { insideCount, list } = this.state;
+    const length = list.filter(item => item.category === 'inside').length;
 
-    if (insideCount < insideList.length) {
-      this.setState({ insideCount: insideCount + 1 });
-      this.setState({ insideMargin: insideMargin - 1562 });
+    if (insideCount < length) {
+      this.setState({
+        insideCount: insideCount + 1,
+      });
+
+      insideMargin -= 1562;
     }
   };
 
   handleInSidePrevClick = () => {
-    const { insideCount, insideMargin, insideList } = this.state;
+    const { insideCount, list } = this.state;
+    const length = list.filter(item => item.category === 'inside').length;
 
-    if (!insideCount < insideList.length && insideCount > 1) {
-      this.setState({ insideCount: insideCount - 1 });
-      this.setState({ insideMargin: insideMargin + 1562 });
+    if (!insideCount < length && insideCount > 1) {
+      this.setState({
+        insideCount: insideCount - 1,
+      });
+
+      insideMargin += 1562;
     }
   };
 
   componentDidMount() {
-    fetch('http://localhost:3002/data/mainData-songhyun.json')
+    fetch('http://localhost:3001/data/mainData-songhyun.json')
       .then(res => res.json())
       .then(items => {
-        this.setState({
-          saleList: items.filter(item => item.category.includes('event')),
-          insideList: items.filter(item => item.category.includes('inside')),
-          worldList: items.filter(item => item.category.includes('collection')),
-        });
+        this.setState({ list: items });
       });
   }
   render() {
-    const {
-      saleList,
-      insideList,
-      worldList,
-      saleCount,
-      insideCount,
-      saleMargin,
-      insideMargin,
-    } = this.state;
+    const { evnentCount, insideCount, list } = this.state;
+    const saleLength = list.filter(item => item.category === 'event').length;
+    const insideLength = list.filter(item => item.category === 'inside').length;
+
     const saleStyle = {
       marginLeft: saleMargin,
     };
@@ -102,26 +105,26 @@ class MainPage extends Component {
                   type="button"
                   className="prevBtn"
                   onClick={this.handlePrevClick}
-                  disabled={saleCount === 1 && true}
+                  disabled={evnentCount === 1}
                 >
                   <i className="fas fa-chevron-left" />
                 </button>
               </li>
               <li className="startCount">
-                <span>{saleCount}</span>
+                <span>{evnentCount}</span>
               </li>
               <li className="center">
                 <span>/</span>
               </li>
               <li className="endCount">
-                <span>{saleList.length}</span>
+                <span>{saleLength}</span>
               </li>
               <li>
                 <button
                   type="button"
                   className="nextBtn"
                   onClick={this.handleNextClick}
-                  disabled={saleCount === saleList.length && true}
+                  disabled={evnentCount === saleLength}
                 >
                   <i className="fas fa-chevron-right" />
                 </button>
@@ -129,18 +132,15 @@ class MainPage extends Component {
             </ol>
           </div>
           <ul className="newProducts" style={saleStyle}>
-            {saleList.map(saleItem => (
-              <li key={`${saleItem.id}`}>
-                <Link to="#">
-                  <figure className="newProductConent">
-                    <img src={saleItem.url} alt={saleItem.title} />
-                    <figcaption>
-                      <strong>{saleItem.title}</strong>
-                    </figcaption>
-                  </figure>
-                </Link>
-              </li>
-            ))}
+            {list.map(item => {
+              if (item.category === 'event') {
+                return (
+                  <>
+                    <MainItem item={item} />
+                  </>
+                );
+              }
+            })}
           </ul>
         </section>
         <section className="newCollectionWrapper">
@@ -162,20 +162,15 @@ class MainPage extends Component {
         <section className="lafestWorldWrapper">
           <h2>The Lacoste World</h2>
           <ul className="lafeWorlds">
-            {worldList.map(item => (
-              <li key={item.id}>
-                <Link to="#">
-                  <figure>
-                    <img src={item.url} alt={item.title} />
-                    <figcaption className="lafestWorlContent">
-                      <h3>{item.title}</h3>
-                      <strong>신상품 7% 혜택</strong>
-                      <button type="button">구매하기</button>
-                    </figcaption>
-                  </figure>
-                </Link>
-              </li>
-            ))}
+            {list.map(item => {
+              if (item.category === 'collection') {
+                return (
+                  <>
+                    <MainItem item={item} />
+                  </>
+                );
+              }
+            })}
           </ul>
         </section>
         <section className="lafestInsideWrapper">
@@ -187,7 +182,7 @@ class MainPage extends Component {
                   type="button"
                   className="prevBtn"
                   onClick={this.handleInSidePrevClick}
-                  disabled={insideCount === 1 && true}
+                  disabled={insideCount === 1}
                 >
                   <i className="fas fa-chevron-left" />
                 </button>
@@ -199,14 +194,14 @@ class MainPage extends Component {
                 <span>/</span>
               </li>
               <li className="endCount">
-                <span>{insideList.length}</span>
+                <span>{insideLength}</span>
               </li>
               <li>
                 <button
                   type="button"
                   className="nextBtn"
                   onClick={this.handleInSideNextClick}
-                  disabled={insideCount === insideList.length && true}
+                  disabled={insideCount === insideLength}
                 >
                   <i className="fas fa-chevron-right" />
                 </button>
@@ -214,23 +209,15 @@ class MainPage extends Component {
             </ol>
           </div>
           <ul className="insides" style={insideStyle}>
-            {insideList.map(insideItem => (
-              <li key={insideItem.id}>
-                <Link to="#">
-                  <figure>
-                    <img src={insideItem.url} alt={insideItem.title} />
-                    <figcaption className="insideContent">
-                      <span>{insideItem.subtitle}</span>
-                      <h3>{insideItem.title}</h3>
-                      <strong>{insideItem.content}</strong>
-                      <button type="button" className="summaryBtn">
-                        자세히 보기
-                      </button>
-                    </figcaption>
-                  </figure>
-                </Link>
-              </li>
-            ))}
+            {list.map(item => {
+              if (item.category === 'inside') {
+                return (
+                  <>
+                    <MainItem item={item} />
+                  </>
+                );
+              }
+            })}
           </ul>
         </section>
       </main>

@@ -56,8 +56,6 @@ main {
 
   .newProductSaleWrapper {
     position: relative;
-    display: flex;
-    flex-direction: column;
     padding: 0 50px;
     margin-bottom: 4.5%;
 
@@ -91,37 +89,6 @@ main {
 
       .nextBtn {
         margin-left: 10px;
-      }
-    }
-
-
-    .newProducts {
-      display: flex;
-      margin-left: 0;
-      overflow: hidden;
-
-      li {
-        margin-right: 4%;
-      }
-
-      .newProductConent {
-        width: 353px;
-        height: 640px;
-      }
-
-      img {
-        width: 100%;
-        height: 95%;
-      }
-
-      strong {
-        font-size: 12px;
-        text-decoration: underline;
-        color: #545454;
-
-        &:hover {
-          text-decoration: none;
-        }
       }
     }
   }
@@ -204,59 +171,6 @@ main {
         padding-bottom: 50px;
       }
     }
-
-    .lafeWorlds {
-      display: flex;
-      flex-wrap: wrap;
-      position: relative;
-      margin: 0 3%;
-
-      figure {
-        width: 683px;
-        height: 500px;
-
-        img {
-          width: 100%;
-          height: 100%;
-        }
-
-        .lafestWorlContent {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          bottom: 26%;
-          left: 6%;
-
-          h3 {
-            font-family: 'Noto Sans KR', sans-serif;
-            font-size: 17px;
-            font-weight: 600;
-          }
-
-          strong {
-            font-size: 13px;
-          }
-
-          button {
-            width: 80px;
-            margin-top: 17px;
-            padding: 6px 0;
-            border-radius: 20px;
-            font-size: 12px;
-            border-color: #e5e5e5;
-            background: #292929;
-            color: #fff;
-            transition: all 0.3s ease-in-out;
-            cursor: pointer;
-
-            &:hover {
-              background: #fff;
-              color: #292929;
-            }
-          }
-        }
-      }
-    }
   }
 
 
@@ -294,61 +208,6 @@ main {
 
         .nextBtn {
           margin-left: 10px;
-        }
-      }
-    }
-
-    .insides {
-      display: flex;
-      overflow: hidden;
-      margin-left: 0;
-
-      figure {
-        display: flex;
-        height: 500px;
-
-        img {
-          width: 100%;
-          height: 100%;
-        }
-
-        .insideContent {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          width: calc(40 * (100vw - 20px) / 40);
-          margin-left: 50px;
-
-          span {
-            font-size: 10px;
-            font-weight: 600;
-          }
-
-          h3 {
-            font-size: 20px;
-            font-weight: 600;
-          }
-
-          strong {
-            font-size: 12px;
-          }
-
-          button {
-            display: block;
-            width: 23%;
-            margin: 20px 0;
-            padding: 8px 0;
-            border-radius: 20px;
-            background: #292929;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-
-            &:hover {
-              background: #fff;
-              color: #292929;
-            }
-          }
         }
       }
     }
