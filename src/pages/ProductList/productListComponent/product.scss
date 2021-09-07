@@ -1,0 +1,42 @@
+.products {
+  font-size: 15px;
+
+  .productsLine {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+
+    .product {
+      width: 23%;
+      height: auto;
+      margin: 0 0 50px 2%;
+
+      .productPic {
+        width: 100%;
+        height: auto;
+      }
+
+      .productInfo {
+        position: relative;
+        width: 80%;
+        // bottom: 40px;
+
+        .colors {
+          position: absolute;
+          bottom: 140%;
+          left: 2%;
+          padding: 10px 0;
+          width: 90px;
+          background-color: white;
+          text-align: center;
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
+
+        .productName {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}

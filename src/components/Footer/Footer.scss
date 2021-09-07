@@ -10,6 +10,7 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+      cursor: pointer;
 
       i {
         font-size: 17px;
@@ -62,12 +63,15 @@
     border: 1px solid #545454;
     border-radius: 27px;
     font-size: 11px;
-  }
+    background: #292929;
+    color: #fff;
+    cursor: pointer;
 
-  &:hover {
-    border: 1px solid #e5e5e5;
-    background: #fff;
-    color: #000;
+    &:hover {
+      border: 1px solid #e5e5e5;
+      background: #fff;
+      color: #000;
+    }
   }
 
   .totalStore {
@@ -83,6 +87,7 @@
     border: 1px solid #f4f4f4;
     border-radius: 27px;
     background: #fff;
+    cursor: pointer;
   }
 
   h4 {
@@ -190,24 +195,24 @@
         }
       }
     }
+  }
 
-    @media screen and (max-width: 937px) {
-      .kakaoContent {
-        width: 287px;
-      }
+  @media screen and (max-width: 937px) {
+    .kakaoContent {
+      width: 287px;
+    }
 
-      .totalStore,
-      .storeSearchBtn,
-      .helpWrapper,
-      .helps {
-        display: none;
-      }
+    .totalStore,
+    .storeSearchBtn,
+    .helpWrapper,
+    .helps {
+      display: none;
+    }
 
-      .addressWrapper {
-        display: flex;
-        justify-content: space-around;
-        padding: 15px 60px;
-      }
+    .addressWrapper {
+      display: flex;
+      justify-content: space-around;
+      padding: 15px 60px;
     }
   }
 }
