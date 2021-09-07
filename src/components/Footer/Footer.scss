@@ -3,17 +3,19 @@
   .iconList {
     display: flex;
     justify-content: space-around;
-    padding: 20px 100px;
+    padding: 20px 30px;
     background: #fff;
 
     button {
       display: flex;
       align-items: center;
       flex-direction: column;
+      transition: all 0.3s ease-in-out;
       cursor: pointer;
 
       i {
         font-size: 17px;
+        color: #292929;
       }
 
       span {
@@ -58,14 +60,16 @@
 
   .kakaoBtn {
     height: 30px;
+    line-height: 30px;
     margin: 5px 0;
-    padding: 5px 17px;
+    padding: 0 17px;
     border: 1px solid #545454;
     border-radius: 27px;
     font-size: 11px;
     background: #292929;
     color: #fff;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
       border: 1px solid #e5e5e5;
@@ -88,6 +92,13 @@
     border-radius: 27px;
     background: #fff;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover{
+      background: #292929;
+      border-color: #545454;
+      color: #fff;
+    }
   }
 
   h4 {
