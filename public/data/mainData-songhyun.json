@@ -44,24 +44,28 @@
     "id":"mainWorld1",
     "category": "collection",
     "title": "라페스타 라이브 컬렉션",
+    "content": "신상품7%혜택",
     "url": "https://i.postimg.cc/1tfntt0m/brian-asare-u-IT9-Vk0-HHJE-unsplash.jpg"
   },
   {
     "id":"mainWorld2",
     "category": "collection",
     "title": "유니섹스 컬렉션: 더블매치",
+    "content": "신상품7%혜택",
     "url": "https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
   },
   {
     "id":"mainWorld3",
     "category": "collection",
     "title": "라코스테 신발 : 새로운 스타일",
+    "content": "신상품7%혜택",
     "url": "https://i.postimg.cc/43KdwYtS/kristian-egelund-v-Jg-JLz-Wm-XDA-unsplash-1.jpg"
   },
   {
     "id":"mainWorld4",
     "category": "collection",
     "title": "라코스테 액세사리 : 새로운 스타일",
+    "content": "신상품7%혜택",
     "url": "https://i.postimg.cc/NfXHGrSk/maureen-de-wit-Yx-ZHKf-CPVPU-unsplash.jpg"
   },
   {
@@ -82,6 +86,38 @@
   },
   {
     "id": "mainInside3",
+    "category": "inside",
+    "subtitle": "라코스테의 비밀, 옷감",
+    "title": "라코스테의 압도적 노하우",
+    "content": "생산 과정과 프랑스 공장에서 유니크한 작물까지, 라코스테의 폴로의 가장 처음을 소개합니다.",
+    "url": "https://i.postimg.cc/sx6d6jQL/j-williams-Ns7-QZx-F198g-unsplash.jpg"
+  },
+  {
+    "id": "mainInside4",
+    "subtitle": "라코스테의 비밀, 옷감",
+    "category": "inside",
+    "title": "그를 위한 새로운 폴로셔츠",
+    "content": "생산 과정과 프랑스 공장에서 유니크한 작물까지, 라코스테의 폴로의 가장 처음을 소개합니다.",
+    "url": "https://i.postimg.cc/Pqqgt55r/2-product.jpg"
+  },
+  {
+    "id": "mainInside5",
+    "subtitle": "라코스테의 비밀, 옷감",
+    "category": "inside",
+    "title": "라코스테 무브먼트 폴로",
+    "content": "구김 방지 소재와 편안한 착용이 가능한 다기능 폴로셔츠 당신의 페이스와 스타일에 맞춰진 새로운 에센셜 디자인.",
+    "url": "https://i.postimg.cc/Pqqgt55r/2-product.jpg"
+  },
+  {
+    "id": "mainInside6",
+    "category": "inside",
+    "subtitle": "움직이는 삶",
+    "title": "라코스테 무브먼트 폴로",
+    "content": "구김 방지 소재와 편안한 착용이 가능한 다기능 폴로셔츠 당신의 페이스와 스타일에 맞춰진 새로운 에센셜 디자인.",
+    "url": "https://i.postimg.cc/1tfntt0m/brian-asare-u-IT9-Vk0-HHJE-unsplash.jpg"
+  },
+  {
+    "id": "mainInside7",
     "category": "inside",
     "subtitle": "라코스테의 비밀, 옷감",
     "title": "라코스테의 압도적 노하우",
