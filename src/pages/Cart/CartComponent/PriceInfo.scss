@@ -1,0 +1,52 @@
+.priceInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 50px 0 0 40px;
+  padding: 25px 45px;
+  width: 370px;
+  height: 260px;
+  background-color: white;
+
+  & div {
+    display: flex;
+    justify-content: space-between;
+
+    & span:last-child {
+      font-weight: 700;
+    }
+  }
+
+  .totalPrice {
+    color: #0f5b33;
+  }
+
+  .orderBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    background-color: #0f5b33;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s linear;
+  }
+
+  .orderBtn:hover {
+    background-color: #454545;
+    transition: 0.4s linear;
+  }
+
+  .cardInfo {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+
+    & i {
+      margin-left: 10px;
+      font-size: 20px;
+      color: gray;
+    }
+  }
+}
