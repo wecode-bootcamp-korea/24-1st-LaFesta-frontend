@@ -20,7 +20,6 @@ class MainPage extends Component {
   handleNextClick = () => {
     const { eventCount, eventList } = this.state;
     const length = eventList.length;
-    console.log(length);
 
     if (eventCount < length) {
       this.setState({
@@ -69,7 +68,7 @@ class MainPage extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3004/data/mainData-songhyun.json')
+    fetch('http://localhost:3005/data/mainData-songhyun.json')
       .then(res => res.json())
       .then(lists => {
         const init = {
@@ -207,16 +206,14 @@ class MainPage extends Component {
                 <span>{insideLength}</span>
               </li>
               <li>
-                {
-                  <button
-                    type="button"
-                    className="nextBtn"
-                    onClick={this.handleInSideNextClick}
-                    disabled={insideCount === insideLength}
-                  >
-                    <i className="fas fa-chevron-right" />
-                  </button>
-                }
+                <button
+                  type="button"
+                  className="nextBtn"
+                  onClick={this.handleInSideNextClick}
+                  disabled={insideCount === insideLength}
+                >
+                  <i className="fas fa-chevron-right" />
+                </button>
               </li>
             </ol>
           </div>
