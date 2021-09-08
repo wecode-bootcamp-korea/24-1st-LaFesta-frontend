@@ -15,6 +15,9 @@ class ProductList extends Component {
       productFits: '',
       filterMoveNum: 1,
       grayDisplayNum: -1,
+      filterPrice: '',
+      filterColor: [],
+      filterFit: [],
     };
   }
 
@@ -39,6 +42,18 @@ class ProductList extends Component {
         });
     }
   }
+
+  addFilterPrice = e => {
+    this.setState({
+      filterPrice: e,
+    });
+  };
+
+  addFilterColor = e => {
+    this.setState({
+      filterColor: this.state.filterColor.concat({ e }),
+    });
+  };
 
   handleClick = index => {
     const query = `limit=${LIMIT}&offset=${index * LIMIT}`;
@@ -148,7 +163,6 @@ class ProductList extends Component {
                       productName={data.name}
                       productColorNum={data.color_num}
                       productPic={data.img_url}
-                      // productPicReverse={data.img_url}
                       productPrice={data.price}
                     />
                   );
