@@ -48,8 +48,6 @@ class ProductList extends Component {
       data.fit.includes(productFits)
     );
 
-    console.log(productData);
-
     return (
       <div className="productList">
         <div className="productListDisplay">

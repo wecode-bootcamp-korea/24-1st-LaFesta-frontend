@@ -16,9 +16,9 @@ class CartList extends Component {
           </div>
           <div className="cartProductOpt">
             <span>{cartProductName}</span>
-            <span>color, 사이즈: 004</span>
+            <span>red, 사이즈: 004</span>
             <span>{cartProductPrice.toLocaleString('en')}원</span>
-            <select className="productQuantity">
+            <select className="productQuantity" onChange="">
               <option value="0">0</option>
               <option value="1" selected>
                 1

@@ -43,9 +43,9 @@ class Cart extends Component {
             <span className="stepName">결제</span>
           </div>
         </header>
-        {/* <ShoppingBag cartListData={cartListData} /> */}
+        <ShoppingBag cartListData={cartListData} />
         {/* <Delivery cartListData={cartListData} /> */}
-        <Payment cartListData={cartListData} />
+        {/* <Payment cartListData={cartListData} /> */}
       </div>
     );
   }
