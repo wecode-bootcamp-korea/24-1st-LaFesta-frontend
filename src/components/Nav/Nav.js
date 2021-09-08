@@ -155,8 +155,8 @@ class Nav extends Component {
     super(props);
     this.state = {
       toggleMenu: '',
-      loginUser: false,
-      clicked: false,
+      isUserLogin: false,
+      isClicked: false,
     };
   }
 
@@ -167,31 +167,28 @@ class Nav extends Component {
   };
 
   handleMouseLeave = () => {
-    const { loginUser } = this.state;
+    // const { isUserLogin } = this.state;
     this.setState({
       toggleMenu: '',
-      loginUser: !loginUser,
     });
   };
 
   handleUserPopUp = () => {
-    const { loginUser } = this.state;
     this.setState({
-      loginUser: !loginUser,
+      isUserLogin: localStorage.getItem('user_name') !== null,
     });
   };
 
   hadleClick = () => {
-    console.log('click');
-    const { clicked } = this.state;
+    const { isClicked } = this.state;
 
     this.setState({
-      clicked: !clicked,
+      isClicked: !isClicked,
     });
   };
 
   render() {
-    const { toggleMenu, loginUser, clicked } = this.state;
+    const { toggleMenu, isUserLogin, isClicked } = this.state;
     const toggledMenu = menu.find(item => item.name === toggleMenu);
     return (
       <>
@@ -226,7 +223,7 @@ class Nav extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/logIn" onMouseOver={this.handleUserPopUp}>
+                <Link to="/logIn" onMouseEnter={this.handleUserPopUp}>
                   <i className="fas fa-user icon"></i>
                   <span className="a11y-hidden">user</span>
                 </Link>
@@ -248,13 +245,13 @@ class Nav extends Component {
               ))}
           </ul>
         </div>
-        {loginUser && (
+        {isUserLogin && (
           <PopUp
             name={localStorage.getItem('user_name')}
-            onMouseLeave={this.handleMouseLeave}
+            onMouseOut={this.handleMouseLeave}
           />
         )}
-        {clicked && <Form clicked={clicked} />}
+        {isClicked && <Form clicked={isClicked} />}
       </>
     );
   }
