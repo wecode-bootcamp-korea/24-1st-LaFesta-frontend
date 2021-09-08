@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import './Form.scss';
 
+// list가 null 아니면 팝업창 길이를 줄이기
 class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
       keyword: '',
+      list: [],
     };
   }
 
   handleInput = event => {
     const { value } = event.target;
-
     this.setState({
       keyword: value,
     });
@@ -19,19 +20,18 @@ class Form extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    fetch('', {
-      method: 'GET',
-      body: JSON.stringify({
-        keyword: this.state.keyword,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => console.log(result));
+    const { keyword } = this.state;
 
-    this.setState({
-      keyword: '',
-    });
+    fetch(`http://10.58.0.80:8000/products?typeId=1&page=1&keyword=${keyword}`)
+      .then(response => response.json())
+      .then(items => {
+        console.log(items);
+        this.setState({
+          list: items,
+        });
+      });
   };
+
   render() {
     const { clicked } = this.props;
     const { keyword } = this.state;
