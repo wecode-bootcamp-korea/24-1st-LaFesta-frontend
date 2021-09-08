@@ -7,6 +7,7 @@ class Login extends Component {
     super(props);
     this.state = {
       id: '',
+
       pw: '',
     };
   }
@@ -30,7 +31,9 @@ class Login extends Component {
       })
         .then(response => response.json())
         .then(response => {
-          if (response.MESSAGE === 'SUCCESS') {
+          if (response.token) {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('user_name', response.user_name);
             this.props.history.push('/mainPage');
           } else if (response.MESSAGE === 'INVALID_USER') {
             alert('이메일과 비밀번호를 다시 확인해주세요');
