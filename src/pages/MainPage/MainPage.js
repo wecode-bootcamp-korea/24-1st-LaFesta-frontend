@@ -8,7 +8,6 @@ class MainPage extends Component {
     this.state = {
       eventCount: 1,
       insideCount: 1,
-      list: [],
       eventList: [],
       collectionList: [],
       insideList: [],
@@ -18,6 +17,7 @@ class MainPage extends Component {
   }
 
   handleNextClick = () => {
+    console.log('1');
     const { eventCount, eventList } = this.state;
     const length = eventList.length;
 
@@ -68,7 +68,7 @@ class MainPage extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3005/data/mainData-songhyun.json')
+    fetch('http://localhost:3003/data/mainData-songhyun.json')
       .then(res => res.json())
       .then(lists => {
         const init = {
