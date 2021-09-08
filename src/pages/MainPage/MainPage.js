@@ -9,14 +9,18 @@ class MainPage extends Component {
       eventCount: 1,
       insideCount: 1,
       list: [],
+      eventList: [],
+      collectionList: [],
+      insideList: [],
     };
     this.saleMargin = 0;
     this.insideMargin = 0;
   }
 
   handleNextClick = () => {
-    const { eventCount, list } = this.state;
-    const length = Number(list.map(item => item.eventList.length));
+    const { eventCount, eventList } = this.state;
+    const length = eventList.length;
+    // const length = Number(list.map(item => item.eventList.length));
     console.log(length);
 
     if (eventCount < length) {
@@ -28,8 +32,8 @@ class MainPage extends Component {
   };
 
   handlePrevClick = () => {
-    const { eventCount, list } = this.state;
-    const length = Number(list.map(item => item.eventList.length));
+    const { eventCount, eventList } = this.state;
+    const length = eventList.length;
 
     if (!eventCount < length && eventCount > 1) {
       this.setState({
@@ -40,8 +44,8 @@ class MainPage extends Component {
   };
 
   handleInSideNextClick = () => {
-    const { insideCount, list } = this.state;
-    const length = Number(list.map(item => item.insideList.length));
+    const { insideCount, insideList } = this.state;
+    const length = insideList.length;
 
     if (insideCount < length) {
       this.setState({
@@ -53,9 +57,9 @@ class MainPage extends Component {
   };
 
   handleInSidePrevClick = () => {
-    const { insideCount, list } = this.state;
-    const length = Number(list.map(item => item.insideList.length));
+    const { insideCount, insideList } = this.state;
 
+    const length = insideList.length;
     if (!insideCount < length && insideCount > 1) {
       this.setState({
         insideCount: insideCount - 1,
@@ -66,7 +70,7 @@ class MainPage extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3007/data/mainData-songhyun.json')
+    fetch('http://localhost:3001/data/mainData-songhyun.json')
       .then(res => res.json())
       .then(lists => {
         const init = {
@@ -83,13 +87,18 @@ class MainPage extends Component {
           };
           init[obj[item.category]].push(item);
         });
-        this.setState({ list: [init] });
+        this.setState({
+          insideList: init.insideList,
+          eventList: init.eventList,
+          collectionList: init.collectionList,
+        });
       });
   }
   render() {
-    const { eventCount, insideCount, list } = this.state;
-    const saleLength = list.map(item => item.eventList.length);
-    const insideLength = list.map(item => item.insideList.length);
+    const { eventCount, eventList, insideCount, insideList, collectionList } =
+      this.state;
+    const saleLength = insideList.length;
+    const insideLength = eventList.length;
 
     const saleStyle = {
       marginLeft: this.saleMargin,
@@ -132,14 +141,14 @@ class MainPage extends Component {
                 <span>/</span>
               </li>
               <li className="endCount">
-                <span>{Number(saleLength)}</span>
+                <span>{saleLength}</span>
               </li>
               <li>
                 <button
                   type="button"
                   className="nextBtn"
                   onClick={this.handleNextClick}
-                  disabled={eventCount === Number(saleLength)}
+                  disabled={eventCount === saleLength}
                 >
                   <i className="fas fa-chevron-right" />
                 </button>
@@ -147,9 +156,9 @@ class MainPage extends Component {
             </ol>
           </div>
           <ul className="newProducts" style={saleStyle}>
-            {list.map(item =>
-              item.eventList.map(item => <MainItem key={item.id} item={item} />)
-            )}
+            {eventList.map(item => (
+              <MainItem key={item.id} item={item} />
+            ))}
           </ul>
         </section>
         <section className="newCollectionWrapper">
@@ -171,11 +180,9 @@ class MainPage extends Component {
         <section className="lafestWorldWrapper">
           <h2>The Lacoste World</h2>
           <ul className="lafeWorlds">
-            {list.map(item =>
-              item.collectionList.map(item => (
-                <MainItem key={item.id} item={item} />
-              ))
-            )}
+            {collectionList.map(item => (
+              <MainItem key={item.id} item={item} />
+            ))}
           </ul>
         </section>
         <section className="lafestInsideWrapper">
@@ -199,7 +206,7 @@ class MainPage extends Component {
                 <span>/</span>
               </li>
               <li className="endCount">
-                <span>{Number(insideLength)}</span>
+                <span>{insideLength}</span>
               </li>
               <li>
                 {
@@ -207,7 +214,7 @@ class MainPage extends Component {
                     type="button"
                     className="nextBtn"
                     onClick={this.handleInSideNextClick}
-                    disabled={insideCount === Number(insideLength)}
+                    disabled={insideCount === insideLength}
                   >
                     <i className="fas fa-chevron-right" />
                   </button>
@@ -216,11 +223,9 @@ class MainPage extends Component {
             </ol>
           </div>
           <ul className="insides" style={insideStyle}>
-            {list.map(item =>
-              item.insideList.map(item => (
-                <MainItem key={item.id} item={item} />
-              ))
-            )}
+            {insideList.map(item => (
+              <MainItem key={item.id} item={item} />
+            ))}
           </ul>
         </section>
       </main>
