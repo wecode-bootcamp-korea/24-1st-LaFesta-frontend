@@ -76,14 +76,17 @@ class MainPage extends Component {
           eventList: [],
           collectionList: [],
         };
+
         const listInit = {
           inside: 'insideList',
           collection: 'collectionList',
           event: 'eventList',
         };
+
         lists.forEach(item => {
           init[listInit[item.category]].push(item);
         });
+
         this.setState({
           insideList: init.insideList,
           eventList: init.eventList,
@@ -91,6 +94,7 @@ class MainPage extends Component {
         });
       });
   }
+
   render() {
     const { eventCount, eventList, insideCount, insideList, collectionList } =
       this.state;
