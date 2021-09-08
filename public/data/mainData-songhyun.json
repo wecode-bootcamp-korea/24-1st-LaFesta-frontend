@@ -1,75 +1,75 @@
 [{
-    "id": "mainEvent1",
+    "id": 1,
     "category": "event",
     "title": "그를 위한 새로운 폴로셔츠",
     "url": "https://i.postimg.cc/Pqqgt55r/2-product.jpg"
   },
   {
-    "id": "mainEvent2",
+    "id": 2,
     "category": "event",
     "title": "그녀를 위한 새로운 드레스 & 스커트",
     "url": "https://i.postimg.cc/6qT8vmNx/michael-meyer-kon-I06hq-Tv-U-unsplash-1.jpg"
   },
   {
-    "id": "mainEvent3",
+    "id": 3,
     "category": "event",
     "title": "여성 신상품 7% 혜택",
     "url": "https://i.postimg.cc/t4x3HPrB/ospan-ali-H8uf5ua5u-W4-unsplash.jpg"
   },
   {
-    "id": "mainEvent4",
+    "id": 4,
     "category": "event",
     "title": "남성 신상품 7% 혜택",
     "url": "https://i.postimg.cc/SRY0GDr6/erwans-socks-p-Flj-CK5-HHt-U-unsplash.jpg"
   },
   {
-    "id": "mainEvent5",
+    "id": 5,
     "category": "event",
     "title": "키즈 신상품 7% 혜택",
     "url": "https://i.postimg.cc/8P3Lzy48/ben-white-l-VCHf-Xn3-VME-unsplash.jpg"
   },
   {
-    "id": "mainEvent6",
+    "id": 6,
     "category": "event",
     "title": "매일 입어도 좋은 라페스타 티셔츠",
     "url": "https://i.postimg.cc/JnpgSVLH/dante-labella-f-Kg-B5k-S2-ZAc-unsplash.jpg"
   },
   {
-    "id": "mainEvent7",
+    "id": 7,
     "category": "event",
     "title": "라페스타 무브먼트 폴로",
     "url": "https://i.postimg.cc/4NknnrtT/13.jpg"
   },
   {
-    "id": "mainWorld1",
+    "id": 8,
     "category": "collection",
     "title": "라페스타 라이브 컬렉션",
     "content": "신상품7%혜택",
     "url": "https://i.postimg.cc/1tfntt0m/brian-asare-u-IT9-Vk0-HHJE-unsplash.jpg"
   },
   {
-    "id": "mainWorld2",
+    "id": 9,
     "category": "collection",
     "title": "유니섹스 컬렉션: 더블매치",
     "content": "신상품7%혜택",
     "url": "https://i.postimg.cc/j5M8Fs7b/anomaly-WWesm-HEg-XDs-unsplash.jpg"
   },
   {
-    "id": "mainWorld3",
+    "id": 10,
     "category": "collection",
     "title": "라코스테 신발 : 새로운 스타일",
     "content": "신상품7%혜택",
     "url": "https://i.postimg.cc/43KdwYtS/kristian-egelund-v-Jg-JLz-Wm-XDA-unsplash-1.jpg"
   },
   {
-    "id": "mainWorld4",
+    "id": 11,
     "category": "collection",
     "title": "라코스테 액세사리 : 새로운 스타일",
     "content": "신상품7%혜택",
     "url": "https://i.postimg.cc/NfXHGrSk/maureen-de-wit-Yx-ZHKf-CPVPU-unsplash.jpg"
   },
   {
-    "id": "mainInside1",
+    "id": 12,
     "category": "inside",
     "subtitle": "3가지의 완벽한 룩",
     "title": "당신을 위한 셔츠는?",
@@ -77,7 +77,7 @@
     "url": "https://i.postimg.cc/63dd8XXZ/nimble-made-h-MMXh-KSZk7k-unsplash.jpg"
   },
   {
-    "id": "mainInside2",
+    "id": 13,
     "category": "inside",
     "subtitle": "움직이는 삶",
     "title": "라코스테 무브먼트 폴로",
@@ -85,7 +85,7 @@
     "url": "https://i.postimg.cc/1tfntt0m/brian-asare-u-IT9-Vk0-HHJE-unsplash.jpg"
   },
   {
-    "id": "mainInside3",
+    "id": 14,
     "category": "inside",
     "subtitle": "라코스테의 비밀, 옷감",
     "title": "라코스테의 압도적 노하우",
@@ -93,7 +93,7 @@
     "url": "https://i.postimg.cc/sx6d6jQL/j-williams-Ns7-QZx-F198g-unsplash.jpg"
   },
   {
-    "id": "mainInside4",
+    "id": 15,
     "subtitle": "라코스테의 비밀, 옷감",
     "category": "inside",
     "title": "그를 위한 새로운 폴로셔츠",
@@ -101,7 +101,7 @@
     "url": "https://i.postimg.cc/Pqqgt55r/2-product.jpg"
   },
   {
-    "id": "mainInside5",
+    "id": 16,
     "subtitle": "라코스테의 비밀, 옷감",
     "category": "inside",
     "title": "라코스테 무브먼트 폴로",
@@ -109,7 +109,7 @@
     "url": "https://i.postimg.cc/Pqqgt55r/2-product.jpg"
   },
   {
-    "id": "mainInside6",
+    "id": 17,
     "category": "inside",
     "subtitle": "움직이는 삶",
     "title": "라코스테 무브먼트 폴로",
@@ -117,7 +117,7 @@
     "url": "https://i.postimg.cc/1tfntt0m/brian-asare-u-IT9-Vk0-HHJE-unsplash.jpg"
   },
   {
-    "id": "mainInside7",
+    "id": 18,
     "category": "inside",
     "subtitle": "라코스테의 비밀, 옷감",
     "title": "라코스테의 압도적 노하우",

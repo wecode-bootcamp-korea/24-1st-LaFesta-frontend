@@ -28,11 +28,10 @@ main {
         margin-top: 5px;
       }
 
-      p {
-        &:last-of-type {
-          margin-bottom: 13px;
-        }
+      p :last-of-type {
+        margin-bottom: 13px;
       }
+
 
       .plusBtn {
         width: 7%;
@@ -59,7 +58,7 @@ main {
     padding: 0 50px;
     margin-bottom: 4.5%;
 
-    div {
+    .innerWrapper {
       display: flex;
       margin-top: 4.5%;
       margin-bottom: 1.5%;
@@ -175,13 +174,11 @@ main {
 
 
   .lafestInsideWrapper {
-    // display: flex;
-    // flex-direction: column;
     padding: 0 80px;
     border-bottom: 1px solid #e5e5e5;
     background: #f4f4f4;
 
-    div {
+    .innerWrapper {
       display: flex;
       margin: 30px 0;
 

@@ -20,7 +20,6 @@ class MainPage extends Component {
   handleNextClick = () => {
     const { eventCount, eventList } = this.state;
     const length = eventList.length;
-    // const length = Number(list.map(item => item.eventList.length));
     console.log(length);
 
     if (eventCount < length) {
@@ -70,7 +69,7 @@ class MainPage extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3001/data/mainData-songhyun.json')
+    fetch('http://localhost:3004/data/mainData-songhyun.json')
       .then(res => res.json())
       .then(lists => {
         const init = {
@@ -78,14 +77,13 @@ class MainPage extends Component {
           eventList: [],
           collectionList: [],
         };
-
+        const listInit = {
+          inside: 'insideList',
+          collection: 'collectionList',
+          event: 'eventList',
+        };
         lists.forEach(item => {
-          const obj = {
-            inside: 'insideList',
-            collection: 'collectionList',
-            event: 'eventList',
-          };
-          init[obj[item.category]].push(item);
+          init[listInit[item.category]].push(item);
         });
         this.setState({
           insideList: init.insideList,
@@ -121,7 +119,7 @@ class MainPage extends Component {
           </div>
         </section>
         <section className="newProductSaleWrapper">
-          <div>
+          <div className="innerWrapper">
             <h3>당신만의 라페스타</h3>
             <ol className="indications">
               <li>
@@ -186,7 +184,7 @@ class MainPage extends Component {
           </ul>
         </section>
         <section className="lafestInsideWrapper">
-          <div>
+          <div className="innerWrapper">
             <h3>Lacoste Inside</h3>
             <ol className="indications">
               <li>
