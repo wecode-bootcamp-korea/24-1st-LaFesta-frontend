@@ -6,20 +6,20 @@ class CartList extends Component {
     super(props);
     this.state = {
       selectValue: 1,
+      optionValue: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     };
   }
-
-  handleChange = event => this.setState({ selectValue: event.target.value });
 
   deleteList = () => {
     this.props.deleteList(this.props.id);
   };
 
   render() {
-    const { productName, price, quantity } = this.props;
-    const { selectValue } = this.state;
+    const { productName, price } = this.props;
+    const { selectValue, optionValue } = this.state;
 
-    console.log(this.props.id);
+    const handleChange = event =>
+      this.setState({ selectValue: event.target.value });
 
     return (
       <ul className="cartList">
@@ -33,24 +33,10 @@ class CartList extends Component {
           <div className="cartProductOpt">
             <span>{productName}</span>
             <span>{(price * selectValue).toLocaleString('en')}원</span>
-            <select
-              className="productQuantity"
-              selected={quantity}
-              onChange={this.handleChange}
-            >
-              <option value="0">0</option>
-              <option value="1" selected>
-                1
-              </option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
+            <select className="productQuantity" onChange={handleChange}>
+              {optionValue.map(num => {
+                return <option value={num}>{num}</option>;
+              })}
             </select>
           </div>
           <div className="productRemove" onClick={this.deleteList}>

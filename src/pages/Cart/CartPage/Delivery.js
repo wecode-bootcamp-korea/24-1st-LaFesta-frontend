@@ -131,7 +131,7 @@ class Delivery extends Component {
               return (
                 <CheckedCartList
                   key={data.id}
-                  checkedProductName={data.name}
+                  checkedProductName={data.product_name}
                   checkedProductPrice={data.price}
                 />
               );

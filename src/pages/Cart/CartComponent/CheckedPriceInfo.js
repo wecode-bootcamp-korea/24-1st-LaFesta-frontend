@@ -9,12 +9,12 @@ class CheckedPriceInfo extends Component {
     return (
       <aside className="checkedInfo">
         {cartListData &&
-          cartListData.map(data => {
+          cartListData.map(cartList => {
             return (
               <CheckedCartList
-                key={data.id}
-                checkedProductName={data.name}
-                checkedProductPrice={data.price}
+                key={cartList.id}
+                checkedProductName={cartList.name}
+                checkedProductPrice={cartList.price}
               />
             );
           })}

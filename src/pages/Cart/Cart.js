@@ -9,8 +9,6 @@ class Cart extends Component {
     super(props);
     this.state = {
       cartListData: [],
-      totalQuantity: 1,
-      totalPrice: '',
       pageIndex: 1,
       gender: '',
       name: '',
@@ -51,15 +49,18 @@ class Cart extends Component {
   };
 
   render() {
-    const { cartListData, totalQuantity, totalPrice } = this.state;
+    const { cartListData } = this.state;
+
+    console.log(cartListData.price);
+
     const MAPPING_SIGNUP = {
       1: (
         <ShoppingBag
           cartListData={cartListData}
           goToNextPage={this.goToNextPage}
           deleteList={this.deleteList}
-          totalQuantity={totalQuantity}
-          totalPrice={totalPrice}
+          qwe={this.qwe}
+          totalQuantity={this.state.totalQuantity}
         />
       ),
       2: (
@@ -86,31 +87,30 @@ class Cart extends Component {
     return (
       <div className="Cart">
         <header className="purchaseStep">
-          <div>
+          <div className="stepInfo">
             <span
               className="stepNum"
-              style={{ backgroundColor: this.state.pageIndex > 0 && 'blue' }}
+              style={{ backgroundColor: this.state.pageIndex > 0 && 'gray' }}
             >
               1
             </span>
-
             <span className="stepName">쇼핑백</span>
           </div>
-          <div className="stepBar"></div>
-          <div>
+          <div className="stepBar" />
+          <div className="stepInfo">
             <span
               className="stepNum"
-              style={{ backgroundColor: this.state.pageIndex > 1 && 'blue' }}
+              style={{ backgroundColor: this.state.pageIndex > 1 && 'gray' }}
             >
               2
             </span>
             <span className="stepName">배송</span>
           </div>
           <div className="stepBar"></div>
-          <div>
+          <div className="stepInfo">
             <span
               className="stepNum"
-              style={{ backgroundColor: this.state.pageIndex > 2 && 'blue' }}
+              style={{ backgroundColor: this.state.pageIndex > 2 && 'gray' }}
             >
               3
             </span>

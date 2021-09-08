@@ -5,6 +5,8 @@ import './ProductList.scss';
 import './ProductListComponent/product.scss';
 import './ProductListComponent/ProductFilter.scss';
 
+const LIMIT = 28;
+
 class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -17,14 +19,31 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch('./data/productListData-doyoung.json')
+    fetch('http://10.58.7.159:8000/products?limit=28&offset=0')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          productData: res,
+          productData: res.results.products,
         });
       });
   }
+
+  componentDidUpdate(prevProps, _) {
+    if (prevProps.location.search !== this.props.location.search) {
+      fetch(`http://10.58.7.159:8000/products?${this.props.location.search}`)
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            productData: res.results.products,
+          });
+        });
+    }
+  }
+
+  handleClick = index => {
+    const query = `limit=${LIMIT}&offset=${index * LIMIT}`;
+    this.props.history.push(`/productlist?${query}`);
+  };
 
   styleChange = event => {
     this.setState({ productFits: event.target.dataset.category });
@@ -47,6 +66,8 @@ class ProductList extends Component {
     const searchStyle = productData.filter(data =>
       data.fit.includes(productFits)
     );
+
+    console.log(productData);
 
     return (
       <div className="productList">
@@ -117,32 +138,30 @@ class ProductList extends Component {
           </section>
           <div className="products">
             <div className="productsLine">
-              {searchStyle.map((data, idx) => {
-                const [productPic, productPicReverse] = data.img_url;
-                return (
-                  <Product
-                    key={data.id}
-                    itemId={data.id}
-                    idx={idx}
-                    productName={data.name}
-                    productColorNum={data.color_num}
-                    productPic={productPic}
-                    productPicReverse={productPicReverse}
-                    productPrice={data.price}
-                  />
-                );
-              })}
+              {productData &&
+                searchStyle.map((data, idx) => {
+                  return (
+                    <Product
+                      key={data.id}
+                      itemId={data.id}
+                      idx={idx}
+                      productName={data.name}
+                      productColorNum={data.color_num}
+                      productPic={data.img_url}
+                      // productPicReverse={data.img_url}
+                      productPrice={data.price}
+                    />
+                  );
+                })}
             </div>
           </div>
           <div className="pageBtn">
             <div className="numberBtn">
-              <a href="https://www.lacoste.com/kr/">1</a>
-              <a href="https://www.lacoste.com/kr/">2</a>
-              <a href="https://www.lacoste.com/kr/">3</a>
-              <a
-                className="pageMoveBtn"
-                href="https://www.lacoste.com/kr/"
-              >{`>`}</a>
+              <button onClick={() => this.handleClick(0)}>1</button>
+              <button onClick={() => this.handleClick(1)}>2</button>
+              <button onClick={() => this.handleClick(2)}>3</button>
+              <button onClick={() => this.handleClick(3)}>4</button>
+              <button onClick={() => this.handleClick(4)}>5</button>
             </div>
           </div>
         </div>

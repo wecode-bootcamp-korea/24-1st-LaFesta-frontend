@@ -5,19 +5,18 @@ import './ShoppingBag.scss';
 
 class ShoppingBag extends Component {
   render() {
-    const { cartListData } = this.props;
+    const { cartListData, deleteList, totalQuantity } = this.props;
     return (
       <div className="cartFirstPage">
         <section className="purchaseInfo">
-          {cartListData.map(data => {
+          {cartListData.map(cartList => {
             return (
               <CartList
-                key={data.id}
-                id={data.id}
-                productName={data.product_name}
-                price={data.price}
-                quantity={data.quantity}
-                deleteList={this.props.deleteList}
+                key={cartList.id}
+                id={cartList.id}
+                productName={cartList.product_name}
+                price={cartList.price}
+                deleteList={deleteList}
               />
             );
           })}
@@ -52,6 +51,7 @@ class ShoppingBag extends Component {
         <PriceInfo
           goToNextPage={this.props.goToNextPage}
           cartListData={cartListData}
+          totalQuantity={totalQuantity}
         />
       </div>
     );

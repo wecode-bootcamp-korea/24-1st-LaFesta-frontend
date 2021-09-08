@@ -4,16 +4,16 @@
       {
         "id": 1,
         "product_name": "긴팔 파리 폴로",
-        "quantity": 2,
+        "quantity": 1,
         "price": 169000,
-        "total_price": 338000
+        "total_price": 169000
       },
       {
         "id": 2,
         "product_name": "반팔 레귤러핏 폴로",
-        "quantity": 2,
+        "quantity": 1,
         "price": 119000,
-        "total_price": 238000
+        "total_price": 119000
       }
     ],
     "total_information": {

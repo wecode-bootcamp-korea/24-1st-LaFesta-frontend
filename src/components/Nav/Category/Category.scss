@@ -8,13 +8,11 @@
   z-index: 20;
   transform: translate3d(0, 16%, 0);
   transition: transform 0.2s cubic-bezier(0.14, 0.47, 0.96, 0.63);
-  // background: #fff;
 
   .showMenu {
     width: 100%;
     height: 100%;
     display: flex;
-    // margin: 0 3%;
     padding: 0 3%;
     transform: translate3d(0, 14%, 0);
     transition: transform 0.2s cubic-bezier(0.14, 0.47, 0.96, 0.63);
