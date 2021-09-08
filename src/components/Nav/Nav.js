@@ -167,15 +167,19 @@ class Nav extends Component {
   };
 
   handleMouseLeave = () => {
-    // const { isUserLogin } = this.state;
     this.setState({
       toggleMenu: '',
     });
   };
 
+  handleUserMouseLeave = () => {
+    this.setState({
+      isUserLogin: false,
+    });
+  };
   handleUserPopUp = () => {
     this.setState({
-      isUserLogin: localStorage.getItem('user_name') !== null,
+      isUserLogin: localStorage.getItem('user_name') !== '',
     });
   };
 
@@ -223,7 +227,7 @@ class Nav extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/logIn" onMouseEnter={this.handleUserPopUp}>
+                <Link to="/logIn" onMouseOver={this.handleUserPopUp}>
                   <i className="fas fa-user icon"></i>
                   <span className="a11y-hidden">user</span>
                 </Link>
@@ -245,12 +249,9 @@ class Nav extends Component {
               ))}
           </ul>
         </div>
-        {isUserLogin && (
-          <PopUp
-            name={localStorage.getItem('user_name')}
-            onMouseOut={this.handleMouseLeave}
-          />
-        )}
+        <div onMouseLeave={this.handleUserMouseLeave}>
+          {isUserLogin && <PopUp name={localStorage.getItem('user_name')} />}
+        </div>
         {isClicked && <Form clicked={isClicked} />}
       </>
     );

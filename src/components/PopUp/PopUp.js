@@ -3,18 +3,11 @@ import { Link } from 'react-router-dom';
 import './PopUp.scss';
 
 class PopUp extends Component {
-  mouseOut = () => {
-    const { mouseOut } = this.props;
-
-    if (mouseOut) {
-      mouseOut(false);
-    }
-  };
   render() {
     const { name } = this.props;
     return (
       <div className={`popUp ${name ? 'showPopUp' : ''}`}>
-        <div onMouseOut={this.mouseOut}>
+        <div>
           <h3>안녕하세요 {name}님,</h3>
           <ul>
             <li>
