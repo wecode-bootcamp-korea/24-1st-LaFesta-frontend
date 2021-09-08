@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Category from './Category/Category';
 import PopUp from '../PopUp/PopUp';
+import Form from '../Form/Form';
 import './Nav.scss';
 
 const clothesCategory = [
@@ -155,6 +156,7 @@ class Nav extends Component {
     this.state = {
       toggleMenu: '',
       loginUser: false,
+      clicked: false,
     };
   }
 
@@ -179,8 +181,17 @@ class Nav extends Component {
     });
   };
 
+  hadleClick = () => {
+    console.log('click');
+    const { clicked } = this.state;
+
+    this.setState({
+      clicked: !clicked,
+    });
+  };
+
   render() {
-    const { toggleMenu, loginUser } = this.state;
+    const { toggleMenu, loginUser, clicked } = this.state;
     const toggledMenu = menu.find(item => item.name === toggleMenu);
     return (
       <>
@@ -202,12 +213,9 @@ class Nav extends Component {
                 </li>
               ))}
             </ul>
-            <form className="searchForm">
-              <button type="button">
-                <i className="fas fa-search icon"></i>
-              </button>
-              <input type="text" aria-label="검색창" className="searchInput" />
-            </form>
+            <button type="button" onClick={this.hadleClick}>
+              <i className="fas fa-search icon"></i>
+            </button>
           </div>
           <div>
             <ul className="userCategorys">
@@ -246,6 +254,7 @@ class Nav extends Component {
             onMouseLeave={this.handleMouseLeave}
           />
         )}
+        {clicked && <Form clicked={clicked} />}
       </>
     );
   }
