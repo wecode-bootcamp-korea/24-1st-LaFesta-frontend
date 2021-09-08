@@ -42,29 +42,71 @@ class Delivery extends Component {
             <div className="userGender">
               <div>성별</div>
               <div className="center">
-                <input type="radio"></input>남성
+                <input
+                  type="radio"
+                  name="gender"
+                  value="남성"
+                  onChange={this.props.handleInput}
+                ></input>
+                남성
               </div>
               <div>
-                <input type="radio"></input>여성
+                <input
+                  type="radio"
+                  name="gender"
+                  value="여성"
+                  onChange={this.props.handleInput}
+                ></input>
+                여성
               </div>
             </div>
             <div>
-              <input type="text" placeholder="이름"></input>
+              <input
+                type="text"
+                placeholder="이름"
+                onChange={this.props.handleInput}
+                name="name"
+              ></input>
             </div>
             <div>
-              <input type="text" placeholder="우편번호"></input>
+              <input
+                type="text"
+                placeholder="우편번호"
+                onChange={this.props.handleInput}
+                name="zipCode"
+              ></input>
             </div>
             <div>
-              <input type="text" placeholder="주소"></input>
+              <input
+                type="text"
+                placeholder="주소"
+                onChange={this.props.handleInput}
+                name="address"
+              ></input>
             </div>
             <div>
-              <input type="text" placeholder="상세주소"></input>
+              <input
+                type="text"
+                placeholder="상세주소"
+                onChange={this.props.handleInput}
+                name="detailAddress"
+              ></input>
             </div>
             <div>
-              <input type="text" placeholder="나라"></input>
+              <input
+                type="text"
+                placeholder="대한민국"
+                onChange={this.props.handleInput}
+                readonly
+              ></input>
             </div>
             <div>
-              <input type="text" placeholder="연락처"></input>
+              <input
+                type="text"
+                placeholder="연락처"
+                onChange={this.props.handleInput}
+                name="mobile"
+              ></input>
             </div>
           </div>
           <div className="thirdBox">
@@ -94,7 +136,7 @@ class Delivery extends Component {
                 />
               );
             })}
-          <PriceInfo />
+          <PriceInfo goToNextPage={this.props.goToNextPage} />
         </aside>
       </div>
     );

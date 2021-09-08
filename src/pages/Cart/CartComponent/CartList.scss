@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  width: 450px;
 
   .cartProduct {
     display: flex;
     align-items: center;
-    padding: 20px 35px;
+    padding: 20px 50px;
     background-color: white;
 
     .cartProductPic {
@@ -21,15 +22,15 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 0 50px 0 10px;
+      padding: 0 70px 0 10px;
       font-weight: 400;
 
       & span {
-        padding-bottom: 5px;
+        padding-bottom: 10px;
       }
 
       .productQuantity {
-        width: 25%;
+        width: 50%;
         margin: 5px 0;
         padding: 5px 0;
       }

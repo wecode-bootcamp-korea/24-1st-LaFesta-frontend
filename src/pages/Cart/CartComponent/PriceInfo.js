@@ -6,8 +6,8 @@ class PriceInfo extends Component {
     return (
       <aside className="priceInfo">
         <div className="eachProduct">
-          <span>1개 상품</span>
-          <span>139,000원</span>
+          <span>개 상품</span>
+          <span>원</span>
         </div>
         <div className="postPrice">
           <span>배송비</span>
@@ -19,10 +19,10 @@ class PriceInfo extends Component {
         </div>
         <div className="totalPrice">
           <span>총 결제금액</span>
-          <span>139,000원</span>
+          <span>원</span>
         </div>
         <div className="orderBtn">
-          <div>주문하기</div>
+          <div onClick={this.props.goToNextPage}>주문하기</div>
         </div>
         <div className="cardInfo">
           <i class="fab fa-cc-visa"></i>

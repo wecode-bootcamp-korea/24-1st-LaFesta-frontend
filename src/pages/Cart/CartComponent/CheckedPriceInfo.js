@@ -41,9 +41,13 @@ class CheckedPriceInfo extends Component {
             <i class="fas fa-truck"></i>
             일반배송
           </span>
-          <span>남성 정도영</span>
-          <span>서울 강남구 가로수길5</span>
-          <span>강남구</span>
+          <span>
+            {this.props.gender} {this.props.name}
+          </span>
+          {this.props.mobile}
+          {this.props.zipCode}
+          <span>{this.props.detailAddress}</span>
+          <span>{this.props.address}</span>
         </div>
       </aside>
     );

@@ -6,7 +6,6 @@ import './ShoppingBag.scss';
 class ShoppingBag extends Component {
   render() {
     const { cartListData } = this.props;
-
     return (
       <div className="cartFirstPage">
         <section className="purchaseInfo">
@@ -14,8 +13,11 @@ class ShoppingBag extends Component {
             return (
               <CartList
                 key={data.id}
-                cartProductName={data.name}
-                cartProductPrice={data.price}
+                id={data.id}
+                productName={data.product_name}
+                price={data.price}
+                quantity={data.quantity}
+                deleteList={this.props.deleteList}
               />
             );
           })}
@@ -47,7 +49,10 @@ class ShoppingBag extends Component {
             <span>1588-9619</span>
           </div>
         </section>
-        <PriceInfo />
+        <PriceInfo
+          goToNextPage={this.props.goToNextPage}
+          cartListData={cartListData}
+        />
       </div>
     );
   }

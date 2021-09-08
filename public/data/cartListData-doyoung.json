@@ -1,12 +1,24 @@
-[
-  {
-    "id": 1,
-    "name": "(남성)프렌치 레귤러핏 반팔 폴로",
-    "price": 10000
-  },
-  {
-    "id": 2,
-    "name": "(남성)프렌치 레귤러핏 반팔 폴로",
-    "price": 20000
+{
+  "result": {
+    "products": [
+      {
+        "id": 1,
+        "product_name": "긴팔 파리 폴로",
+        "quantity": 2,
+        "price": 169000,
+        "total_price": 338000
+      },
+      {
+        "id": 2,
+        "product_name": "반팔 레귤러핏 폴로",
+        "quantity": 2,
+        "price": 119000,
+        "total_price": 238000
+      }
+    ],
+    "total_information": {
+      "number_of_products": 1,
+      "net_price": 338000
+    }
   }
-]
+}

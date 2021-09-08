@@ -23,7 +23,15 @@ class Payment extends Component {
             <div>실시간계좌이체</div>
           </div>
         </section>
-        <CheckedPriceInfo cartListData={cartListData} />
+        <CheckedPriceInfo
+          cartListData={cartListData}
+          name={this.props.name}
+          gender={this.props.gender}
+          zipCode={this.props.zipCode}
+          address={this.props.address}
+          detailAddress={this.props.detailAddress}
+          mobile={this.props.mobile}
+        />
       </div>
     );
   }
