@@ -34,22 +34,24 @@ class Form extends Component {
     const { clicked } = this.props;
     const { keyword } = this.state;
     return (
-      <div
-        className={`formContainer ${clicked ? 'showSearchForm' : ''}`}
-        onSubmit={this.handleSubmit}
-      >
-        <h4>검색어를 입력하고 키보드로 확인하세요</h4>
-        <form className="searchForm" onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="keyword"
-            value={keyword}
-            placeholder="검색하기"
-            aria-label="keyword"
-            onChange={this.handleInput}
-          />
-        </form>
-      </div>
+      <>
+        <div
+          className={`formContainer ${clicked ? 'showSearchForm' : ''}`}
+          onSubmit={this.handleSubmit}
+        >
+          <h4>검색어를 입력하고 키보드로 확인하세요</h4>
+          <form className="searchForm" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="keyword"
+              value={keyword}
+              placeholder="검색하기"
+              aria-label="keyword"
+              onChange={this.handleInput}
+            />
+          </form>
+        </div>
+      </>
     );
   }
 }

@@ -7,8 +7,8 @@ import MainPage from './pages/MainPage/MainPage';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProductList from './pages/ProductList/ProductList';
 import SignUp from './pages/SignUp/SignUp';
-// import SignUpCertification from './pages/SignUp/SignUpCertification';
-// import SignUpUserInfo from './pages/SignUp/SignUpUserInfo';
+import SignUpCertification from './pages/SignUp/SignUpCertification';
+import SignUpUserInfo from './pages/SignUp/SignUpUserInfo';
 import NotFound from './pages/Error/NotFound';
 import Login from './pages/LogIn/Login';
 
@@ -20,10 +20,7 @@ class Routes extends Component {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/cart" component={Cart} />
-<<<<<<< HEAD
           <Route exact path="/" component={MainPage} />
-=======
->>>>>>> main
           <Route exact path="/productDetail" component={ProductDetail} />
           <Route exact path="/productList" component={ProductList} />
           <Route exact path="/signUp" component={SignUp} />
