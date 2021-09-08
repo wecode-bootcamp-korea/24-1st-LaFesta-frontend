@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Form.scss';
 
-// list가 null 아니면 팝업창 길이를 줄이기
 class Form extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +24,6 @@ class Form extends Component {
     fetch(`http://10.58.0.80:8000/products?typeId=1&page=1&keyword=${keyword}`)
       .then(response => response.json())
       .then(items => {
-        console.log(items);
         this.setState({
           list: items,
         });
