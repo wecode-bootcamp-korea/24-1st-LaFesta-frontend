@@ -1,0 +1,90 @@
+.Delivery {
+  display: flex;
+  margin-top: 50px;
+
+  .firstBox {
+    width: 505px;
+    background-color: white;
+    padding: 40px;
+    margin-bottom: 10px;
+    .title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .firstBoxFirst {
+      margin-bottom: 20px;
+      .firstBoxFirstTitle {
+        margin-left: 50px;
+        margin-bottom: 10px;
+      }
+      input {
+        height: 100px;
+        float: left;
+        margin-right: 30px;
+      }
+      p {
+        line-height: 25px;
+      }
+    }
+    .firstBoxSecond {
+      .firstBoxSecondTitle {
+        margin-left: 50px;
+        margin-bottom: 10px;
+      }
+    }
+    input {
+      height: 100px;
+      float: left;
+      margin-right: 30px;
+    }
+    p {
+      line-height: 25px;
+    }
+  }
+  .SecondBox {
+    width: 505px;
+    background-color: white;
+    padding: 40px;
+    margin-bottom: 10px;
+    .title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .userGender {
+      display: flex;
+      margin: 20px 0;
+      .center {
+        margin: 0 30px;
+      }
+    }
+    input[type='text'] {
+      width: 100%;
+      height: 45px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border: 1px solid#8E8E8E;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .thirdBox {
+    width: 505px;
+    background-color: white;
+    padding: 40px;
+    .title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 13px;
+      line-height: 25px;
+      margin-bottom: 25px;
+      color: #8e8e8e;
+    }
+    .text {
+      margin-left: 10px;
+      color: #8e8e8e;
+    }
+  }
+}
