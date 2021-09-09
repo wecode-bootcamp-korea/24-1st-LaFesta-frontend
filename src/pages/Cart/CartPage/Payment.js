@@ -4,8 +4,15 @@ import './Payment.scss';
 
 class Payment extends Component {
   render() {
-    const { cartListData } = this.props;
-
+    const {
+      cartListData,
+      name,
+      gender,
+      zipCode,
+      address,
+      detailAddress,
+      mobile,
+    } = this.props;
     return (
       <div className="payment">
         <section className="paymentDisplay">
@@ -25,12 +32,12 @@ class Payment extends Component {
         </section>
         <CheckedPriceInfo
           cartListData={cartListData}
-          name={this.props.name}
-          gender={this.props.gender}
-          zipCode={this.props.zipCode}
-          address={this.props.address}
-          detailAddress={this.props.detailAddress}
-          mobile={this.props.mobile}
+          name={name}
+          gender={gender}
+          zipCode={zipCode}
+          address={address}
+          detailAddress={detailAddress}
+          mobile={mobile}
         />
       </div>
     );

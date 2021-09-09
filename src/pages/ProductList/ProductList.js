@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PRODUCT_LIST_API } from '../../config';
 import Product from '../ProductList/productListComponent/Product';
 import ProductFilter from '../ProductList/productListComponent/ProductFilter';
 import '../ProductList/ProductList.scss';
@@ -20,7 +21,7 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.246:8000/products?limit=28&offset=0')
+    fetch(`${PRODUCT_LIST_API}/products?limit=28&offset=0`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -31,7 +32,7 @@ class ProductList extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.location.search !== this.props.location.search) {
-      fetch(`http://10.58.2.246:8000/products${this.props.location.search}`)
+      fetch(`${PRODUCT_LIST_API}/products${this.props.location.search}`)
         .then(res => res.json())
         .then(res => {
           this.setState({
@@ -163,29 +164,30 @@ class ProductList extends Component {
           </section>
           <div className="products">
             <div className="productsLine">
-              {productData &&
-                searchStyle.map((data, idx) => {
-                  return (
-                    <Product
-                      key={data.id}
-                      itemId={data.id}
-                      idx={idx}
-                      productName={data.name}
-                      productColorNum={data.color_num}
-                      productPic={data.img_url}
-                      productPrice={data.price}
-                    />
-                  );
-                })}
+              {searchStyle.map((data, idx) => {
+                return (
+                  <Product
+                    key={data.id}
+                    itemId={data.id}
+                    idx={idx}
+                    productName={data.name}
+                    productColorNum={data.color_num}
+                    productPic={data.img_url}
+                    productPrice={data.price}
+                  />
+                );
+              })}
             </div>
           </div>
           <div className="pageBtn">
             <div className="numberBtn">
-              <button onClick={() => this.handleClick(0)}>1</button>
-              <button onClick={() => this.handleClick(1)}>2</button>
-              <button onClick={() => this.handleClick(2)}>3</button>
-              <button onClick={() => this.handleClick(3)}>4</button>
-              <button onClick={() => this.handleClick(4)}>5</button>
+              {Array(Math.ceil({ productData }.length / 28))
+                .fill()
+                .map((_, idx) => {
+                  return (
+                    <button onClick={() => this.handleClick(idx)}>idx</button>
+                  );
+                })}
             </div>
           </div>
         </div>

@@ -59,7 +59,6 @@ class Cart extends Component {
           cartListData={cartListData}
           goToNextPage={this.goToNextPage}
           deleteList={this.deleteList}
-          qwe={this.qwe}
           totalQuantity={this.state.totalQuantity}
         />
       ),

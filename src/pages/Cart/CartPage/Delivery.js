@@ -52,7 +52,7 @@ class Delivery extends Component {
                   name="gender"
                   value="남성"
                   onChange={this.props.handleInput}
-                ></input>
+                />
                 남성
               </div>
               <div>
@@ -61,7 +61,7 @@ class Delivery extends Component {
                   name="gender"
                   value="여성"
                   onChange={this.props.handleInput}
-                ></input>
+                />
                 여성
               </div>
             </div>
@@ -71,7 +71,7 @@ class Delivery extends Component {
                 placeholder="이름"
                 onChange={this.props.handleInput}
                 name="name"
-              ></input>
+              />
             </div>
             <div>
               <input
@@ -79,7 +79,7 @@ class Delivery extends Component {
                 placeholder="우편번호"
                 onChange={this.props.handleInput}
                 name="zipCode"
-              ></input>
+              />
             </div>
             <div>
               <input
@@ -87,7 +87,7 @@ class Delivery extends Component {
                 placeholder="주소"
                 onChange={this.props.handleInput}
                 name="address"
-              ></input>
+              />
             </div>
             <div>
               <input
@@ -95,7 +95,7 @@ class Delivery extends Component {
                 placeholder="상세주소"
                 onChange={this.props.handleInput}
                 name="detailAddress"
-              ></input>
+              />
             </div>
             <div>
               <input
@@ -103,7 +103,7 @@ class Delivery extends Component {
                 placeholder="대한민국"
                 onChange={this.props.handleInput}
                 readonly
-              ></input>
+              />
             </div>
             <div>
               <input
@@ -111,7 +111,7 @@ class Delivery extends Component {
                 placeholder="연락처"
                 onChange={this.props.handleInput}
                 name="mobile"
-              ></input>
+              />
             </div>
           </div>
           <div className="thirdBox">

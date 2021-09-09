@@ -35,7 +35,11 @@ class CartList extends Component {
             <span>{(price * selectValue).toLocaleString('en')}원</span>
             <select className="productQuantity" onChange={handleChange}>
               {optionValue.map(num => {
-                return <option value={num}>{num}</option>;
+                return (
+                  <option key={num.index} value={num}>
+                    {num}
+                  </option>
+                );
               })}
             </select>
           </div>
