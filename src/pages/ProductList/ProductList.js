@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Product from './ProductListComponent/Product';
-import ProductFilter from './ProductListComponent/ProductFilter';
-import './ProductList.scss';
-import './ProductListComponent/Product.scss';
-import './ProductListComponent/ProductFilter.scss';
-
+// import { PRODUCT_LIST_API } from '../../config';
+import Product from '../ProductList/ProductListComponent/Product';
+import ProductFilter from '../ProductList/ProductListComponent/ProductFilter';
+import '../ProductList/ProductList.scss';
+const LIMIT = 28;
 class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -13,41 +12,65 @@ class ProductList extends Component {
       productFits: '',
       filterMoveNum: 1,
       grayDisplayNum: -1,
+      filterPrice: '',
+      filterColor: [],
+      filterFit: [],
     };
   }
-
   componentDidMount() {
-    fetch('./data/productListData-doyoung.json')
+    fetch(`http://10.58.2.212:8000/products?limit=28&offset=0`)
       .then(res => res.json())
       .then(res => {
         this.setState({
-          productData: res,
+          productData: res.results.products,
         });
       });
   }
 
+  addFilterPrice = event => {
+    this.setState({
+      filterPrice: event,
+    });
+  };
+  addFilterColor = event => {
+    this.setState({
+      filterColor: this.state.filterColor.concat(event),
+    });
+  };
+  addFilterFit = event => {
+    this.setState({
+      filterFit: this.state.filterFit.concat(event),
+    });
+  };
+  handleClick = index => {
+    const query = `limit=${LIMIT}&offset=${index * LIMIT}`;
+    this.props.history.push(`/productlist?${query}`);
+  };
   styleChange = event => {
     this.setState({ productFits: event.target.dataset.category });
   };
-
   hideFilter = () => {
     this.setState({
       filterMoveNum: 1,
     });
   };
-
   hideGrayDisplay = () => {
     this.setState({
       grayDisplayNum: -1,
     });
   };
-
+  handleFetch = API => {
+    fetch(API)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ productData: res.results.products });
+      });
+  };
   render() {
     const { productData, productFits } = this.state;
     const searchStyle = productData.filter(data =>
       data.fit.includes(productFits)
     );
-
     return (
       <div className="productList">
         <div className="productListDisplay">
@@ -95,7 +118,6 @@ class ProductList extends Component {
                     <div data-category="슬림핏">슬림핏</div>
                   </div>
                 </div>
-
                 <div className="styleFilter">
                   <div className="styleFilterResult">
                     {searchStyle.length}개의 결과
@@ -118,16 +140,15 @@ class ProductList extends Component {
           <div className="products">
             <div className="productsLine">
               {searchStyle.map((data, idx) => {
-                const [productPic, productPicReverse] = data.img_url;
+                // console.log(data);
                 return (
                   <Product
                     key={data.id}
                     itemId={data.id}
                     idx={idx}
                     productName={data.name}
-                    productColorNum={data.color_num}
-                    productPic={productPic}
-                    productPicReverse={productPicReverse}
+                    productColorNum={data.colors_num}
+                    productPic={data.img_url}
                     productPrice={data.price}
                   />
                 );
@@ -136,13 +157,13 @@ class ProductList extends Component {
           </div>
           <div className="pageBtn">
             <div className="numberBtn">
-              <a href="https://www.lacoste.com/kr/">1</a>
-              <a href="https://www.lacoste.com/kr/">2</a>
-              <a href="https://www.lacoste.com/kr/">3</a>
-              <a
-                className="pageMoveBtn"
-                href="https://www.lacoste.com/kr/"
-              >{`>`}</a>
+              {Array(Math.ceil(productData.length / 28))
+                .fill()
+                .map((_, idx) => {
+                  return (
+                    <button onClick={() => this.handleClick(idx)}>idx</button>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -151,10 +172,13 @@ class ProductList extends Component {
           hideFilter={this.hideFilter}
           hideGrayDisplay={this.hideGrayDisplay}
           searchStyle={searchStyle}
+          addFilterPrice={this.addFilterPrice}
+          addFilterColor={this.addFilterColor}
+          addFilterFit={this.addFilterFit}
+          handleFetch={this.handleFetch}
         />
       </div>
     );
   }
 }
-
 export default ProductList;

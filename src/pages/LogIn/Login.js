@@ -21,7 +21,7 @@ class Login extends Component {
   postLogin = () => {
     const { id, pw } = this.state;
     if (id.includes('@') && id.includes('.com') && pw.length >= 8) {
-      fetch('http://10.58.5.62:8000/users/signin', {
+      fetch(`${POST_LOGIN_API}`, {
         method: 'POST',
         body: JSON.stringify({
           email: id,
@@ -33,7 +33,7 @@ class Login extends Component {
           if (response.token) {
             localStorage.setItem('token', response.token);
             localStorage.setItem('user_name', response.user_name);
-            this.props.history.push('/mainPage');
+            this.props.history.push('/');
           } else if (response.MESSAGE === 'INVALID_USER') {
             alert('이메일과 비밀번호를 다시 확인해주세요');
             this.setState({ id: '', pw: '' });

@@ -27,7 +27,7 @@ class SignUpUserInfo extends Component {
   signUp = () => {
     const { gender, name, email, mobile, year, month, date, pw } = this.state;
     const deleteDash = /\-/g;
-    fetch('http://10.58.5.62:8000/users/signup', {
+    fetch('http://10.58.2.212:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         gender: gender,

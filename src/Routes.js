@@ -16,6 +16,7 @@ class Routes extends Component {
   render() {
     return (
       <Router>
+        <Nav />
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/cart" component={Cart} />

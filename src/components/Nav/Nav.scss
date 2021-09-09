@@ -48,15 +48,15 @@
 }
 
 
-  button {
-    border: 0;
-    outline: 0;
-    background: transparent;
+button {
+  border: 0;
+  outline: 0;
+  background: transparent;
 
-    &:hover {
-      color: #dbdbdb;
-    }
+  &:hover {
+    color: #dbdbdb;
   }
+}
 
 
 .searchInput {
@@ -79,22 +79,23 @@
 
 
 
-.userCategorys {
-  display: flex;
-  margin-right: auto;
-  cursor: pointer;
+    .userCategorys {
+      display: flex;
+      margin-right: auto;
+      cursor: pointer;
 
-  li {
-    padding-left: 22px;
+      li {
+        padding-left: 22px;
 
-    .icon {
-      font-size: 15px;
-    }
+        .icon {
+          font-size: 15px;
+        }
 
 
-    :hover {
-      color: #dbdbdb;
+        :hover {
+          color: #dbdbdb;
+        }
+      }
     }
   }
 }
-  }

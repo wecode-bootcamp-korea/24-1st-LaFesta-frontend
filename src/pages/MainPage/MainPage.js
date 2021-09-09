@@ -50,7 +50,7 @@ class MainPage extends Component {
         insideCount: insideCount + 1,
       });
 
-      this.insideMargin -= 1562;
+      this.insideMargin -= 1566;
     }
   };
 
@@ -63,7 +63,7 @@ class MainPage extends Component {
         insideCount: insideCount - 1,
       });
 
-      this.insideMargin += 1562;
+      this.insideMargin += 1566;
     }
   };
 

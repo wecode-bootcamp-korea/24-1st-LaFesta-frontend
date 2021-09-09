@@ -179,6 +179,7 @@ class Nav extends Component {
       this.setState({
         isUserLogin: !isUserLogin,
       });
+
       this.props.history.push('/logIn');
     }
   };
@@ -196,6 +197,10 @@ class Nav extends Component {
     this.setState({
       isClicked: !isClicked,
     });
+  };
+
+  goToLogin = () => {
+    this.props.history.push('login');
   };
 
   render() {
@@ -247,7 +252,7 @@ class Nav extends Component {
                 )}
               </li>
               <li>
-                <Link to="/">
+                <Link to="/cart">
                   <i className="fas fa-shopping-cart icon"></i>
                   <span className="a11y-hidden">cart</span>
                 </Link>

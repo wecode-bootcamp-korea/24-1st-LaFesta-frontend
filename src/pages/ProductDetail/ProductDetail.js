@@ -20,7 +20,7 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch('/data/productData.json')
+    fetch(`http://10.58.2.212:8000/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -82,7 +82,7 @@ class ProductDetail extends Component {
       this.state;
     return (
       <div className="productDetail">
-        <div className="nav">임시</div>
+        {/* <div className="nav">임시</div> */}
         <div className="list">
           <span className="home" onClick={this.gotoMain}>
             홈

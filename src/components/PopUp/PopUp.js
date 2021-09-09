@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './PopUp.scss';
 
 class PopUp extends Component {
   handleClick = () => {
     localStorage.clear();
+    this.props.history.pushState('/login');
   };
   render() {
     const { name } = this.props;
@@ -43,4 +44,4 @@ class PopUp extends Component {
   }
 }
 
-export default PopUp;
+export default withRouter(PopUp);

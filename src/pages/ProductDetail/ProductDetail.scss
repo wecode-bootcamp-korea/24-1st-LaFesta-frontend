@@ -2,10 +2,10 @@
   position: relative;
   overflow-x: hidden;
 
-  .nav {
-    height: 80px;
-    background-color: red;
-  }
+  // .nav {
+  //   height: 80px;
+  //   background-color: red;
+  // }
 
   .list {
     height: 60px;
@@ -39,7 +39,7 @@
       z-index: 5;
       width: 60px;
       height: 300px;
-      top: 315px;
+      top: 10%;
       margin-left: 10px;
 
       .miniPhoto {
@@ -60,12 +60,12 @@
     }
 
     .slideBox {
-      width: 1200px;
+      width: 1171px;
       height: 684px;
       overflow-x: hidden;
 
       .slideList {
-        width: 4104px;
+        width: 3420px;
         transition: all 0.5s;
       }
 
@@ -119,6 +119,7 @@
         margin-bottom: 20px;
       }
     }
+
     .colorBox {
       display: flex;
       margin-bottom: 20px;
