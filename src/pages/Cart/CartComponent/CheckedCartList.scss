@@ -1,0 +1,38 @@
+.checkedCartList {
+  display: flex;
+  flex-direction: column;
+
+  .checkedProduct {
+    display: flex;
+
+    padding: 20px 40px;
+    margin-bottom: 3px;
+    background-color: white;
+
+    .checkedProductPic {
+      width: 30px;
+
+      & img {
+        width: 100%;
+      }
+    }
+
+    .checkedProductOpt {
+      display: flex;
+      flex-direction: column;
+      padding: 0 10px 0 10px;
+      font-weight: 400;
+      color: #bfbfbf;
+
+      & p:first-child {
+        font-size: 14px;
+      }
+
+      & p:last-child {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+      }
+    }
+  }
+}

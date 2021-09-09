@@ -16,7 +16,6 @@ class Routes extends Component {
   render() {
     return (
       <Router>
-        <Nav />
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/cart" component={Cart} />
@@ -25,6 +24,7 @@ class Routes extends Component {
           <Route exact path="/productList" component={ProductList} />
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/logIn" component={Login} />
+          <Route exact path="/productDetail/:id" component={ProductDetail} />
           <Route path="*" component={NotFound} />
         </Switch>
         <Footer />

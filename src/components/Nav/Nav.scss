@@ -45,6 +45,9 @@
     }
   }
 
+}
+
+
   button {
     border: 0;
     outline: 0;
@@ -55,21 +58,43 @@
     }
   }
 
-  .userCategorys {
-    display: flex;
-    margin-right: auto;
-    cursor: pointer;
 
-    li {
-      padding-left: 22px;
+.searchInput {
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
 
-      .icon {
-        font-size: 15px;
-      }
+.userCategorys {
+  display: flex;
+  margin-right: auto;
+  cursor: pointer;
 
-      :hover {
-        color: #dbdbdb;
-      }
+  li {
+    padding-left: 22px;
+
+    .icon {
+      font-size: 15px;
+    }
+
+
+
+.userCategorys {
+  display: flex;
+  margin-right: auto;
+  cursor: pointer;
+
+  li {
+    padding-left: 22px;
+
+    .icon {
+      font-size: 15px;
+    }
+
+
+    :hover {
+      color: #dbdbdb;
     }
   }
 }
+  }
