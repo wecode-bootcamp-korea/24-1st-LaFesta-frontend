@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import '../ProductListComponent/Product.scss';
+=======
+import '../productListComponent/Product.scss';
+
+>>>>>>> main
 class Product extends Component {
   render() {
     const { productName, productColorNum, productPrice, productPic } =
       this.props;
+<<<<<<< HEAD
     console.log('product', this.props);
     console.log('productName', productName);
     //  console.log('', productName);
+=======
+
+>>>>>>> main
     return (
       <div className="product">
         <Link to={`/productDetail/${this.props.itemId}`}>

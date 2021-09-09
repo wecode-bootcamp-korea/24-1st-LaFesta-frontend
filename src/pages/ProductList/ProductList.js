@@ -140,7 +140,10 @@ class ProductList extends Component {
           <div className="products">
             <div className="productsLine">
               {searchStyle.map((data, idx) => {
+<<<<<<< HEAD
                 // console.log(data);
+=======
+>>>>>>> main
                 return (
                   <Product
                     key={data.id}
@@ -161,7 +164,13 @@ class ProductList extends Component {
                 .fill()
                 .map((_, idx) => {
                   return (
+<<<<<<< HEAD
                     <button onClick={() => this.handleClick(idx)}>idx</button>
+=======
+                    <button onClick={() => this.handleClick({ idx })}>
+                      {idx}
+                    </button>
+>>>>>>> main
                   );
                 })}
             </div>

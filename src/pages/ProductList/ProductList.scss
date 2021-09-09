@@ -1,6 +1,10 @@
 .productList {
   position: relative;
+<<<<<<< HEAD
   top: 89px;
+=======
+  margin-top: 70px;
+>>>>>>> main
   background-color: white;
   overflow: hidden;
 
@@ -136,13 +140,14 @@
     justify-content: space-around;
     width: 200px;
 
-    a {
+    button {
       padding: 2px 16px;
       margin: 3px 3px;
       border: 1px solid #e5e5e5;
       border-radius: 50%;
       text-align: center;
       line-height: 38px;
+      cursor: pointer;
     }
 
     .pageMoveBtn {

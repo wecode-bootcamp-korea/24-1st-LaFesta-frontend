@@ -16,23 +16,28 @@ class Delivery extends Component {
             </div>
             <div className="firstBoxFirst">
               <div className="firstBoxFirstTitle">당일 배송 • 4,000원</div>
-              <input type="radio"></input>
-              <p>
-                당일배송은 오전 00시 01분부터 오후 12시까지 결제 완료한 서울
-                지역 주문에 한하여 진행됩니다. 오후 12시 이후 및 주말/공휴일
-                주문의 경우 돌아오는 첫 영업일 기준으로 순차적으로 배송되며,
-                빠른 배송진행을 위해 당일배송 신청 후, 주소변경 및 주문취소는
-                불가합니다.
-              </p>
+              <div className="firstDeliveryNotice">
+                <input type="radio"></input>
+                <p>
+                  당일배송은 오전 00시 01분부터 오후 12시까지 결제 완료한 서울
+                  지역 주문에 한하여 진행됩니다. 오후 12시 이후 및 주말/공휴일
+                  주문의 경우 돌아오는 첫 영업일 기준으로 순차적으로 배송되며,
+                  빠른 배송진행을 위해 당일배송 신청 후, 주소변경 및 주문취소는
+                  불가합니다.
+                </p>
+              </div>
             </div>
             <div className="firstBoxSecond">
               <div className="firstBoxSecondTitle">일반 배송 • 무료</div>
-              <input type="radio"></input>
-              <p>
-                입금 확인 후 3~4일 이내(공휴일 제외)에 배달됩니다 (나의 라코스테
-                폴로 등 일부 품목 제외) 그러나 배송기간 중 휴일이 포함되어
-                있거나 제품의 재고 상황에 따라 기간이 다소 지연될 수도 있습니다.
-              </p>
+              <div className="secondDeliveryNotice">
+                <input type="radio"></input>
+                <p>
+                  입금 확인 후 3~4일 이내(공휴일 제외)에 배달됩니다 (나의
+                  라코스테 폴로 등 일부 품목 제외) 그러나 배송기간 중 휴일이
+                  포함되어 있거나 제품의 재고 상황에 따라 기간이 다소 지연될
+                  수도 있습니다.
+                </p>
+              </div>
             </div>
           </div>
           <div className="SecondBox">
@@ -42,29 +47,71 @@ class Delivery extends Component {
             <div className="userGender">
               <div>성별</div>
               <div className="center">
-                <input type="radio"></input>남성
+                <input
+                  type="radio"
+                  name="gender"
+                  value="남성"
+                  onChange={this.props.handleInput}
+                />
+                남성
               </div>
               <div>
-                <input type="radio"></input>여성
+                <input
+                  type="radio"
+                  name="gender"
+                  value="여성"
+                  onChange={this.props.handleInput}
+                />
+                여성
               </div>
             </div>
             <div>
-              <input type="text" placeholder="이름"></input>
+              <input
+                type="text"
+                placeholder="이름"
+                onChange={this.props.handleInput}
+                name="name"
+              />
             </div>
             <div>
-              <input type="text" placeholder="우편번호"></input>
+              <input
+                type="text"
+                placeholder="우편번호"
+                onChange={this.props.handleInput}
+                name="zipCode"
+              />
             </div>
             <div>
-              <input type="text" placeholder="주소"></input>
+              <input
+                type="text"
+                placeholder="주소"
+                onChange={this.props.handleInput}
+                name="address"
+              />
             </div>
             <div>
-              <input type="text" placeholder="상세주소"></input>
+              <input
+                type="text"
+                placeholder="상세주소"
+                onChange={this.props.handleInput}
+                name="detailAddress"
+              />
             </div>
             <div>
-              <input type="text" placeholder="나라"></input>
+              <input
+                type="text"
+                placeholder="대한민국"
+                onChange={this.props.handleInput}
+                readonly
+              />
             </div>
             <div>
-              <input type="text" placeholder="연락처"></input>
+              <input
+                type="text"
+                placeholder="연락처"
+                onChange={this.props.handleInput}
+                name="mobile"
+              />
             </div>
           </div>
           <div className="thirdBox">
@@ -89,12 +136,12 @@ class Delivery extends Component {
               return (
                 <CheckedCartList
                   key={data.id}
-                  checkedProductName={data.name}
+                  checkedProductName={data.product_name}
                   checkedProductPrice={data.price}
                 />
               );
             })}
-          <PriceInfo />
+          <PriceInfo goToNextPage={this.props.goToNextPage} />
         </aside>
       </div>
     );
