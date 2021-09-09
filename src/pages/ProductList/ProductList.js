@@ -21,7 +21,7 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch(`${PRODUCT_LIST_API}/products?limit=28&offset=0`)
+    fetch(`http://10.58.2.212:8000/products?limit=28&offset=0`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -171,7 +171,7 @@ class ProductList extends Component {
                     itemId={data.id}
                     idx={idx}
                     productName={data.name}
-                    productColorNum={data.color_num}
+                    productColorNum={data.colors_num}
                     productPic={data.img_url}
                     productPrice={data.price}
                   />
@@ -181,11 +181,13 @@ class ProductList extends Component {
           </div>
           <div className="pageBtn">
             <div className="numberBtn">
-              {Array(Math.ceil({ productData }.length / 28))
+              {Array(Math.ceil(productData.length / 28))
                 .fill()
                 .map((_, idx) => {
                   return (
-                    <button onClick={() => this.handleClick(idx)}>idx</button>
+                    <button onClick={() => this.handleClick({ idx })}>
+                      {idx}
+                    </button>
                   );
                 })}
             </div>
