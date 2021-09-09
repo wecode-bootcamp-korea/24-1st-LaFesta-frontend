@@ -3,7 +3,6 @@ import ProductPhoto from './ProductPhoto';
 import ProductSize from './ProductSize';
 import ProductBonus from './ProductBonus';
 import ShoppingBag from './ShoppingBag';
-import MiniPhoto from './MiniPhoto';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
@@ -12,17 +11,15 @@ class ProductDetail extends Component {
     this.state = {
       productInfoList: [],
       imageNum: 0,
-      isSize: 1,
-      isBonus: 1,
+      isSize: true,
+      isBonus: true,
+      isShoppingBag: true,
       size: '',
-      isShoppingBag: 1,
     };
   }
 
   componentDidMount() {
-    fetch('/data/productData.json', {
-      method: 'GET',
-    })
+    fetch('/data/productData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -32,31 +29,32 @@ class ProductDetail extends Component {
   }
 
   postProduct = () => {
+    const { productInfoList } = this.state;
     fetch('http://10.58.7.79:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
-        product_id: this.state.productInfoList.product_id,
+        product_id: productInfoList.product_id,
       }),
     });
   };
 
   changeSize = size => {
-    this.setState({ size: size }, this.hideFilter());
+    this.setState({ size: size }, this.hideSizePick());
   };
 
-  hideFilter = () => {
-    if (this.state.isSize !== 1) {
-      this.setState({ isSize: 1 });
-      return;
-    }
-    if (this.state.isBonus !== 1) {
-      this.setState({ isBonus: 1 });
-      return;
-    }
-    if (this.state.isShoppingBag !== 1) {
-      this.setState({ isShoppingBag: 1 });
-      return;
-    }
+  hideSizePick = () => {
+    const { isSize } = this.state;
+    this.setState({ isSize: !isSize });
+  };
+
+  hideBonus = () => {
+    const { isBonus } = this.state;
+    this.setState({ isBonus: !isBonus });
+  };
+
+  hideShoppingBag = () => {
+    const { isShoppingBag } = this.state;
+    this.setState({ isShoppingBag: !isShoppingBag });
   };
 
   changePhoto = photo => {
@@ -69,14 +67,21 @@ class ProductDetail extends Component {
     this.props.history.push('/cart');
   };
 
+  gotoMain = () => {
+    this.props.history.push('/mainPage');
+  };
+
   render() {
-    const { productInfoList, size, isSize, isBonus, isShoppingBag } =
+    const { productInfoList, size, isSize, isBonus, isShoppingBag, imageNum } =
       this.state;
     return (
       <div className="productDetail">
         <div className="nav">임시</div>
         <div className="list">
-          <span className="home">홈</span>&nbsp;&nbsp;/&nbsp;&nbsp;
+          <span className="home" onClick={this.gotoMain}>
+            홈
+          </span>
+          &nbsp;&nbsp;/&nbsp;&nbsp;
           <span className="category">
             {productInfoList && productInfoList.section}
           </span>
@@ -88,44 +93,39 @@ class ProductDetail extends Component {
           {productInfoList && productInfoList.name}
         </div>
         <div className="productMain">
-          <div className="productMainFirst">
+          <div className="productMainInteraction">
             <div className="slideBox">
               <div className="miniPhotoBox">
-                <MiniPhoto
-                  index="0"
-                  productInfoList={productInfoList}
-                  imageNum="0"
-                  changePhoto={this.changePhoto}
-                />
-                <MiniPhoto
-                  index="1"
-                  productInfoList={productInfoList}
-                  imageNum="-684"
-                  changePhoto={this.changePhoto}
-                />
-                <MiniPhoto
-                  index="0"
-                  productInfoList={productInfoList}
-                  imageNum="-1368"
-                  changePhoto={this.changePhoto}
-                />
+                {productInfoList.images &&
+                  productInfoList.images.map((image, idx) => {
+                    return (
+                      <div className="miniPhoto">
+                        <ProductPhoto
+                          id={image.id}
+                          imageUrl={image.image_url}
+                          imageNum={-684 * idx}
+                          changePhoto={this.changePhoto}
+                          key={productInfoList.images.id}
+                        />
+                      </div>
+                    );
+                  })}
               </div>
               <div
                 className="slideList"
                 style={{
                   transform: `translate3d(
-                ${this.state.imageNum}px, 0px, 0px`,
+                ${imageNum}px, 0px, 0px`,
                 }}
               >
-                <span className="slide_content slide01">
-                  <ProductPhoto productInfoList={productInfoList} index="0" />
-                </span>
-                <span className="slide_content slide02">
-                  <ProductPhoto productInfoList={productInfoList} index="1" />
-                </span>
-                <span className="slide_content slide03">
-                  <ProductPhoto productInfoList={productInfoList} index="0" />
-                </span>
+                {productInfoList.images &&
+                  productInfoList.images.map(image => {
+                    return (
+                      <span className="slideContent" key="image.id">
+                        <ProductPhoto imageUrl={image.image_url} />
+                      </span>
+                    );
+                  })}
               </div>
             </div>
             <div className="productText">
@@ -135,7 +135,7 @@ class ProductDetail extends Component {
               <div className="productPrice">
                 <div className="productColor">
                   {productInfoList.colors && productInfoList.colors[0].name}
-                  &nbsp; • &nbsp;
+                  <span className="productColorDivision">•</span>
                   {productInfoList.colors && productInfoList.colors[0].name}
                 </div>
                 <div>
@@ -149,32 +149,34 @@ class ProductDetail extends Component {
               <div
                 className="bonus"
                 onClick={() => {
-                  this.setState({ isBonus: 0.51 });
+                  this.setState({ isBonus: false });
                 }}
               >
                 카드 혜택보기
               </div>
-              <div className="colorNumber">7 개의 색상</div>
+              <div className="colorNumber">
+                {productInfoList.colors && productInfoList.colors.length} 개의
+                색상
+              </div>
               <div className="colorBox">
-                {[1, 2, 3, 4, 5, 6, 7].map(circle => {
-                  return (
-                    <div className="outCircle" key={circle}>
-                      <div
-                        className={`color${circle} circle`}
-                        style={{
-                          backgroundColor:
-                            productInfoList.colors &&
-                            productInfoList.colors[0].color,
-                        }}
-                      ></div>
-                    </div>
-                  );
-                })}
+                {productInfoList.colors &&
+                  productInfoList.colors.map(color => {
+                    return (
+                      <div className="outCircle" key={color.id}>
+                        <div
+                          className={`color${color} circle`}
+                          style={{
+                            backgroundColor: color.name,
+                          }}
+                        ></div>
+                      </div>
+                    );
+                  })}
               </div>
               <div
                 className="productSize"
                 onClick={() => {
-                  this.setState({ isSize: 0.51 });
+                  this.setState({ isSize: false });
                 }}
               >
                 <button>
@@ -186,8 +188,8 @@ class ProductDetail extends Component {
                 className={size ? 'productPickOff' : 'productPickOn'}
                 onClick={() => {
                   size
-                    ? this.setState({ isShoppingBag: 0.51 })
-                    : this.setState({ isSize: 0.51 });
+                    ? this.setState({ isShoppingBag: false })
+                    : this.setState({ isSize: false });
                 }}
               >
                 <button onClick={size && this.postProduct}>
@@ -205,7 +207,7 @@ class ProductDetail extends Component {
               </p>
             </div>
           </div>
-          <div className="productMainSecond">
+          <div className="productMainExplanation">
             <div className="productDetail">
               <div className="detailLook">상세히 보기 </div>
               <div className="productCode">제품코드. PH731E-51N</div>
@@ -215,31 +217,47 @@ class ProductDetail extends Component {
               <ul className="productDetailText">
                 {productInfoList.description_extra_information &&
                   productInfoList.description_extra_information
-                    .split(',')
+                    .split('.')
                     .map(list => {
                       return <li>- {list}</li>;
                     })}
               </ul>
             </div>
-            <ProductPhoto productInfoList={productInfoList} index="0" />
+            <ProductPhoto
+              imageUrl={
+                productInfoList.images && productInfoList.images[1].image_url
+              }
+            />
           </div>
-          <div className="productMainThird">
-            <ProductPhoto productInfoList={productInfoList} index="1" />
-            <ProductPhoto productInfoList={productInfoList} index="1" />
+          <div className="productMainDetail">
+            <ProductPhoto
+              imageUrl={
+                productInfoList.images && productInfoList.images[2].image_url
+              }
+            />
+            <ProductPhoto
+              imageUrl={
+                productInfoList.images && productInfoList.images[3].image_url
+              }
+            />
           </div>
-          <div className="productMainFourth">
-            <ProductPhoto productInfoList={productInfoList} index="1" />
+          <div className="productMainFullBodyPhoto">
+            <ProductPhoto
+              imageUrl={
+                productInfoList.images && productInfoList.images[4].image_url
+              }
+            />
           </div>
         </div>
         <ProductSize
-          hideFilter={this.hideFilter}
+          hideFilter={this.hideSizePick}
           isSize={isSize}
-          productInfoList={productInfoList}
+          sizes={productInfoList.sizes}
           changeSize={this.changeSize}
         />
-        <ProductBonus hideFilter={this.hideFilter} isBonus={isBonus} />
+        <ProductBonus hideFilter={this.hideBonus} isBonus={isBonus} />
         <ShoppingBag
-          hideFilter={this.hideFilter}
+          hideFilter={this.hideShoppingBag}
           isShoppingBag={isShoppingBag}
           productInfoList={productInfoList}
           size={size}

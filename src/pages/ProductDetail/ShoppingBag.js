@@ -3,13 +3,14 @@ import './ShoppingBag.scss';
 
 class ShoppingBag extends Component {
   render() {
-    const { isShoppingBag, hideFilter, productInfoList } = this.props;
+    const { isShoppingBag, hideFilter, productInfoList, gotoCart, size } =
+      this.props;
     return (
       <div
         className="ShoppingBag"
         style={{
           transform: `translate3d(
-          ${isShoppingBag * 100}%, 0px, 0px`,
+            ${isShoppingBag ? 100 : 51}%, 0px, 0px`,
         }}
       >
         <div className="filterContainer">
@@ -33,12 +34,12 @@ class ShoppingBag extends Component {
               src={
                 productInfoList.images && productInfoList.images[0].image_url
               }
-            ></img>
+            />
             <div className="productInfo">
               <div className="productName">
                 {productInfoList && productInfoList.name}
               </div>
-              <div className="productSize">{this.props.size}</div>
+              <div className="productSize">{size}</div>
               <div className="productColor">
                 {productInfoList.colors && productInfoList.colors[0].name}
               </div>
@@ -52,7 +53,7 @@ class ShoppingBag extends Component {
             </div>
           </div>
           <div className="shoppingBasket">
-            <button onClick={this.props.gotoCart}>장바구니 보기</button>
+            <button onClick={gotoCart}>장바구니 보기</button>
           </div>
           <div className="continueBtn">
             <button onClick={hideFilter}>계속 쇼핑하기</button>

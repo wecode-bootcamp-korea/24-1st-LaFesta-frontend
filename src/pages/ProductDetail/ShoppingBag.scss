@@ -1,17 +1,17 @@
 .ShoppingBag {
   display: flex;
   position: absolute;
-  width: 100%;
   top: 0;
-  z-index: 3;
-  transition: 0.7s linear;
+  width: 1430px;
   margin-top: 80px;
+  transition: 0.7s linear;
+  z-index: 3;
 
   .filterContainer {
-    padding: 0 90px;
-    background-color: white;
     width: 710px;
     height: 743px;
+    padding: 0 90px;
+    background-color: white;
 
     .filterTitle {
       display: flex;
@@ -21,10 +21,11 @@
 
       .shoppingText {
         i {
-          color: green;
           margin-right: 20px;
+          color: green;
         }
       }
+
       .closeBtn {
         &:hover {
           cursor: pointer;
@@ -39,6 +40,7 @@
         height: 160px;
         margin-right: 20px;
       }
+
       .productInfo {
         .productName {
           margin-bottom: 10px;
@@ -46,8 +48,8 @@
 
         .productSize {
           margin-bottom: 10px;
-          font-size: 12px;
           color: #989898;
+          font-size: 12px;
         }
 
         .productColor {

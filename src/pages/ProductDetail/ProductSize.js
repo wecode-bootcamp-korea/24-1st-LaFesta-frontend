@@ -3,13 +3,13 @@ import './ProductSize.scss';
 
 class ProductSize extends Component {
   render() {
-    const { isSize, productInfoList, hideFilter, changeSize } = this.props;
+    const { isSize, sizes, hideFilter, changeSize } = this.props;
     return (
       <div
         className="ProductSize"
         style={{
           transform: `translate3d(
-          ${isSize * 100}%, 0px, 0px`,
+          ${isSize ? 100 : 51}%, 0px, 0px`,
         }}
       >
         <div className="filterContainer">
@@ -24,42 +24,20 @@ class ProductSize extends Component {
             </div>
           </div>
           <div className="sizeContainer">
-            <button
-              className="sizeBox"
-              onClick={() => {
-                changeSize('00' + productInfoList.sizes[0].size);
-              }}
-            >
-              00
-              {productInfoList.sizes && productInfoList.sizes[0].size}
-            </button>
-            <button
-              className="sizeBox"
-              onClick={() => {
-                changeSize('00' + productInfoList.sizes[1].size);
-              }}
-            >
-              00
-              {productInfoList.sizes && productInfoList.sizes[1].size}
-            </button>
-            <button
-              className="sizeBox"
-              onClick={() => {
-                changeSize('00' + productInfoList.sizes[2].size);
-              }}
-            >
-              00
-              {productInfoList.sizes && productInfoList.sizes[2].size}
-            </button>
-            <button
-              className="sizeBox"
-              onClick={() => {
-                changeSize('00' + productInfoList.sizes[3].size);
-              }}
-            >
-              00
-              {productInfoList.sizes && productInfoList.sizes[3].size}
-            </button>
+            {sizes &&
+              sizes.map((size, idx) => {
+                return (
+                  <button
+                    className="sizeBox"
+                    onClick={() => {
+                      changeSize('00' + sizes[idx].size);
+                    }}
+                  >
+                    00
+                    {size.size}
+                  </button>
+                );
+              })}
           </div>
         </div>
       </div>

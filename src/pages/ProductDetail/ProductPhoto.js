@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 
 class ProductPhoto extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
+    const { imageUrl, imageNum, changePhoto } = this.props;
     return (
       <img
         alt="productPhoto"
         className="productPhoto"
-        src={
-          this.props.productInfoList.images &&
-          this.props.productInfoList.images[this.props.index].image_url
-        }
-      ></img>
+        src={imageUrl}
+        onClick={() => {
+          changePhoto(imageNum);
+        }}
+      />
     );
   }
 }
