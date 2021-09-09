@@ -7,6 +7,18 @@ class ProductFilter extends Component {
     this.props.hideGrayDisplay(event.target.dataset.category * -100);
   };
 
+  addFilterPrice = event => {
+    this.props.addFilterPrice(event.target.dataset.category);
+  };
+
+  addFilterColor = event => {
+    this.props.addFilterColor(event.target.dataset.category);
+  };
+
+  addFilterFit = event => {
+    this.props.addFilterFit(event.target.dataset.category);
+  };
+
   render() {
     const { filterMoveNum } = this.props;
 
@@ -34,39 +46,65 @@ class ProductFilter extends Component {
             <div className="titleAlign">정렬</div>
             <div className="lowerPriceAlign">
               <div>낮은 가격 순</div>
-              <input name="priceAlign" type="radio"></input>
+              <input
+                data-category="order=-price"
+                name="priceAlign"
+                type="radio"
+                onClick={this.addFilterPrice}
+              ></input>
             </div>
             <div className="higherPriceAlign">
               <div>높은 가격 순</div>
-              <input name="priceAlign" type="radio"></input>
+              <input
+                data-category="order=price"
+                name="priceAlign"
+                type="radio"
+                onClick={this.addFilterPrice}
+              ></input>
             </div>
           </div>
           <div className="subFilter">
             <div className="subFilterTitle">필터</div>
             <div className="colorFilter">COLOR</div>
-            <ul className="colorBtn">
-              <li className="redBtn"></li>
-              <li className="blueBtn"></li>
-              <li className="greenBtn"></li>
-              <li className="whiteBtn"></li>
+            <ul className="colorBtn" onClick={this.addFilterColor}>
+              <li data-category="&colorId=1" className="redBtn"></li>
+              <li data-category="&colorId=2" className="blueBtn"></li>
+              <li data-category="&colorId=3" className="greenBtn"></li>
+              <li data-category="&colorId=4" className="whiteBtn"></li>
             </ul>
             <div className="fitFilter">FIT</div>
             <ul className="fitChoiceBox">
               <li>
                 <div>레귤러핏</div>
-                <input type="checkbox"></input>
+                <input
+                  data-category="&typeId=1"
+                  type="checkbox"
+                  onClick={this.addFilterFit}
+                ></input>
               </li>
               <li>
                 <div>파리폴로</div>
-                <input type="checkbox"></input>
+                <input
+                  data-category="&typeId=2"
+                  type="checkbox"
+                  onClick={this.addFilterFit}
+                ></input>
               </li>
               <li>
                 <div>클래식핏</div>
-                <input type="checkbox"></input>
+                <input
+                  data-category="&typeId=3"
+                  type="checkbox"
+                  onClick={this.addFilterFit}
+                ></input>
               </li>
               <li>
                 <div>슬림핏</div>
-                <input type="checkbox"></input>
+                <input
+                  data-category="&typeId=4"
+                  type="checkbox"
+                  onClick={this.addFilterFit}
+                ></input>
               </li>
             </ul>
           </div>

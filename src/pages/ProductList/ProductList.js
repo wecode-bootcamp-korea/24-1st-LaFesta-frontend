@@ -22,7 +22,7 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.7.159:8000/products?limit=28&offset=0')
+    fetch('http://10.58.2.246:8000/products?limit=28&offset=0')
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -31,9 +31,9 @@ class ProductList extends Component {
       });
   }
 
-  componentDidUpdate(prevProps, _) {
+  componentDidUpdate(prevProps) {
     if (prevProps.location.search !== this.props.location.search) {
-      fetch(`http://10.58.7.159:8000/products?${this.props.location.search}`)
+      fetch(`http://10.58.2.246:8000/products${this.props.location.search}`)
         .then(res => res.json())
         .then(res => {
           this.setState({
@@ -43,15 +43,21 @@ class ProductList extends Component {
     }
   }
 
-  addFilterPrice = e => {
+  addFilterPrice = event => {
     this.setState({
-      filterPrice: e,
+      filterPrice: event,
     });
   };
 
-  addFilterColor = e => {
+  addFilterColor = event => {
     this.setState({
-      filterColor: this.state.filterColor.concat({ e }),
+      filterColor: this.state.filterColor.concat(event),
+    });
+  };
+
+  addFilterFit = event => {
+    this.setState({
+      filterFit: this.state.filterFit.concat(event),
     });
   };
 
@@ -76,13 +82,19 @@ class ProductList extends Component {
     });
   };
 
+  handleFetch = API => {
+    fetch(API)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ productData: res.results.products });
+      });
+  };
+
   render() {
     const { productData, productFits } = this.state;
     const searchStyle = productData.filter(data =>
       data.fit.includes(productFits)
     );
-
-    console.log(productData);
 
     return (
       <div className="productList">
@@ -184,6 +196,10 @@ class ProductList extends Component {
           hideFilter={this.hideFilter}
           hideGrayDisplay={this.hideGrayDisplay}
           searchStyle={searchStyle}
+          addFilterPrice={this.addFilterPrice}
+          addFilterColor={this.addFilterColor}
+          addFilterFit={this.addFilterFit}
+          handleFetch={this.handleFetch}
         />
       </div>
     );
