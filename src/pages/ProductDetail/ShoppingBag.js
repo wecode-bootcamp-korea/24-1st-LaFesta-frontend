@@ -3,7 +3,7 @@ import './ShoppingBag.scss';
 
 class ShoppingBag extends Component {
   render() {
-    const { isShoppingBag, hideFilter, productInfoList, gotoCart, size } =
+    const { isShoppingBag, hideFilter, productInfo, gotoCart, size } =
       this.props;
     return (
       <div
@@ -31,24 +31,14 @@ class ShoppingBag extends Component {
             <img
               alt="shoppingPhoto"
               className="shoppingPhoto"
-              src={
-                productInfoList.images && productInfoList.images[0].image_url
-              }
+              src={productInfo.images?.[0].image_url}
             />
             <div className="productInfo">
-              <div className="productName">
-                {productInfoList && productInfoList.name}
-              </div>
+              <div className="productName">{productInfo.name}</div>
               <div className="productSize">{size}</div>
-              <div className="productColor">
-                {productInfoList.colors && productInfoList.colors[0].name}
-              </div>
+              <div className="productColor">{productInfo.colors?.[0].name}</div>
               <div className="productPrice">
-                {productInfoList.price &&
-                  productInfoList.price
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                원
+                {productInfo.price?.toLocaleString('en')}원
               </div>
             </div>
           </div>

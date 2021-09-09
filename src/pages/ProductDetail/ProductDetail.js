@@ -3,13 +3,14 @@ import ProductPhoto from './ProductPhoto';
 import ProductSize from './ProductSize';
 import ProductBonus from './ProductBonus';
 import ShoppingBag from './ShoppingBag';
+import { POST_PRODUCTDETAIL_API } from '../../config';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productInfoList: [],
+      productInfo: {},
       imageNum: 0,
       isSize: true,
       isBonus: true,
@@ -23,37 +24,42 @@ class ProductDetail extends Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productInfoList: data.results,
+          productInfo: data.results,
         });
       });
   }
 
   postProduct = () => {
-    const { productInfoList } = this.state;
-    fetch('http://10.58.7.79:8000/users/signup', {
+    const { productInfo } = this.state;
+
+    fetch(`${POST_PRODUCTDETAIL_API}`, {
       method: 'POST',
+      headers: { Authorization: localStorage.getItem('token') },
       body: JSON.stringify({
-        product_id: productInfoList.product_id,
+        product_id: productInfo.product_id,
       }),
     });
   };
 
   changeSize = size => {
-    this.setState({ size: size }, this.hideSizePick());
+    this.setState({ size }, this.hideSizePick);
   };
 
   hideSizePick = () => {
     const { isSize } = this.state;
+
     this.setState({ isSize: !isSize });
   };
 
   hideBonus = () => {
     const { isBonus } = this.state;
+
     this.setState({ isBonus: !isBonus });
   };
 
   hideShoppingBag = () => {
     const { isShoppingBag } = this.state;
+
     this.setState({ isShoppingBag: !isShoppingBag });
   };
 
@@ -72,7 +78,7 @@ class ProductDetail extends Component {
   };
 
   render() {
-    const { productInfoList, size, isSize, isBonus, isShoppingBag, imageNum } =
+    const { productInfo, size, isSize, isBonus, isShoppingBag, imageNum } =
       this.state;
     return (
       <div className="productDetail">
@@ -82,34 +88,28 @@ class ProductDetail extends Component {
             홈
           </span>
           &nbsp;&nbsp;/&nbsp;&nbsp;
-          <span className="category">
-            {productInfoList && productInfoList.section}
-          </span>
+          <span className="category">{productInfo.section}</span>
           &nbsp; / &nbsp;
-          <span className="category">
-            {productInfoList && productInfoList.category}
-          </span>
+          <span className="category">{productInfo.category}</span>
           &nbsp; / &nbsp;
-          {productInfoList && productInfoList.name}
+          {productInfo.name}
         </div>
         <div className="productMain">
           <div className="productMainInteraction">
             <div className="slideBox">
               <div className="miniPhotoBox">
-                {productInfoList.images &&
-                  productInfoList.images.map((image, idx) => {
-                    return (
-                      <div className="miniPhoto">
-                        <ProductPhoto
-                          id={image.id}
-                          imageUrl={image.image_url}
-                          imageNum={-684 * idx}
-                          changePhoto={this.changePhoto}
-                          key={productInfoList.images.id}
-                        />
-                      </div>
-                    );
-                  })}
+                {productInfo.images?.map((image, idx) => {
+                  return (
+                    <div className="miniPhoto" key={productInfo.images.id}>
+                      <ProductPhoto
+                        id={image.id}
+                        imageUrl={image.image_url}
+                        imageNum={-684 * idx}
+                        changePhoto={this.changePhoto}
+                      />
+                    </div>
+                  );
+                })}
               </div>
               <div
                 className="slideList"
@@ -118,33 +118,24 @@ class ProductDetail extends Component {
                 ${imageNum}px, 0px, 0px`,
                 }}
               >
-                {productInfoList.images &&
-                  productInfoList.images.map(image => {
-                    return (
-                      <span className="slideContent" key="image.id">
-                        <ProductPhoto imageUrl={image.image_url} />
-                      </span>
-                    );
-                  })}
+                {productInfo.images?.map(image => {
+                  return (
+                    <span className="slideContent" key={image.id}>
+                      <ProductPhoto imageUrl={image.image_url} />
+                    </span>
+                  );
+                })}
               </div>
             </div>
             <div className="productText">
-              <div className="productName">
-                {productInfoList && productInfoList.name}
-              </div>
+              <div className="productName">{productInfo.name}</div>
               <div className="productPrice">
                 <div className="productColor">
-                  {productInfoList.colors && productInfoList.colors[0].name}
+                  {productInfo.colors?.[0].name}
                   <span className="productColorDivision">•</span>
-                  {productInfoList.colors && productInfoList.colors[0].name}
+                  {productInfo.colors?.[0].name}
                 </div>
-                <div>
-                  {productInfoList.price &&
-                    productInfoList.price
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  원
-                </div>
+                <div>{productInfo.price?.toLocaleString('en')}원</div>
               </div>
               <div
                 className="bonus"
@@ -155,23 +146,21 @@ class ProductDetail extends Component {
                 카드 혜택보기
               </div>
               <div className="colorNumber">
-                {productInfoList.colors && productInfoList.colors.length} 개의
-                색상
+                {productInfo.colors?.length} 개의 색상
               </div>
               <div className="colorBox">
-                {productInfoList.colors &&
-                  productInfoList.colors.map(color => {
-                    return (
-                      <div className="outCircle" key={color.id}>
-                        <div
-                          className={`color${color} circle`}
-                          style={{
-                            backgroundColor: color.name,
-                          }}
-                        ></div>
-                      </div>
-                    );
-                  })}
+                {productInfo.colors?.map(color => {
+                  return (
+                    <div className="outCircle" key={color.id}>
+                      <div
+                        className={`color${color} circle`}
+                        style={{
+                          backgroundColor: color.name,
+                        }}
+                      ></div>
+                    </div>
+                  );
+                })}
               </div>
               <div
                 className="productSize"
@@ -185,7 +174,7 @@ class ProductDetail extends Component {
                 </button>
               </div>
               <div
-                className={size ? 'productPickOff' : 'productPickOn'}
+                className={`productPick${size ? 'Off' : 'On'}`}
                 onClick={() => {
                   size
                     ? this.setState({ isShoppingBag: false })
@@ -212,54 +201,38 @@ class ProductDetail extends Component {
               <div className="detailLook">상세히 보기 </div>
               <div className="productCode">제품코드. PH731E-51N</div>
               <div className="productText">
-                {productInfoList && productInfoList.description_summary}
+                {productInfo.description_summary}
               </div>
               <ul className="productDetailText">
-                {productInfoList.description_extra_information &&
-                  productInfoList.description_extra_information
+                {productInfo.description_extra_information &&
+                  productInfo.description_extra_information
                     .split('.')
                     .map(list => {
                       return <li>- {list}</li>;
                     })}
               </ul>
             </div>
-            <ProductPhoto
-              imageUrl={
-                productInfoList.images && productInfoList.images[1].image_url
-              }
-            />
+            <ProductPhoto imageUrl={productInfo.images?.[1].image_url} />
           </div>
           <div className="productMainDetail">
-            <ProductPhoto
-              imageUrl={
-                productInfoList.images && productInfoList.images[2].image_url
-              }
-            />
-            <ProductPhoto
-              imageUrl={
-                productInfoList.images && productInfoList.images[3].image_url
-              }
-            />
+            <ProductPhoto imageUrl={productInfo.images?.[2].image_url} />
+            <ProductPhoto imageUrl={productInfo.images?.[3].image_url} />
           </div>
           <div className="productMainFullBodyPhoto">
-            <ProductPhoto
-              imageUrl={
-                productInfoList.images && productInfoList.images[4].image_url
-              }
-            />
+            <ProductPhoto imageUrl={productInfo.images?.[4].image_url} />
           </div>
         </div>
         <ProductSize
           hideFilter={this.hideSizePick}
           isSize={isSize}
-          sizes={productInfoList.sizes}
+          sizes={productInfo.sizes}
           changeSize={this.changeSize}
         />
         <ProductBonus hideFilter={this.hideBonus} isBonus={isBonus} />
         <ShoppingBag
           hideFilter={this.hideShoppingBag}
           isShoppingBag={isShoppingBag}
-          productInfoList={productInfoList}
+          productInfo={productInfo}
           size={size}
           gotoCart={this.gotoCart}
         />
