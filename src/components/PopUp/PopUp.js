@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import './PopUp.scss';
 
 class PopUp extends Component {
+  handleClick = () => {
+    localStorage.clear();
+  };
   render() {
     const { name } = this.props;
+
     return (
       <div className={`popUp ${name ? 'showPopUp' : ''}`}>
         <div>
@@ -26,7 +30,11 @@ class PopUp extends Component {
               </Link>
             </li>
           </ul>
-          <button type="button" className="logOutBtn">
+          <button
+            type="button"
+            className="logOutBtn"
+            onClick={this.handleClick}
+          >
             로그아웃
           </button>
         </div>
