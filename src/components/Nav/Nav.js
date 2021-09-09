@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Category from './Category/Category';
 import PopUp from '../PopUp/PopUp';
+import Form from '../Form/Form';
 import './Nav.scss';
 
 const clothesCategory = [
@@ -154,7 +155,8 @@ class Nav extends Component {
     super(props);
     this.state = {
       toggleMenu: '',
-      loginUser: false,
+      isUserLogin: false,
+      isClicked: false,
     };
   }
 
@@ -170,14 +172,27 @@ class Nav extends Component {
     });
   };
 
+  handleUserMouseLeave = () => {
+    this.setState({
+      isUserLogin: false,
+    });
+  };
   handleUserPopUp = () => {
     this.setState({
-      loginUser: true,
+      isUserLogin: localStorage.getItem('user_name') !== '',
+    });
+  };
+
+  hadleClick = () => {
+    const { isClicked } = this.state;
+
+    this.setState({
+      isClicked: !isClicked,
     });
   };
 
   render() {
-    const { toggleMenu } = this.state;
+    const { toggleMenu, isUserLogin, isClicked } = this.state;
     const toggledMenu = menu.find(item => item.name === toggleMenu);
     return (
       <>
@@ -199,12 +214,9 @@ class Nav extends Component {
                 </li>
               ))}
             </ul>
-            <form className="searchForm">
-              <button type="button">
-                <i className="fas fa-search icon"></i>
-              </button>
-              <input type="text" aria-label="검색창" className="searchInput" />
-            </form>
+            <button type="button" onClick={this.hadleClick}>
+              <i className="fas fa-search icon"></i>
+            </button>
           </div>
           <div>
             <ul className="userCategorys">
@@ -237,7 +249,10 @@ class Nav extends Component {
               ))}
           </ul>
         </div>
-        {this.state.loginUser && <PopUp />}
+        <div onMouseLeave={this.handleUserMouseLeave}>
+          {isUserLogin && <PopUp name={localStorage.getItem('user_name')} />}
+        </div>
+        {isClicked && <Form clicked={isClicked} />}
       </>
     );
   }
