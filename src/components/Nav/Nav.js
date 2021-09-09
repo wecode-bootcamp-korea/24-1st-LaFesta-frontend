@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Category from './Category/Category';
 import PopUp from '../PopUp/PopUp';
 import Form from '../Form/Form';
@@ -173,14 +173,21 @@ class Nav extends Component {
   };
 
   handleUserMouseLeave = () => {
-    this.setState({
-      isUserLogin: false,
-    });
+    const { isUserLogin } = this.state;
+
+    if (!localStorage.getItem('token')) {
+      this.setState({
+        isUserLogin: !isUserLogin,
+      });
+      this.props.history.push('/logIn');
+    }
   };
+
   handleUserPopUp = () => {
     this.setState({
-      isUserLogin: localStorage.getItem('user_name') !== '',
+      isUserLogin: localStorage.getItem('token') !== '',
     });
+    this.props.history.push('/');
   };
 
   hadleClick = () => {
@@ -227,10 +234,17 @@ class Nav extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/logIn" onMouseOver={this.handleUserPopUp}>
-                  <i className="fas fa-user icon"></i>
-                  <span className="a11y-hidden">user</span>
-                </Link>
+                {localStorage.getItem('token') ? (
+                  <button onMouseOver={this.handleUserPopUp}>
+                    <i className="fas fa-user icon"></i>
+                    <span className="a11y-hidden">user</span>
+                  </button>
+                ) : (
+                  <button type="button" onClick={this.goToLogin}>
+                    <i className="fas fa-user icon"></i>
+                    <span className="a11y-hidden">user</span>
+                  </button>
+                )}
               </li>
               <li>
                 <Link to="/">
@@ -258,4 +272,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);
