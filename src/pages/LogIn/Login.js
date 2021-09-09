@@ -22,7 +22,7 @@ class Login extends Component {
   postLogin = () => {
     const { id, pw } = this.state;
     if (id.includes('@') && id.includes('.com') && pw.length >= 8) {
-      fetch(`${POST_LOGIN_API}`, {
+      fetch('http://10.58.5.62:8000/users/signin', {
         method: 'POST',
         body: JSON.stringify({
           email: id,
