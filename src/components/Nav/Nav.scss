@@ -45,6 +45,9 @@
     }
   }
 
+}
+
+
   button {
     border: 0;
     outline: 0;
@@ -54,6 +57,7 @@
       color: #dbdbdb;
     }
   }
+
 
 .searchInput {
   border: 0;
@@ -73,8 +77,24 @@
       font-size: 15px;
     }
 
+
+
+.userCategorys {
+  display: flex;
+  margin-right: auto;
+  cursor: pointer;
+
+  li {
+    padding-left: 22px;
+
+    .icon {
+      font-size: 15px;
+    }
+
+
     :hover {
       color: #dbdbdb;
     }
   }
 }
+  }
