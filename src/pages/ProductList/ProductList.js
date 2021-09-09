@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Product from './ProductListComponent/Product';
-import ProductFilter from './ProductListComponent/ProductFilter';
-import './ProductList.scss';
-import './ProductListComponent/Product.scss';
-import './ProductListComponent/ProductFilter.scss';
+import Product from '../ProductList/productListComponent/Product';
+import ProductFilter from '../ProductList/productListComponent/ProductFilter';
+import '../ProductList/ProductList.scss';
 
 const LIMIT = 28;
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Category from './Category/Category';
 import PopUp from '../PopUp/PopUp';
 import Form from '../Form/Form';
-import './Nav.scss';
+import '../Nav/Nav.scss';
 
 const clothesCategory = [
   {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../productListComponent/Product.scss';
 
 class Product extends Component {
   render() {

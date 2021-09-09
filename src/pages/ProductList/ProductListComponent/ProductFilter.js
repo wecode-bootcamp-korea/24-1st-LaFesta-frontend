@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../productListComponent/ProductFilter.scss';
 
 class ProductFilter extends Component {
   hideFilter = event => {
