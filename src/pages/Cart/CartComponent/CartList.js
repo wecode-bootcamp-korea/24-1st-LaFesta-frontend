@@ -2,8 +2,24 @@ import React, { Component } from 'react';
 import './CartList.scss';
 
 class CartList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectValue: 1,
+      optionValue: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    };
+  }
+
+  deleteList = () => {
+    this.props.deleteList(this.props.id);
+  };
+
   render() {
-    const { cartProductName, cartProductPrice } = this.props;
+    const { productName, price } = this.props;
+    const { selectValue, optionValue } = this.state;
+
+    const handleChange = event =>
+      this.setState({ selectValue: event.target.value });
 
     return (
       <ul className="cartList">
@@ -15,26 +31,19 @@ class CartList extends Component {
             />
           </div>
           <div className="cartProductOpt">
-            <span>{cartProductName}</span>
-            <span>red, 사이즈: 004</span>
-            <span>{cartProductPrice.toLocaleString('en')}원</span>
-            <select className="productQuantity" onChange="">
-              <option value="0">0</option>
-              <option value="1" selected>
-                1
-              </option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
+            <span>{productName}</span>
+            <span>{(price * selectValue).toLocaleString('en')}원</span>
+            <select className="productQuantity" onChange={handleChange}>
+              {optionValue.map(num => {
+                return (
+                  <option key={num.index} value={num}>
+                    {num}
+                  </option>
+                );
+              })}
             </select>
           </div>
-          <div className="productRemove">
+          <div className="productRemove" onClick={this.deleteList}>
             <span>
               <i class="fas fa-times"></i>
             </span>

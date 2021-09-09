@@ -1,17 +1,20 @@
-.Cart {
+@mixin flex-column {
   display: flex;
   flex-direction: column;
-  padding: 7% 15%;
+}
+
+.Cart {
+  @include flex-column;
+  padding: 10% 15%;
   background-color: #f4f4f4;
 
   .purchaseStep {
     display: flex;
     justify-content: center;
 
-    & div {
-      display: flex;
+    .stepInfo {
+      @include flex-column;
       align-items: center;
-      flex-direction: column;
 
       .stepNum {
         width: 40px;
@@ -41,12 +44,10 @@
     margin-top: 50px;
 
     .purchaseInfo {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
 
       .cartDiscount {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         padding: 25px 35px;
         margin-bottom: 10px;
         background-color: white;
@@ -85,8 +86,7 @@
       }
 
       .helpService {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         justify-content: center;
         padding: 25px 35px;
         background-color: white;

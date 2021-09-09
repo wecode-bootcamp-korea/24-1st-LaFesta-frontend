@@ -4,20 +4,27 @@ import './CheckedPriceInfo.scss';
 
 class CheckedPriceInfo extends Component {
   render() {
-    const { cartListData } = this.props;
+    const {
+      cartListData,
+      name,
+      gender,
+      zipCode,
+      address,
+      detailAddress,
+      mobile,
+    } = this.props;
 
     return (
       <aside className="checkedInfo">
-        {cartListData &&
-          cartListData.map(data => {
-            return (
-              <CheckedCartList
-                key={data.id}
-                checkedProductName={data.name}
-                checkedProductPrice={data.price}
-              />
-            );
-          })}
+        {cartListData.map(cartList => {
+          return (
+            <CheckedCartList
+              key={cartList.id}
+              checkedProductName={cartList.name}
+              checkedProductPrice={cartList.price}
+            />
+          );
+        })}
         <div className="checkedPriceInfo">
           <div className="eachProduct">
             <span>1개 상품</span>
@@ -41,9 +48,13 @@ class CheckedPriceInfo extends Component {
             <i class="fas fa-truck"></i>
             일반배송
           </span>
-          <span>남성 정도영</span>
-          <span>서울 강남구 가로수길5</span>
-          <span>강남구</span>
+          <span>
+            {gender} {name}
+          </span>
+          {mobile}
+          {zipCode}
+          <span>{detailAddress}</span>
+          <span>{address}</span>
         </div>
       </aside>
     );

@@ -18,7 +18,6 @@ class CheckedCartList extends Component {
             <div className="checkedProductOpt">
               <p>{checkedProductName}</p>
               <p>
-                <span>004</span>
                 <span>{checkedProductPrice.toLocaleString('en')}원</span>
               </p>
             </div>
