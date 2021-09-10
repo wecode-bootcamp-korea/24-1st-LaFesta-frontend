@@ -7,6 +7,10 @@ class NotFound extends Component {
     return (
       <header className="notFoundContainer">
         <h2>요청하신 페이지를 찾을 수 없습니다.</h2>
+        <img
+          src="https://i.postimg.cc/Cx92S8yJ/removebg-preview.png"
+          alt="logo"
+        />
         <h3>검색하신 상품 혹은 페이지가 존재하지 않습니다.</h3>
         <h4>다른 아이템을 검색하거나 홈페이지로 돌아가시는 건 어떠세요?</h4>
         <button type="button" className="homeBtn">

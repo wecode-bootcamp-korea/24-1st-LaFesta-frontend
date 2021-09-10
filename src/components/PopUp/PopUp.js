@@ -5,7 +5,6 @@ import './PopUp.scss';
 class PopUp extends Component {
   handleClick = () => {
     localStorage.clear();
-    this.props.history.pushState('/login');
   };
   render() {
     const { name } = this.props;

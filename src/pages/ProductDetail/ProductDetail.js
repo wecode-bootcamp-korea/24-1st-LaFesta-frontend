@@ -3,7 +3,7 @@ import ProductPhoto from './ProductPhoto';
 import ProductSize from './ProductSize';
 import ProductBonus from './ProductBonus';
 import ShoppingBag from './ShoppingBag';
-import { POST_PRODUCTDETAIL_API } from '../../config';
+import { POST_PRODUCTDETAIL_API, GET_PRODUCTDETAIL_API } from '../../config';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
@@ -20,7 +20,7 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.2.212:8000/${this.props.match.params.id}`)
+    fetch(`${GET_PRODUCTDETAIL_API}/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -31,12 +31,11 @@ class ProductDetail extends Component {
 
   postProduct = () => {
     const { productInfo } = this.state;
-
     fetch(`${POST_PRODUCTDETAIL_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('token') },
       body: JSON.stringify({
-        product_id: productInfo.product_id,
+        product_id: productInfo.images[0].product_id,
       }),
     });
   };
@@ -135,7 +134,7 @@ class ProductDetail extends Component {
                   <span className="productColorDivision">•</span>
                   {productInfo.colors?.[0].name}
                 </div>
-                <div>{productInfo.price?.toLocaleString('en')}원</div>
+                <div>{Number(productInfo.price)?.toLocaleString('en')}원</div>
               </div>
               <div
                 className="bonus"
@@ -177,11 +176,11 @@ class ProductDetail extends Component {
                 className={`productPick${size ? 'Off' : 'On'}`}
                 onClick={() => {
                   size
-                    ? this.setState({ isShoppingBag: false })
+                    ? this.setState({ isShoppingBag: false }, this.postProduct)
                     : this.setState({ isSize: false });
                 }}
               >
-                <button onClick={size && this.postProduct}>
+                <button>
                   {size ? '쇼핑백에 추가하기' : '사이즈 선택하기'}
                 </button>
               </div>
@@ -215,11 +214,11 @@ class ProductDetail extends Component {
             <ProductPhoto imageUrl={productInfo.images?.[1].image_url} />
           </div>
           <div className="productMainDetail">
-            <ProductPhoto imageUrl={productInfo.images?.[2].image_url} />
-            <ProductPhoto imageUrl={productInfo.images?.[3].image_url} />
+            <ProductPhoto imageUrl={productInfo.images?.[0].image_url} />
+            <ProductPhoto imageUrl={productInfo.images?.[1].image_url} />
           </div>
           <div className="productMainFullBodyPhoto">
-            <ProductPhoto imageUrl={productInfo.images?.[4].image_url} />
+            <ProductPhoto imageUrl={productInfo.images?.[0].image_url} />
           </div>
         </div>
         <ProductSize

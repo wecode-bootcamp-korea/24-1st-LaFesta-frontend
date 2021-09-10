@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-// import { PRODUCT_LIST_API } from '../../config';
+import { GET_PRODUCTDETAIL_API } from '../../config';
 import Product from '../ProductList/ProductListComponent/Product';
 import ProductFilter from '../ProductList/ProductListComponent/ProductFilter';
-import '../ProductList/ProductList.scss';
+import './ProductList.scss';
 const LIMIT = 28;
 class ProductList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       productData: [],
+      productPage: '',
       productFits: '',
       filterMoveNum: 1,
       grayDisplayNum: -1,
@@ -18,11 +19,12 @@ class ProductList extends Component {
     };
   }
   componentDidMount() {
-    fetch(`http://10.58.2.212:8000/products?limit=28&offset=0`)
+    fetch(`${GET_PRODUCTDETAIL_API}?limit=28&offset=0`)
       .then(res => res.json())
       .then(res => {
         this.setState({
           productData: res.results.products,
+          productPage: res.results.page_count,
         });
       });
   }
@@ -67,7 +69,7 @@ class ProductList extends Component {
       });
   };
   render() {
-    const { productData, productFits } = this.state;
+    const { productData, productFits, productPage } = this.state;
     const searchStyle = productData.filter(data =>
       data.fit.includes(productFits)
     );
@@ -110,12 +112,12 @@ class ProductList extends Component {
                     <div className="resetStyleBtn" data-category="">
                       폴 로
                     </div>
-                    <div data-category="파리폴로">파리폴로</div>
-                    <div data-category="클래식핏">클래식핏</div>
+                    <div data-category="파리 폴로">파리폴로</div>
+                    <div data-category="클래식 핏">클래식핏</div>
                   </div>
                   <div className="subCategory">
-                    <div data-category="레귤러핏">레귤러핏</div>
-                    <div data-category="슬림핏">슬림핏</div>
+                    <div data-category="레귤러 핏">레귤러핏</div>
+                    <div data-category="슬림 핏">슬림핏</div>
                   </div>
                 </div>
                 <div className="styleFilter">
@@ -140,14 +142,10 @@ class ProductList extends Component {
           <div className="products">
             <div className="productsLine">
               {searchStyle.map((data, idx) => {
-<<<<<<< HEAD
-                // console.log(data);
-=======
->>>>>>> main
                 return (
                   <Product
                     key={data.id}
-                    itemId={data.id}
+                    itemId={data.product_id}
                     idx={idx}
                     productName={data.name}
                     productColorNum={data.colors_num}
@@ -160,17 +158,13 @@ class ProductList extends Component {
           </div>
           <div className="pageBtn">
             <div className="numberBtn">
-              {Array(Math.ceil(productData.length / 28))
+              {Array(productPage)
                 .fill()
                 .map((_, idx) => {
                   return (
-<<<<<<< HEAD
-                    <button onClick={() => this.handleClick(idx)}>idx</button>
-=======
-                    <button onClick={() => this.handleClick({ idx })}>
-                      {idx}
+                    <button key={idx} onClick={() => this.handleClick(idx + 1)}>
+                      {idx + 1}
                     </button>
->>>>>>> main
                   );
                 })}
             </div>
