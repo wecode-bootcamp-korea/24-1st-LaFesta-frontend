@@ -38,7 +38,7 @@ class ShoppingBag extends Component {
               <div className="productSize">{size}</div>
               <div className="productColor">{productInfo.colors?.[0].name}</div>
               <div className="productPrice">
-                {productInfo.price?.toLocaleString('en')}원
+                {Number(productInfo.price)?.toLocaleString('en')}원
               </div>
             </div>
           </div>

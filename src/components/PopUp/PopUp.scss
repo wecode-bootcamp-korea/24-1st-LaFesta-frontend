@@ -1,13 +1,13 @@
 .showPopUp {
-  position: fixed;
-  top: 12%;
+  position: absolute;
+  top: 76px;
   right: 0;
   width: 26%;
   height: 33%;
   z-index: 22;
   transform: translate3d(0, 16%, 0);
   transition: transform 0.2s cubic-bezier(0.14, 0.47, 0.96, 0.63);
-  background: #fff;
+  // background: #fff;
 
   div {
     padding: 0 5%;

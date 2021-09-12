@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../productListComponent/Product.scss';
-
+import '../ProductListComponent/Product.scss';
 class Product extends Component {
   render() {
     const { productName, productColorNum, productPrice, productPic } =
@@ -23,12 +22,13 @@ class Product extends Component {
           <div className="productInfo">
             <div className="colors">+ {productColorNum} clours</div>
             <div className="productName">{productName}</div>
-            <div className="price">{productPrice.toLocaleString('en')}원</div>
+            <div className="price">
+              {Number(productPrice).toLocaleString('en')}원
+            </div>
           </div>
         </Link>
       </div>
     );
   }
 }
-
 export default Product;

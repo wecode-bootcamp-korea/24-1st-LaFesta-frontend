@@ -8,7 +8,6 @@ class MainPage extends Component {
     this.state = {
       eventCount: 1,
       insideCount: 1,
-      list: [],
       eventList: [],
       collectionList: [],
       insideList: [],
@@ -50,7 +49,7 @@ class MainPage extends Component {
         insideCount: insideCount + 1,
       });
 
-      this.insideMargin -= 1562;
+      this.insideMargin -= 1566;
     }
   };
 
@@ -63,12 +62,12 @@ class MainPage extends Component {
         insideCount: insideCount - 1,
       });
 
-      this.insideMargin += 1562;
+      this.insideMargin += 1566;
     }
   };
 
   componentDidMount() {
-    fetch('http://localhost:3005/data/mainData-songhyun.json')
+    fetch('/data/mainData-songhyun.json')
       .then(res => res.json())
       .then(lists => {
         const init = {

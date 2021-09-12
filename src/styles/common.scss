@@ -12,6 +12,11 @@
 }
 
 ::selection {
-  background-color: #0f5a33;
+  background-color: #070f0b;
   color: white;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
 }

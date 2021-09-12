@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { PRODUCT_LIST_API } from '../../config';
-import Product from '../ProductList/productListComponent/Product';
-import ProductFilter from '../ProductList/productListComponent/ProductFilter';
-import '../ProductList/ProductList.scss';
-
+import { GET_PRODUCTDETAIL_API } from '../../config';
+import Product from '../ProductList/ProductListComponent/Product';
+import ProductFilter from '../ProductList/ProductListComponent/ProductFilter';
+import './ProductList.scss';
 const LIMIT = 28;
-
 class ProductList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       productData: [],
+      productPage: '',
       productFits: '',
       filterMoveNum: 1,
       grayDisplayNum: -1,
@@ -19,27 +18,15 @@ class ProductList extends Component {
       filterFit: [],
     };
   }
-
   componentDidMount() {
-    fetch(`http://10.58.2.212:8000/products?limit=28&offset=0`)
+    fetch(`${GET_PRODUCTDETAIL_API}?limit=28&offset=0`)
       .then(res => res.json())
       .then(res => {
         this.setState({
           productData: res.results.products,
+          productPage: res.results.page_count,
         });
       });
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.location.search !== this.props.location.search) {
-      fetch(`${PRODUCT_LIST_API}/products${this.props.location.search}`)
-        .then(res => res.json())
-        .then(res => {
-          this.setState({
-            productData: res.results.products,
-          });
-        });
-    }
   }
 
   addFilterPrice = event => {
@@ -47,40 +34,33 @@ class ProductList extends Component {
       filterPrice: event,
     });
   };
-
   addFilterColor = event => {
     this.setState({
       filterColor: this.state.filterColor.concat(event),
     });
   };
-
   addFilterFit = event => {
     this.setState({
       filterFit: this.state.filterFit.concat(event),
     });
   };
-
   handleClick = index => {
     const query = `limit=${LIMIT}&offset=${index * LIMIT}`;
     this.props.history.push(`/productlist?${query}`);
   };
-
   styleChange = event => {
     this.setState({ productFits: event.target.dataset.category });
   };
-
   hideFilter = () => {
     this.setState({
       filterMoveNum: 1,
     });
   };
-
   hideGrayDisplay = () => {
     this.setState({
       grayDisplayNum: -1,
     });
   };
-
   handleFetch = API => {
     fetch(API)
       .then(res => res.json())
@@ -88,13 +68,11 @@ class ProductList extends Component {
         this.setState({ productData: res.results.products });
       });
   };
-
   render() {
-    const { productData, productFits } = this.state;
+    const { productData, productFits, productPage } = this.state;
     const searchStyle = productData.filter(data =>
       data.fit.includes(productFits)
     );
-
     return (
       <div className="productList">
         <div className="productListDisplay">
@@ -134,15 +112,14 @@ class ProductList extends Component {
                     <div className="resetStyleBtn" data-category="">
                       폴 로
                     </div>
-                    <div data-category="파리폴로">파리폴로</div>
-                    <div data-category="클래식핏">클래식핏</div>
+                    <div data-category="파리 폴로">파리폴로</div>
+                    <div data-category="클래식 핏">클래식핏</div>
                   </div>
                   <div className="subCategory">
-                    <div data-category="레귤러핏">레귤러핏</div>
-                    <div data-category="슬림핏">슬림핏</div>
+                    <div data-category="레귤러 핏">레귤러핏</div>
+                    <div data-category="슬림 핏">슬림핏</div>
                   </div>
                 </div>
-
                 <div className="styleFilter">
                   <div className="styleFilterResult">
                     {searchStyle.length}개의 결과
@@ -168,7 +145,7 @@ class ProductList extends Component {
                 return (
                   <Product
                     key={data.id}
-                    itemId={data.id}
+                    itemId={data.product_id}
                     idx={idx}
                     productName={data.name}
                     productColorNum={data.colors_num}
@@ -181,12 +158,12 @@ class ProductList extends Component {
           </div>
           <div className="pageBtn">
             <div className="numberBtn">
-              {Array(Math.ceil(productData.length / 28))
+              {Array(productPage)
                 .fill()
                 .map((_, idx) => {
                   return (
-                    <button onClick={() => this.handleClick({ idx })}>
-                      {idx}
+                    <button key={idx} onClick={() => this.handleClick(idx + 1)}>
+                      {idx + 1}
                     </button>
                   );
                 })}
@@ -207,5 +184,4 @@ class ProductList extends Component {
     );
   }
 }
-
 export default ProductList;

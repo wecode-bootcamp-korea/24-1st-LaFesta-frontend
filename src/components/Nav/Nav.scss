@@ -4,8 +4,9 @@
   left: 0;
   display: flex;
   width: 100%;
-  padding: 30px 50px;
+  padding: 15px 50px;
   z-index: 20;
+  animation: zoomout 4s ease 500ms forwards;
   background: #f4f4f4;
 
   .logo {
@@ -20,9 +21,8 @@
     }
 
     img {
-      width: 28px;
-      height: 20px;
-      transform: rotateY(180deg);
+      width: 152px;
+      height: 46px;
     }
   }
 
@@ -38,6 +38,7 @@
       justify-content: space-between;
       width: 34%;
       font-size: 12px;
+      font-weight: 600;
 
       li {
         margin: 0 20px;
@@ -48,15 +49,15 @@
 }
 
 
-  button {
-    border: 0;
-    outline: 0;
-    background: transparent;
+button {
+  border: 0;
+  outline: 0;
+  background: transparent;
 
-    &:hover {
-      color: #dbdbdb;
-    }
+  &:hover {
+    color: #dbdbdb;
   }
+}
 
 
 .searchInput {
@@ -65,19 +66,11 @@
   background: transparent;
 }
 
-  .userCategorys {
-    display: flex;
-    margin-right: auto;
-    cursor: pointer;
-
-    li {
-      padding-left: 22px;
-
-      .icon {
-        font-size: 15px;
-      }
-
-
+.userWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .userCategorys {
   display: flex;
@@ -92,9 +85,24 @@
     }
 
 
-    :hover {
-      color: #dbdbdb;
+
+    .userCategorys {
+      display: flex;
+      margin-right: auto;
+      cursor: pointer;
+
+      li {
+        padding-left: 22px;
+
+        .icon {
+          font-size: 15px;
+        }
+
+
+        :hover {
+          color: #dbdbdb;
+        }
+      }
     }
   }
 }
-  }

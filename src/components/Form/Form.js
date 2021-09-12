@@ -23,9 +23,9 @@ class Form extends Component {
 
     fetch(`http://10.58.0.80:8000/products?typeId=1&page=1&keyword=${keyword}`)
       .then(response => response.json())
-      .then(items => {
+      .then(list => {
         this.setState({
-          list: items,
+          searchList: list,
         });
       });
   };

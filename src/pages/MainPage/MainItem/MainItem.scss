@@ -1,3 +1,5 @@
+@import '../../../styles/common.scss';
+
 .newProducts {
   display: flex;
   margin-left: 0;
@@ -47,8 +49,7 @@
     }
 
     .insideContent {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       justify-content: flex-end;
       width: calc(40 * (100vw - 20px) / 40);
       margin-left: 50px;
@@ -104,8 +105,7 @@
 
     .collectionContent {
       position: relative;
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       bottom: 26%;
       left: 6%;
 

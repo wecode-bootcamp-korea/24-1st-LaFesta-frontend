@@ -1,6 +1,7 @@
+@import '../../styles/common.scss';
+
 .notFoundContainer {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   text-align: center;
   justify-content: center;
   height: 350px;

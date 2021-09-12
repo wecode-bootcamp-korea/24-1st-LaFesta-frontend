@@ -10,7 +10,7 @@ class Category extends Component {
         <span>{items.name}</span>
         <ul className="subMenuCategries">
           {items.categories.map(item => (
-            <Link to="/">
+            <Link to="/productList">
               <li key={item.id}>{item.name}</li>
             </Link>
           ))}

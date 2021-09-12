@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { POST_SIGNUP_API } from '../../config';
 import './SignUpUserInfo.scss';
 
 class SignUpUserInfo extends Component {
@@ -27,7 +28,7 @@ class SignUpUserInfo extends Component {
   signUp = () => {
     const { gender, name, email, mobile, year, month, date, pw } = this.state;
     const deleteDash = /\-/g;
-    fetch('http://10.58.5.62:8000/users/signup', {
+    fetch(`${POST_SIGNUP_API}`, {
       method: 'POST',
       body: JSON.stringify({
         gender: gender,
@@ -56,6 +57,7 @@ class SignUpUserInfo extends Component {
       const num = /[0-9]/;
       const str = /[a-zA-Z]/;
       const special = /[~!@#$%^&*()_+|<>?:{}]/;
+
       const formCheck =
         gender &&
         name &&
@@ -79,13 +81,13 @@ class SignUpUserInfo extends Component {
             {
               name: '',
               email: '',
+              gender: '',
               mobile: '',
               year: '',
               month: '',
               date: '',
               pw: '',
               pwCheck: '',
-              gender: '',
             },
             () => {
               alert('회원가입 정보를 다시 확인해 주세요');

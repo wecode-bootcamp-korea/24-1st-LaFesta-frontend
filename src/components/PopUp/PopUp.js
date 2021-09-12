@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './PopUp.scss';
 
 class PopUp extends Component {
@@ -43,4 +43,4 @@ class PopUp extends Component {
   }
 }
 
-export default PopUp;
+export default withRouter(PopUp);

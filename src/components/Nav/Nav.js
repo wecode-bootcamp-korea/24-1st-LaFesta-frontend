@@ -175,12 +175,11 @@ class Nav extends Component {
   handleUserMouseLeave = () => {
     const { isUserLogin } = this.state;
 
-    if (!localStorage.getItem('token')) {
-      this.setState({
-        isUserLogin: !isUserLogin,
-      });
-      this.props.history.push('/logIn');
-    }
+    this.props.history.push('/login');
+
+    this.setState({
+      isUserLogin: false,
+    });
   };
 
   handleUserPopUp = () => {
@@ -198,6 +197,10 @@ class Nav extends Component {
     });
   };
 
+  goToLogin = () => {
+    this.props.history.push('/login');
+  };
+
   render() {
     const { toggleMenu, isUserLogin, isClicked } = this.state;
     const toggledMenu = menu.find(item => item.name === toggleMenu);
@@ -206,9 +209,8 @@ class Nav extends Component {
         <nav className="navContainer">
           <div className="logoWrapper">
             <Link className="logo" to="/">
-              <h1>LAFESTA</h1>
               <img
-                src="https://i.postimg.cc/pXWJX7kj/490crocodile-100218.png"
+                src="https://i.postimg.cc/Cx92S8yJ/removebg-preview.png"
                 alt="logo"
               />
             </Link>
@@ -225,7 +227,7 @@ class Nav extends Component {
               <i className="fas fa-search icon"></i>
             </button>
           </div>
-          <div>
+          <div className="userWrapper">
             <ul className="userCategorys">
               <li>
                 <Link>
@@ -247,7 +249,7 @@ class Nav extends Component {
                 )}
               </li>
               <li>
-                <Link to="/">
+                <Link to="/cart">
                   <i className="fas fa-shopping-cart icon"></i>
                   <span className="a11y-hidden">cart</span>
                 </Link>
@@ -263,7 +265,10 @@ class Nav extends Component {
               ))}
           </ul>
         </div>
-        <div onMouseLeave={this.handleUserMouseLeave}>
+        <div
+          onMouseLeave={this.handleUserMouseLeave}
+          style={{ position: 'relative' }}
+        >
           {isUserLogin && <PopUp name={localStorage.getItem('user_name')} />}
         </div>
         {isClicked && <Form clicked={isClicked} />}
