@@ -17,7 +17,6 @@ class MainPage extends Component {
   }
 
   handleNextClick = () => {
-    console.log('1');
     const { eventCount, eventList } = this.state;
     const length = eventList.length;
 

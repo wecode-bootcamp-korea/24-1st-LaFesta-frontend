@@ -175,11 +175,8 @@ class Nav extends Component {
   handleUserMouseLeave = () => {
     const { isUserLogin } = this.state;
 
-    if (!localStorage.getItem('token')) {
-      console.log('여기가');
+    this.props.history.push('/login');
 
-      this.props.history.push('/logIn');
-    }
     this.setState({
       isUserLogin: false,
     });
